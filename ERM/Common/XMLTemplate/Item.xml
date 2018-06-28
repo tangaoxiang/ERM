@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--项目信息-->
+<root>
+  <columns>
+    <property column="XmCode" mappColumn="XmCode"  description="项目号" display="1" type="0" default="" />
+    <property column="ConStructionProjectName" mappColumn="ConStructionProjectName"  description="项目名称" display="1" type="0" default="" />
+    <property column="ConstructionProjectAdd" mappColumn="ConstructionProjectAdd"  description="项目地址" display="1" type="0" default="" />
+    <property column="Respective" mappColumn="projZoneCode"  description="所属区域" display="1" type="0" default="" />
+    <property column="ConstructionAreaSum" mappColumn="ConstructionAreaSum"  description="总建筑面积" display="1" type="1" default="" />
+    <property column="UseSoiAreaSum" mappColumn="UseSoiAreaSum"  description="总用地面积" display="1" type="0" default="" />
+    <property column="AllCost" mappColumn="AllCost"  description="总地价" display="1" type="0" default="" />
+    <property column="VolumeFar" mappColumn="VolumeFar"  description="容积率" display="1" type="0" default="" />
+    <property column="GreenFar" mappColumn="GreenFar"  description="绿化率" display="1" type="0" default="" />
+    <property column="BuildingDensity" mappColumn="BuildingDensity"  description="建筑密度" display="1" type="0" default="" />
+    <property column="ds" mappColumn="ds"  description="栋数" display="1" type="1" default="" />
+    <property column="ProjectSettlement" mappColumn="ProjectSettlement"  description="总预算" display="1" type="0" default="" />
+    <property column="ProjectCost" mappColumn="ProjectCost"  description="总决算" display="1" type="0" default="" />
+    <property column="CreateUnit" mappColumn="CreateUnit"  description="建设单位" display="1" type="0" default="" />
+    <property column="ItemFzr" mappColumn="ItemFzr"  description="项目负责人" display="1" type="0" default="" />
+    <property column="pzdw" mappColumn="pzdw"  description="立项批准单位" display="1" type="0" default="" />
+    <property column="pzh" mappColumn="pzh"  description="批准文号" display="1" type="0" default="" />
+    <property column="zcd" mappColumn="zcd"  description="总长度" display="1" type="0" default="" />
+    <property column="ztcw" mappColumn="totleparkingNums"  description="总停车位" display="1" type="1" default="" />
+    <property column="dstcw" mappColumn="overParking"  description="地上停车位" display="1" type="1" default="" />
+    <property column="dxtcw" mappColumn="underParking"  description="地下停车位" display="1" type="1" default="" />
+    <property column="ghcode" mappColumn="xmghcode"  description="工程规划许可证" display="1" type="1" default="" />
+    <property column="sjdw_mc1" mappColumn="xmdesignOrgSidtmp"  description="设计单位" display="1" type="1" default="" />
+    <property column="YdghxkCode" mappColumn="xmydxkcode"  description="用地规划许可证" display="1" type="1" default="" />
+    <property column="kcdw_mc1" mappColumn="xmreconnaissanceOrgSidtmp"  description="勘察单位" display="1" type="1" default="" />
+    <property column="ydpzcode" mappColumn="xmydpzcode"  description="用地批准书号" display="1" type="1" default="" />
+    <property column="supervisionOrgSidtmp1" mappColumn="xmsupervisionOrgSidtmp"  description="监理单位" display="1" type="1" default="" />
+    <property column="sgcode" mappColumn="xmsgcode"  description="施工单位许可证号" display="1" type="1" default="" />
+    <property column="Tlcrnx" mappColumn="Tlcrnx"  description="土地出让年限" display="1" type="0" default="" />
+    <property column="TlsyCode" mappColumn="TlsyCode"  description="土地使用证" display="1" type="0" default="" />
+    <property column="ProjectType" mappColumn="ProjectType"  description="建筑性质" display="1" type="0" default="" />
+  </columns>
+  <selects>
+    <select id="queryByItemID">
+      select a.*,b.* from t_projects as a,t_item as b where a.itemid=b.itemid
+    </select>
+    <select id="pb_queryByItemID" params="ItemID">
+      SELECT
+      ConStructionProjectName as 项目名称,
+      Respective as 所属区域,
+      ConstructionProjectAdd as  工程地址,
+      ProjectType as 工程类别,
+      UseSoiAreaSum as 总用地面积 ,
+      ConstructionAreaSum as 总建筑面积,
+      ConstructionScale as 建设规模,
+      ProjectCost as 工程造价,
+      ProjectSettlement as 工程结算,
+      StartDate as 开工时间,
+      FinishDate as 竣工时间,
+      UseSoiType as  用地分类,
+      CollectionType as 征拨分类,
+      OriginalSoiType as 原土地分类,
+      UseSoiArea as 用地面积,
+      Approvedate as 批准时间,
+      CreateUnit as 建设单位,
+      ItemFzr as 建设单位项目负责人,
+      AllCost as 总地价,
+      VolumeFar as 容积率,
+      GreenFar as 绿化率,
+      BuildingDensity as 建筑密度 FROM [T_Item] WHERE
+      [T_Item].[ItemID] = #ItemID#
+    </select>
+  </selects>
+</root>

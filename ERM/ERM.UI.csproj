@@ -1,0 +1,1570 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4C832C66-061D-4EEA-9D25-5D12AB616C9D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ERM.UI</RootNamespace>
+    <AssemblyName>ERM2.0</AssemblyName>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <ApplicationIcon>ico.ico</ApplicationIcon>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <ManifestCertificateThumbprint>999C9475E9EF8CFF3AF3180E17FDC53F2FCC8A3C</ManifestCertificateThumbprint>
+    <ManifestKeyFile>ERM_TemporaryKey.pfx</ManifestKeyFile>
+    <GenerateManifests>true</GenerateManifests>
+    <SignManifests>false</SignManifests>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <PublishUrl>D:\Temperm\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AxInterop.iStylePDF, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\AxInterop.iStylePDF.dll</HintPath>
+    </Reference>
+    <Reference Include="CSkin, Version=16.1.14.2, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\x86\Release\CSkin.dll</HintPath>
+    </Reference>
+    <Reference Include="DevComponents.DotNetBar2, Version=12.7.0.10, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL" />
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\x86\Debug\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.iStylePDF, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\lib\Interop.iStylePDF.dll</HintPath>
+    </Reference>
+    <Reference Include="iSignature_PDF_API">
+      <HintPath>..\..\lib\iSignature_PDF_API.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.8.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\x86\Release\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Tools.Excel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="NetSpell.SpellChecker">
+      <HintPath>..\WinHtmlEditor\bin\Debug\NetSpell.SpellChecker.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI, Version=2.2.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\x86\Release\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.2.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\x86\Release\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.2.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\x86\Release\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.2.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\x86\Release\NPOI.OpenXmlFormats.dll</HintPath>
+    </Reference>
+    <Reference Include="SevenZipSharp, Version=0.64.3890.29348, Culture=neutral, PublicKeyToken=20de82c62b055c88, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\SevenZipSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.License, Version=1.3.2.40, Culture=neutral, PublicKeyToken=b1144360237c8b3f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\x86\Release\Spire.License.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.Pdf, Version=3.1.15.54040, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\x86\Release\Spire.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\lib\stdole.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Base, Version=2009.1.400.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Stimulsoft Reports.Net 2009.1\Bin\Stimulsoft.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Controls, Version=2009.1.400.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Stimulsoft Reports.Net 2009.1\Bin\Stimulsoft.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Controls.Win, Version=2009.1.400.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Stimulsoft Reports.Net 2009.1\Bin\Stimulsoft.Controls.Win.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Database, Version=2009.1.400.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Stimulsoft Reports.Net 2009.1\Bin\Stimulsoft.Database.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Editor, Version=2009.1.400.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Stimulsoft Reports.Net 2009.1\Bin\Stimulsoft.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Report, Version=2009.1.400.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Stimulsoft Reports.Net 2009.1\Bin\Stimulsoft.Report.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Report.Design, Version=2009.1.400.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Stimulsoft Reports.Net 2009.1\Bin\Stimulsoft.Report.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Report.Web, Version=2009.1.400.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Stimulsoft Reports.Net 2009.1\Bin\Stimulsoft.Report.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Report.Win, Version=2009.1.400.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Stimulsoft Reports.Net 2009.1\Bin\Stimulsoft.Report.Win.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="TransAndSignFile, Version=8.2.0.6, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\TransAndSignFile.dll</HintPath>
+    </Reference>
+    <Reference Include="TX.Framework.WindowUI">
+      <HintPath>..\TX.Framework.WindowUI\bin\x86\Release\TX.Framework.WindowUI.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Archive\frmPrinterList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Archive\frmPrinterList.Designer.cs">
+      <DependentUpon>frmPrinterList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Archive\frmYJ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Archive\frmYJ.Designer.cs">
+      <DependentUpon>frmYJ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Archive\frmCreateSIP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Archive\frmCreateSIP.Designer.cs">
+      <DependentUpon>frmCreateSIP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Archive\frmPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Archive\frmPrint.designer.cs">
+      <DependentUpon>frmPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Archive\frmPrintCell.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Archive\frmPrintCell.designer.cs">
+      <DependentUpon>frmPrintCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Archive\frmZJ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Archive\frmZJ.Designer.cs">
+      <DependentUpon>frmZJ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Archive\frmPrintBat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Archive\frmPrintBat.designer.cs">
+      <DependentUpon>frmPrintBat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Archive\frmReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Archive\frmReport.Designer.cs">
+      <DependentUpon>frmReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CellEdit\frmCellTip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CellEdit\frmCellTip.Designer.cs">
+      <DependentUpon>frmCellTip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CellEdit\frmSaveFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CellEdit\frmSaveFile.Designer.cs">
+      <DependentUpon>frmSaveFile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CellEdit\frmSetSignatureDt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CellEdit\frmSetSignatureDt.Designer.cs">
+      <DependentUpon>frmSetSignatureDt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CellEdit\frmTemplateInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CellEdit\frmTemplateInfo.Designer.cs">
+      <DependentUpon>frmTemplateInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CellEdit\TXTabPage.cs" />
+    <Compile Include="Common\ConvertPDF.cs" />
+    <Compile Include="Common\DirectoryInfoCommon.cs" />
+    <Compile Include="Common\ExcelHelp.cs" />
+    <Compile Include="Common\GetSystemIcon.cs" />
+    <Compile Include="Common\HardDiskPartition.cs" />
+    <Compile Include="Common\Print_Common.cs" />
+    <Compile Include="Common\XmlMapping\Archive.cs" />
+    <Compile Include="Common\XmlMapping\File.cs" />
+    <Compile Include="Common\XmlMapping\IPorjectXML.cs" />
+    <Compile Include="Common\ReadWriteAppConfig.cs" />
+    <Compile Include="Common\Reflections.cs" />
+    <Compile Include="Common\RegCode.cs" />
+    <Compile Include="Common\RegistAction.cs" />
+    <Compile Include="Common\USBKey.cs" />
+    <Compile Include="Common\XmlMapping\Brige.cs" />
+    <Compile Include="Common\XmlMapping\Buildding.cs" />
+    <Compile Include="Common\XmlMapping\Item.cs" />
+    <Compile Include="Common\XmlMapping\Point.cs" />
+    <Compile Include="Common\XmlMapping\Project.cs" />
+    <Compile Include="Common\XmlMapping\ProjectXML_Factory.cs" />
+    <Compile Include="Common\XmlMapping\RoadLamp.cs" />
+    <Compile Include="Common\XmlMapping\Traffic.cs" />
+    <Compile Include="Common\XmlMapping\YW_CellAndEFile.cs" />
+    <Compile Include="Controls\AxSPApplicationEX.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\DateTimeEx1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\DateTimeEx1.Designer.cs">
+      <DependentUpon>DateTimeEx1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\NumberTextBox1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\NumberTextBoxEX.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\SkinContextMenuStripEX.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\DateTimeEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\DateTimeEx.Designer.cs">
+      <DependentUpon>DateTimeEx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SkinButtonEX.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\SkinLabelEX.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\SkinListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\SkinPanelEX.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Skin_ContextStripEX.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Skin_DataGridEX.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Skin_DevEX.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Skin_MenuToolEX.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Skin_ToolStripEX.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\TreeViewEX.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\TXComboxEX.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\TXGroupEX.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\TXTabControlEX.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\TXTextBoxEX.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\UC_RoadLamp.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\UC_RoadLamp.Designer.cs">
+      <DependentUpon>UC_RoadLamp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="File\frmDelInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="File\frmDelInfo.Designer.cs">
+      <DependentUpon>frmDelInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Project\frmSettPoint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Project\frmSettPoint.Designer.cs">
+      <DependentUpon>frmSettPoint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setting\frmGdmlList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting\frmGdmlList.Designer.cs">
+      <DependentUpon>frmGdmlList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setting\frmGdList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting\frmGdList.Designer.cs">
+      <DependentUpon>frmGdList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="File\frmPX.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="File\frmPX.Designer.cs">
+      <DependentUpon>frmPX.cs</DependentUpon>
+    </Compile>
+    <Compile Include="File\FrmUnRegist.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="File\FrmUnRegist.Designer.cs">
+      <DependentUpon>FrmUnRegist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmProgressMsg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProgressMsg.Designer.cs">
+      <DependentUpon>frmProgressMsg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Project\frmProjectCopy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Project\frmProjectCopy.Designer.cs">
+      <DependentUpon>frmProjectCopy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Project\frmProjectSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Project\frmProjectSearch.Designer.cs">
+      <DependentUpon>frmProjectSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CellEdit\frmCellEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CellEdit\frmCellEdit.designer.cs">
+      <DependentUpon>frmCellEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CellEdit\frmCellFillRnd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CellEdit\frmCellFillRnd.designer.cs">
+      <DependentUpon>frmCellFillRnd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CellEdit\frmExpData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CellEdit\frmExpData.designer.cs">
+      <DependentUpon>frmExpData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CellEdit\frmHeadInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CellEdit\frmHeadInfo.Designer.cs">
+      <DependentUpon>frmHeadInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CellEdit\frmImpData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CellEdit\frmImpData.designer.cs">
+      <DependentUpon>frmImpData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CellEdit\frmCellMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CellEdit\frmCellMain.designer.cs">
+      <DependentUpon>frmCellMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CellEdit\frmCellNameEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CellEdit\frmCellNameEdit.designer.cs">
+      <DependentUpon>frmCellNameEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CellEdit\frmMainGetTempletFromStandard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CellEdit\frmMainGetTempletFromStandard.designer.cs">
+      <DependentUpon>frmMainGetTempletFromStandard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CellEdit\frmMainSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CellEdit\frmMainSearch.designer.cs">
+      <DependentUpon>frmMainSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CellEdit\frmSymbol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CellEdit\frmSymbol.designer.cs">
+      <DependentUpon>frmSymbol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CellEdit\frmXsd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CellEdit\frmXsd.designer.cs">
+      <DependentUpon>frmXsd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CellEdit\PrintNow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CellEdit\PrintNow.Designer.cs">
+      <DependentUpon>PrintNow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\CustomPaperSize.cs" />
+    <Compile Include="Common\MyCommon.cs" />
+    <Compile Include="Common\Globals.cs" />
+    <Compile Include="Common\ITreeFactory.cs" />
+    <Compile Include="Common\MyEnum.cs" />
+    <Compile Include="Common\OpenNewForm.cs" />
+    <Compile Include="Common\ProjectItemUnits.cs" />
+    <Compile Include="Common\CellTreeFactory.cs" />
+    <Compile Include="Common\TreeNodeEx.cs" />
+    <Compile Include="Common\XmlDoc.cs" />
+    <Compile Include="Controls\ComboBoxEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ConvertCell2PDF.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ConvertCell2PDF.Designer.cs">
+      <DependentUpon>ConvertCell2PDF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ctrlWarningTip.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ctrlWarningTip.Designer.cs">
+      <DependentUpon>ctrlWarningTip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CustomPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\CustomStrips.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\InputBoxDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\NumberTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\PanelEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="SetPrinterFoot.cs" />
+    <Compile Include="Setting\frmDistrictDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting\frmDistrictDetail.Designer.cs">
+      <DependentUpon>frmDistrictDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setting\frmDistrictList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting\frmDistrictList.Designer.cs">
+      <DependentUpon>frmDistrictList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="File\FileRegistInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="File\FileRegistInfo.Designer.cs">
+      <DependentUpon>FileRegistInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="File\frmAddTemplet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="File\frmAddTemplet.Designer.cs">
+      <DependentUpon>frmAddTemplet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="File\frmFileMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="File\frmFileMain.Designer.cs">
+      <DependentUpon>frmFileMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="File\frmRegistSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="File\frmRegistSearch.Designer.cs">
+      <DependentUpon>frmRegistSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="File\frmReName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="File\frmReName.Designer.cs">
+      <DependentUpon>frmReName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="File\frmSetNodeName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="File\frmSetNodeName.Designer.cs">
+      <DependentUpon>frmSetNodeName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm2PDFProgressMsg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm2PDFProgressMsg.Designer.cs">
+      <DependentUpon>frm2PDFProgressMsg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMDIMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMDIMain.Designer.cs">
+      <DependentUpon>frmMDIMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAbout.designer.cs">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmChangeUserPasswd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChangeUserPasswd.Designer.cs">
+      <DependentUpon>frmChangeUserPasswd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyFavorites.cs" />
+    <Compile Include="Setting\frmGdmlEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting\frmGdmlEdit.Designer.cs">
+      <DependentUpon>frmGdmlEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setting\frmGdListEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting\frmGdListEdit.Designer.cs">
+      <DependentUpon>frmGdListEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setting\frmPageSizeDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting\frmPageSizeDetail.Designer.cs">
+      <DependentUpon>frmPageSizeDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setting\frmPageSizeList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting\frmPageSizeList.Designer.cs">
+      <DependentUpon>frmPageSizeList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Project\frmExportProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Project\frmExportProject.Designer.cs">
+      <DependentUpon>frmExportProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Project\frmProjectInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Project\frmProjectInfo.Designer.cs">
+      <DependentUpon>frmProjectInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Project\frmProjectInfoExt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Project\frmProjectInfoExt.Designer.cs">
+      <DependentUpon>frmProjectInfoExt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Project\frmProjectList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Project\frmProjectList.Designer.cs">
+      <DependentUpon>frmProjectList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Project\frmUnit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Project\frmUnit.designer.cs">
+      <DependentUpon>frmUnit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Common\IProject.cs" />
+    <Compile Include="Common\Project_Factory.cs" />
+    <Compile Include="Controls\UC_Brige.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\UC_Brige.Designer.cs">
+      <DependentUpon>UC_Brige.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\UC_Traffic.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\UC_Traffic.Designer.cs">
+      <DependentUpon>UC_Traffic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\UC_Buildding.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\UC_Buildding.Designer.cs">
+      <DependentUpon>UC_Buildding.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Archive\frmPrinterList.resx">
+      <DependentUpon>frmPrinterList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Archive\frmReport.resx">
+      <DependentUpon>frmReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Archive\frmYJ.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmYJ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Archive\frmCreateSIP.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmCreateSIP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Archive\frmPrint.resx">
+      <DependentUpon>frmPrint.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Archive\frmPrintCell.resx">
+      <DependentUpon>frmPrintCell.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Archive\frmZJ.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmZJ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Archive\frmPrintBat.resx">
+      <DependentUpon>frmPrintBat.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CellEdit\frmCellTip.resx">
+      <DependentUpon>frmCellTip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CellEdit\frmSaveFile.resx">
+      <DependentUpon>frmSaveFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CellEdit\frmSetSignatureDt.resx">
+      <DependentUpon>frmSetSignatureDt.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CellEdit\frmTemplateInfo.resx">
+      <DependentUpon>frmTemplateInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\CustomStrips.resx">
+      <DependentUpon>CustomStrips.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\NumberTextBox.resx">
+      <DependentUpon>NumberTextBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Skin_DevEX.resx">
+      <DependentUpon>Skin_DevEX.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\TXTextBoxEX.resx">
+      <DependentUpon>TXTextBoxEX.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\UC_RoadLamp.resx">
+      <DependentUpon>UC_RoadLamp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="File\frmDelInfo.resx">
+      <DependentUpon>frmDelInfo.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Project\frmSettPoint.resx">
+      <DependentUpon>frmSettPoint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setting\frmGdmlList.resx">
+      <DependentUpon>frmGdmlList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setting\frmGdList.resx">
+      <DependentUpon>frmGdList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="File\frmPX.resx">
+      <DependentUpon>frmPX.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="File\FrmUnRegist.resx">
+      <DependentUpon>FrmUnRegist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProgressMsg.resx">
+      <DependentUpon>frmProgressMsg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Project\frmProjectCopy.resx">
+      <DependentUpon>frmProjectCopy.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Project\frmProjectSearch.resx">
+      <DependentUpon>frmProjectSearch.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CellEdit\frmCellEdit.resx">
+      <DependentUpon>frmCellEdit.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CellEdit\frmCellFillRnd.resx">
+      <DependentUpon>frmCellFillRnd.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CellEdit\frmExpData.resx">
+      <DependentUpon>frmExpData.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CellEdit\frmHeadInfo.resx">
+      <DependentUpon>frmHeadInfo.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CellEdit\frmImpData.resx">
+      <DependentUpon>frmImpData.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CellEdit\frmCellMain.resx">
+      <DependentUpon>frmCellMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CellEdit\frmCellNameEdit.resx">
+      <DependentUpon>frmCellNameEdit.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CellEdit\frmMainGetTempletFromStandard.resx">
+      <DependentUpon>frmMainGetTempletFromStandard.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CellEdit\frmMainSearch.resx">
+      <DependentUpon>frmMainSearch.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CellEdit\frmSymbol.resx">
+      <DependentUpon>frmSymbol.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CellEdit\frmXsd.resx">
+      <DependentUpon>frmXsd.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CellEdit\PrintNow.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>PrintNow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ConvertCell2PDF.resx">
+      <DependentUpon>ConvertCell2PDF.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ctrlWarningTip.resx">
+      <DependentUpon>ctrlWarningTip.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\InputBoxDialog.resx">
+      <DependentUpon>InputBoxDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setting\frmDistrictDetail.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmDistrictDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setting\frmDistrictList.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmDistrictList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="File\FileRegistInfo.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FileRegistInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="File\frmAddTemplet.resx">
+      <DependentUpon>frmAddTemplet.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="File\frmFileMain.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmFileMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="File\frmRegistSearch.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmRegistSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="File\frmReName.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmReName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="File\frmSetNodeName.resx">
+      <DependentUpon>frmSetNodeName.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm2PDFProgressMsg.resx">
+      <DependentUpon>frm2PDFProgressMsg.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMDIMain.resx">
+      <DependentUpon>frmMDIMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAbout.resx">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmChangeUserPasswd.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmChangeUserPasswd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setting\frmGdmlEdit.resx">
+      <DependentUpon>frmGdmlEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setting\frmGdListEdit.resx">
+      <DependentUpon>frmGdListEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setting\frmPageSizeDetail.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmPageSizeDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setting\frmPageSizeList.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmPageSizeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Project\frmExportProject.resx">
+      <DependentUpon>frmExportProject.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Project\frmProjectInfo.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmProjectInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Project\frmProjectInfoExt.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmProjectInfoExt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Project\frmProjectList.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmProjectList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Project\frmUnit.resx">
+      <DependentUpon>frmUnit.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setting\frmUsersDetail.resx">
+      <DependentUpon>frmUsersDetail.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setting\frmUsersList.resx">
+      <DependentUpon>frmUsersList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\UC_Brige.resx">
+      <DependentUpon>UC_Brige.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\UC_Traffic.resx">
+      <DependentUpon>UC_Traffic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\UC_Buildding.resx">
+      <DependentUpon>UC_Buildding.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="Setting\frmUsersDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting\frmUsersDetail.Designer.cs">
+      <DependentUpon>frmUsersDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setting\frmUsersList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting\frmUsersList.Designer.cs">
+      <DependentUpon>frmUsersList.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App.ico" />
+    <Content Include="Common\XMLTemplate\Point.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Common\XMLTemplate\YW_CellAndEFile.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Common\XMLTemplate\Archive.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Common\XMLTemplate\Brige.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Common\XMLTemplate\Buildding.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Common\XMLTemplate\File.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Common\XMLTemplate\Item.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Common\XMLTemplate\Project.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Common\XMLTemplate\RoadLamp.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Common\XMLTemplate\Traffic.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Common\XMLTemplate\Traffic_Detail.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ico.ico" />
+    <Content Include="Properties\SignatureSet.xml" />
+    <Content Include="Resources\01.png" />
+    <Content Include="Resources\02.png" />
+    <Content Include="Resources\03.png" />
+    <Content Include="Resources\04.png" />
+    <Content Include="Resources\05.png" />
+    <Content Include="Resources\06.png" />
+    <Content Include="Resources\07.png" />
+    <None Include="App.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Resources\071.png" />
+    <Content Include="Resources\08.png" />
+    <Content Include="Resources\09.png" />
+    <Content Include="Resources\1.ico" />
+    <Content Include="Resources\10.png" />
+    <Content Include="Resources\11.png" />
+    <None Include="Resources\12.ico" />
+    <Content Include="Resources\12.png" />
+    <Content Include="Resources\13.png" />
+    <Content Include="Resources\14.png" />
+    <Content Include="Resources\15.png" />
+    <Content Include="Resources\16.png" />
+    <Content Include="Resources\17.png" />
+    <Content Include="Resources\18.png" />
+    <Content Include="Resources\19.png" />
+    <Content Include="Resources\2.ico" />
+    <Content Include="Resources\20.png" />
+    <None Include="Resources\21.ico" />
+    <Content Include="Resources\3.ico" />
+    <Content Include="Resources\4.ico" />
+    <None Include="Resources\about_bg.png" />
+    <None Include="Resources\about_bg1.png" />
+    <Content Include="Resources\add.bmp" />
+    <Content Include="Resources\add.png" />
+    <None Include="Resources\anjuanico01.png" />
+    <None Include="Resources\anjuanico02.png" />
+    <None Include="Resources\anjuanico03.png" />
+    <None Include="Resources\anjuanico04.png" />
+    <None Include="Resources\anjuanico05.png" />
+    <None Include="Resources\anjuanico06.png" />
+    <None Include="Resources\anjuanico07.png" />
+    <Content Include="Resources\App.ico" />
+    <Content Include="Resources\arrow.bmp" />
+    <Content Include="Resources\bg.jpg" />
+    <Content Include="Resources\bottom1.bmp" />
+    <Content Include="Resources\btn01.png" />
+    <Content Include="Resources\btn02.png" />
+    <Content Include="Resources\btn03.png" />
+    <Content Include="Resources\btn04.png" />
+    <Content Include="Resources\btn05.png" />
+    <Content Include="Resources\btn06.png" />
+    <Content Include="Resources\btn07.png" />
+    <None Include="Resources\btn_bg.gif" />
+    <Content Include="Resources\button.gif" />
+    <None Include="Resources\button091.png" />
+    <None Include="Resources\button011.png" />
+    <None Include="Resources\button021.png" />
+    <None Include="Resources\button031.png" />
+    <None Include="Resources\button041.png" />
+    <None Include="Resources\button051.png" />
+    <None Include="Resources\button061.png" />
+    <None Include="Resources\button071.png" />
+    <None Include="Resources\button081.png" />
+    <None Include="Resources\button01.png" />
+    <None Include="Resources\button02.png" />
+    <None Include="Resources\button04.png" />
+    <None Include="Resources\button05.png" />
+    <None Include="Resources\button06.png" />
+    <None Include="Resources\button07.png" />
+    <None Include="Resources\button08.png" />
+    <None Include="Resources\button09.png" />
+    <None Include="Resources\button.png" />
+    <None Include="Resources\button03.png" />
+    <Content Include="Resources\button1.gif" />
+    <None Include="Resources\button1.png" />
+    <Content Include="Resources\button10.png" />
+    <None Include="Resources\button101.png" />
+    <Content Include="Resources\button11.png" />
+    <None Include="Resources\button111.png" />
+    <None Include="Resources\button1111.png" />
+    <Content Include="Resources\button12.png" />
+    <None Include="Resources\button121.png" />
+    <Content Include="Resources\button122501.png" />
+    <Content Include="Resources\button122502.png" />
+    <Content Include="Resources\button122503.png" />
+    <Content Include="Resources\button122504.png" />
+    <Content Include="Resources\button122505.png" />
+    <Content Include="Resources\button122506.png" />
+    <Content Include="Resources\button122507.png" />
+    <Content Include="Resources\button122508.png" />
+    <Content Include="Resources\button122509.png" />
+    <Content Include="Resources\button122510.png" />
+    <Content Include="Resources\button122511.png" />
+    <Content Include="Resources\button122512.png" />
+    <Content Include="Resources\button122513.png" />
+    <Content Include="Resources\button122514.png" />
+    <Content Include="Resources\button122515.png" />
+    <Content Include="Resources\button122516.png" />
+    <Content Include="Resources\button122517.png" />
+    <Content Include="Resources\button122518.png" />
+    <Content Include="Resources\button122519.png" />
+    <Content Include="Resources\button122520.png" />
+    <Content Include="Resources\button122521.png" />
+    <Content Include="Resources\button13.png" />
+    <None Include="Resources\button131.png" />
+    <Content Include="Resources\button14.png" />
+    <None Include="Resources\button141.png" />
+    <Content Include="Resources\button15.png" />
+    <None Include="Resources\button151.png" />
+    <Content Include="Resources\button16.png" />
+    <None Include="Resources\button161.png" />
+    <Content Include="Resources\button17.png" />
+    <None Include="Resources\button171.png" />
+    <Content Include="Resources\button18.png" />
+    <None Include="Resources\button181.png" />
+    <Content Include="Resources\button19.png" />
+    <None Include="Resources\button191.png" />
+    <Content Include="Resources\button20.png" />
+    <None Include="Resources\button201.png" />
+    <Content Include="Resources\button21.png" />
+    <None Include="Resources\button211.png" />
+    <None Include="Resources\button3.png" />
+    <None Include="Resources\button3 - 副本.png" />
+    <Content Include="Resources\buttonbg.gif" />
+    <None Include="Resources\ButtonItem.gif" />
+    <None Include="Resources\CellEdit_AddCell.png" />
+    <None Include="Resources\CellEdit_CheckIn.png" />
+    <None Include="Resources\CellEdit_CheckOut.png" />
+    <None Include="Resources\CellEdit_Close.png" />
+    <None Include="Resources\CellEdit_Collect.png" />
+    <None Include="Resources\CellEdit_CopyCell.png" />
+    <None Include="Resources\CellEdit_CustomCell.png" />
+    <None Include="Resources\CellEdit_DelCell.png" />
+    <None Include="Resources\CellEdit_Example.png" />
+    <None Include="Resources\CellEdit_HideTree.png" />
+    <None Include="Resources\CellEdit_Import.png" />
+    <None Include="Resources\CellEdit_Refresh.png" />
+    <None Include="Resources\CellEdit_Search.png" />
+    <None Include="Resources\CellEdit_CheckIn2.png" />
+    <None Include="Resources\CellEdit_CheckOut2.png" />
+    <None Include="Resources\CellEdit_Close2.png" />
+    <None Include="Resources\cdrom.ico" />
+    <Content Include="Resources\chaijuan.png" />
+    <Content Include="Resources\close.bmp" />
+    <Content Include="Resources\close.png" />
+    <None Include="Resources\close6-2.psd" />
+    <None Include="Resources\CLOSE_WIN.png" />
+    <None Include="Resources\closeWin.png" />
+    <None Include="Resources\closeWin1.png" />
+    <Content Include="Resources\Customize.bmp" />
+    <Content Include="Resources\c_AlignBottom.png" />
+    <Content Include="Resources\c_AlignCenter.png" />
+    <Content Include="Resources\c_AlignLeft.png" />
+    <Content Include="Resources\c_AlignMiddle.png" />
+    <Content Include="Resources\c_AlignRight.png" />
+    <Content Include="Resources\c_AlignTop.png" />
+    <Content Include="Resources\c_AutoFill.png" />
+    <Content Include="Resources\c_BackColor.png" />
+    <Content Include="Resources\c_Bold.png" />
+    <Content Include="Resources\c_Border.png" />
+    <Content Include="Resources\c_col.png" />
+    <Content Include="Resources\c_Comma.png" />
+    <Content Include="Resources\c_copy.png" />
+    <Content Include="Resources\c_cut.png" />
+    <Content Include="Resources\c_DeleteCol.png" />
+    <Content Include="Resources\c_DeleteRow.png" />
+    <Content Include="Resources\c_EraseBorder.png" />
+    <Content Include="Resources\c_ForeColor.png" />
+    <Content Include="Resources\c_gridline.png" />
+    <Content Include="Resources\c_InsertCol.png" />
+    <Content Include="Resources\c_InsertPic.png" />
+    <Content Include="Resources\c_InsertRow.png" />
+    <Content Include="Resources\c_Italic.png" />
+    <Content Include="Resources\c_line.png" />
+    <Content Include="Resources\c_MergeCell.png" />
+    <Content Include="Resources\c_no.png" />
+    <Content Include="Resources\c_paste.png" />
+    <Content Include="Resources\c_Percent.png" />
+    <Content Include="Resources\c_print.png" />
+    <Content Include="Resources\c_printpreview.png" />
+    <Content Include="Resources\c_readonly.png" />
+    <Content Include="Resources\c_redo.png" />
+    <Content Include="Resources\c_row.png" />
+    <Content Include="Resources\c_save.png" />
+    <Content Include="Resources\c_Sum.png" />
+    <Content Include="Resources\c_SumH.png" />
+    <Content Include="Resources\c_SumV.png" />
+    <Content Include="Resources\c_symbol.png" />
+    <Content Include="Resources\c_UnderLine.png" />
+    <Content Include="Resources\c_undo.png" />
+    <Content Include="Resources\c_UnmergeCell.png" />
+    <Content Include="Resources\c_WordWrap.png" />
+    <Content Include="Resources\c_yes.png" />
+    <None Include="Resources\dgmu.png" />
+    <Content Include="Resources\down.bmp" />
+    <Content Include="Resources\Down1.bmp" />
+    <Content Include="Resources\downdown.bmp" />
+    <Content Include="Resources\downhover.bmp" />
+    <None Include="Resources\driver.ico" />
+    <Content Include="Resources\Editor.bmp" />
+    <Content Include="Resources\Editor.png" />
+    <Content Include="Resources\fanshen.png" />
+    <None Include="Resources\handsign.png" />
+    <None Include="Resources\folder1.ico" />
+    <None Include="Resources\fx1.png" />
+    <None Include="Resources\fx2.png" />
+    <Content Include="Resources\Help.png" />
+    <None Include="Resources\ico.ico" />
+    <None Include="Resources\Icon1.ico" />
+    <None Include="Resources\ico01.png" />
+    <None Include="Resources\ico02.png" />
+    <None Include="Resources\ico03.png" />
+    <None Include="Resources\ico04.png" />
+    <None Include="Resources\ico05.png" />
+    <None Include="Resources\ico06.png" />
+    <None Include="Resources\ico07.png" />
+    <None Include="Resources\ico08.png" />
+    <None Include="Resources\ico09.png" />
+    <None Include="Resources\ico010.png" />
+    <None Include="Resources\ico011.png" />
+    <None Include="Resources\icoproject09.png" />
+    <None Include="Resources\icoproject01.png" />
+    <None Include="Resources\icoproject02.png" />
+    <None Include="Resources\icoproject03.png" />
+    <None Include="Resources\icoproject04.png" />
+    <None Include="Resources\icoproject05.png" />
+    <None Include="Resources\icoproject06.png" />
+    <None Include="Resources\icoproject07.png" />
+    <None Include="Resources\icoproject08.png" />
+    <Content Include="Resources\img_collapse.bmp" />
+    <Content Include="Resources\img_del.bmp" />
+    <Content Include="Resources\img_edit.bmp" />
+    <Content Include="Resources\img_expand.bmp" />
+    <Content Include="Resources\img_moveToFolder.bmp" />
+    <Content Include="Resources\img_NewFolder.bmp" />
+    <Content Include="Resources\img_next.bmp" />
+    <Content Include="Resources\img_open.png" />
+    <Content Include="Resources\img_prev.bmp" />
+    <Content Include="Resources\img_search.bmp" />
+    <Content Include="Resources\input.bmp" />
+    <Content Include="Resources\input.png" />
+    <None Include="Resources\Knob Add.png" />
+    <None Include="Resources\Knob Add.ico" />
+    <None Include="Resources\Knob Add1.png" />
+    <Content Include="Resources\leftbg.jpg" />
+    <Content Include="Resources\line.png" />
+    <Content Include="Resources\login.bmp" />
+    <Content Include="Resources\login.jpg" />
+    <Content Include="Resources\login_cancel.gif" />
+    <Content Include="Resources\login_ok.gif" />
+    <Content Include="Resources\logo.png" />
+    <None Include="Resources\longin1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="Resources\mainbg2.bmp" />
+    <Content Include="Resources\NoReview.bmp" />
+    <Content Include="Resources\NoReview.png" />
+    <None Include="Resources\proico09.png" />
+    <None Include="Resources\proico01.png" />
+    <None Include="Resources\proico02.png" />
+    <None Include="Resources\proico03.png" />
+    <None Include="Resources\proico04.png" />
+    <None Include="Resources\proico05.png" />
+    <None Include="Resources\proico06.png" />
+    <None Include="Resources\proico07.png" />
+    <None Include="Resources\proico08.png" />
+    <None Include="Resources\proico091.png" />
+    <None Include="Resources\Page_Add.png" />
+    <None Include="Resources\Page_Close.png" />
+    <None Include="Resources\Page_Delete.png" />
+    <None Include="Resources\Page_Edit.png" />
+    <None Include="Resources\panel2.BackgroundImage.jpg" />
+    <None Include="Resources\panel2_BackgroundImage.bmp" />
+    <Content Include="Resources\project.png" />
+    <Content Include="Resources\projectarchive.png" />
+    <Content Include="Resources\projectedit.png" />
+    <Content Include="Resources\projectnew.png" />
+    <None Include="Resources\ProjectSelect_Add.gif" />
+    <None Include="Resources\ProjectSelect_Del.gif" />
+    <None Include="Resources\ProjectSelect_Edit.gif" />
+    <None Include="Resources\ProjectSelect_Add.png" />
+    <None Include="Resources\ProjectSelect_Del.png" />
+    <None Include="Resources\ProjectSelect_Edit.png" />
+    <None Include="Resources\ProjectSelect_Import.png" />
+    <None Include="Resources\ProjectSelect_Exit.png" />
+    <None Include="Resources\ProjectSelect_Edit1.png" />
+    <None Include="Resources\ProjectSelect_Add1.png" />
+    <None Include="Resources\ProjectSelect_Del1.png" />
+    <Content Include="Resources\project_item1.bmp" />
+    <Content Include="Resources\project_item2.bmp" />
+    <None Include="Resources\ReadOnly.bmp" />
+    <Content Include="Resources\Refresh.png" />
+    <None Include="Resources\registico01.png" />
+    <None Include="Resources\registico02.png" />
+    <None Include="Resources\registico03.png" />
+    <None Include="Resources\registico04.png" />
+    <None Include="Resources\registico05.png" />
+    <None Include="Resources\registico06.png" />
+    <None Include="Resources\registico07.png" />
+    <None Include="Resources\registico08.png" />
+    <None Include="Resources\registico09.png" />
+    <None Include="Resources\registico10.png" />
+    <None Include="Resources\registico11.png" />
+    <None Include="Resources\registico12.png" />
+    <None Include="Resources\registico13.png" />
+    <None Include="Resources\registico14.png" />
+    <None Include="Resources\regedit_bg.png" />
+    <Content Include="Resources\remove.bmp" />
+    <Content Include="Resources\remove.png" />
+    <Content Include="Resources\Reports.bmp" />
+    <Content Include="Resources\Review.bmp" />
+    <Content Include="Resources\Review.png" />
+    <None Include="Resources\scanbutton15.png" />
+    <None Include="Resources\scanbutton01.png" />
+    <None Include="Resources\scanbutton02.png" />
+    <None Include="Resources\scanbutton03.png" />
+    <None Include="Resources\scanbutton04.png" />
+    <None Include="Resources\scanbutton05.png" />
+    <None Include="Resources\scanbutton06.png" />
+    <None Include="Resources\scanbutton07.png" />
+    <None Include="Resources\scanbutton08.png" />
+    <None Include="Resources\scanbutton09.png" />
+    <None Include="Resources\scanbutton010.png" />
+    <None Include="Resources\scanbutton011.png" />
+    <None Include="Resources\scanbutton012.png" />
+    <None Include="Resources\scanbutton013.png" />
+    <None Include="Resources\scanbutton014.png" />
+    <Content Include="Resources\search.bmp" />
+    <Content Include="Resources\search.png" />
+    <Content Include="Resources\Services.bmp" />
+    <Content Include="Resources\Setup.bmp" />
+    <None Include="Resources\signtrue.gif" />
+    <Content Include="Resources\stampdemo.png" />
+    <None Include="Resources\t1_Down.png" />
+    <None Include="Resources\t1_Up.png" />
+    <Content Include="Resources\tab_archive.bmp" />
+    <Content Include="Resources\tab_archive1.bmp" />
+    <Content Include="Resources\tab_close.bmp" />
+    <Content Include="Resources\tab_maint.bmp" />
+    <Content Include="Resources\tab_maint2.bmp" />
+    <Content Include="Resources\tab_save11.png" />
+    <Content Include="Resources\tab_standard.bmp" />
+    <None Include="Resources\template2.png" />
+    <None Include="Resources\template%281%29.png" />
+    <Content Include="Resources\titlebg.bmp" />
+    <Content Include="Resources\titlebg.jpg" />
+    <Content Include="Resources\title_btnbg.bmp" />
+    <None Include="Resources\title_btnbg1.jpg" />
+    <Content Include="Resources\title_btnbg1.png" />
+    <Content Include="Resources\tit_bg.png" />
+    <Content Include="Resources\top.bmp" />
+    <None Include="Resources\Thumbs.db" />
+    <None Include="Resources\TransForm_bg.png" />
+    <Content Include="Resources\tree_cell.bmp" />
+    <Content Include="Resources\tree_cell_lock.bmp" />
+    <None Include="Resources\tree_efile.bmp" />
+    <Content Include="Resources\tree_file.bmp" />
+    <Content Include="Resources\tree_file_s.bmp" />
+    <Content Include="Resources\tree_folder.bmp" />
+    <Content Include="Resources\tree_folder_s.bmp" />
+    <Content Include="Resources\tree_home.bmp" />
+    <Content Include="Resources\tree_text.bmp" />
+    <Content Include="Resources\UnderLine.bmp" />
+    <Content Include="Resources\up.bmp" />
+    <Content Include="Resources\Up1.bmp" />
+    <Content Include="Resources\Update.bmp" />
+    <None Include="Resources\vssver2.scc" />
+    <None Include="Resources\wjdjxx.png" />
+    <None Include="Resources\wjdjxx1.png" />
+    <None Include="Resources\User_Add.png" />
+    <None Include="Resources\User_Close.png" />
+    <None Include="Resources\User_Delete.png" />
+    <None Include="Resources\User_Edit.png" />
+    <None Include="Resources\User_menu_bg.png" />
+    <None Include="Resources\window-close-symbolic.png" />
+    <Content Include="Resources\www.bmp" />
+    <Content Include="Resources\www1.png" />
+    <None Include="Resources\zyglq.png" />
+    <None Include="Resources\zyglq1.png" />
+    <None Include="Resources\zujuanico01.png" />
+    <None Include="Resources\zujuanico02.png" />
+    <None Include="Resources\zujuanico03.png" />
+    <None Include="Resources\zujuanico04.png" />
+    <Content Include="Resources\删除%28新%29.ico" />
+    <None Include="Resources\批量打印.png" />
+    <Content Include="Resources\按钮说明.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AddInDesignerObjects">
+      <Guid>{AC0714F2-3D04-11D1-AE7D-00A0C90F26F4}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="AxCELL50Lib">
+      <Guid>{7802D41A-28B0-43C4-95EA-17B7E32337D1}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="CELL50Lib">
+      <Guid>{7802D41A-28B0-43C4-95EA-17B7E32337D1}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="EasyPDFConverter">
+      <Guid>{678496BB-6B1E-47BD-85CC-EFF0686A841C}</Guid>
+      <VersionMajor>6</VersionMajor>
+      <VersionMinor>2</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="EasyPDFDocument">
+      <Guid>{850C433F-6C66-401D-98BC-C7992E73BDA9}</Guid>
+      <VersionMajor>6</VersionMajor>
+      <VersionMinor>2</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="EasyPDFLoader">
+      <Guid>{7A74C586-BD6E-4281-AB61-8E9FF6D42179}</Guid>
+      <VersionMajor>6</VersionMajor>
+      <VersionMinor>2</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="EasyPDFPrinter">
+      <Guid>{BD75F7F7-1E0C-4062-84B4-764134F84954}</Guid>
+      <VersionMajor>6</VersionMajor>
+      <VersionMinor>2</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="EasyPDFProcessor">
+      <Guid>{BE9E9410-F01A-4386-8519-C7032764C320}</Guid>
+      <VersionMajor>6</VersionMajor>
+      <VersionMinor>2</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="pscprinterLib">
+      <Guid>{6EE3FCB2-D3B5-45A8-BEA6-0A666ACED9D4}</Guid>
+      <VersionMajor>6</VersionMajor>
+      <VersionMinor>2</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBA">
+      <Guid>{000204EF-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>6</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>9</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Digi.DBUtility\Digi.DBUtility.csproj">
+      <Project>{5f00757f-3e62-45f0-b840-908b3997852c}</Project>
+      <Name>Digi.DBUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DigiPower.ERM.BLL\ERM.BLL.csproj">
+      <Project>{5e4317e4-d54f-4bd5-9a8a-e3b4c773736c}</Project>
+      <Name>ERM.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DigiPower.ERM.CBLL\ERM.CBLL.csproj">
+      <Project>{413dbbc3-2052-4147-9f53-e6188e01284f}</Project>
+      <Name>ERM.CBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DigiPower.ERM.Common\ERM.Common.csproj">
+      <Project>{f9a73151-9adf-4d59-904d-3badf783ad11}</Project>
+      <Name>ERM.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DigiPower.ERM.DAL\ERM.DAL.csproj">
+      <Project>{d5d710a8-4cc8-4121-b8c4-a15bbfd9513c}</Project>
+      <Name>ERM.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DigiPower.ERM.MODEL\ERM.MDL.csproj">
+      <Project>{eb9f512a-4dac-4cea-901e-912434c498f1}</Project>
+      <Name>ERM.MDL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WinHtmlEditor\WinHtmlEditor.csproj">
+      <Project>{1D1EF0A4-1D49-4D42-9295-E3B28359389A}</Project>
+      <Name>WinHtmlEditor</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <!-- 市政交通明细模板
+      column:数据库字段  
+      mappColumn:输出的字段别名 
+      description:字段描述   
+      display:是否输出显示,1为显示,0为不输出显示 
+      type:是否为数据库取值,默认为0,自定义为1
+      default:"默认值"
+  -->
+  <columns>
+    <property column="Types" mappColumn="Types"  description="交通类型 gsg:给水管|ysg:雨水管|wsg:污水管|ddsd:电力遂道|zh:综合管沟|dl:电缆沟|yl:预留沟" display="1" type="0" default="" />
+    <property column="ZCD" mappColumn="ZCD"  description="总长度" display="1" type="0" default="" />
+    <property column="GJ" mappColumn="GJ"  description="管径" display="1" type="0" default="" />
+    <property column="CZ" mappColumn="CZ"  description="材质" display="1" type="0" default="" />
+    <property column="ZHXS" mappColumn="ZHXS"  description="支护形式" display="1" type="0" default="" />
+    <property column="JMCC" mappColumn="JMCC"  description="截面尺寸" display="1" type="0" default="" />
+    <property column="JCXS" mappColumn="JCXS"  description="基础形式" display="1" type="0" default="" />
+  </columns>
+  <selects>
+    <select id="queryByTrafficID">
+      select * from t_traffic_detail
+    </select>
+  </selects>
+</root>

@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="T_Dict"
+	xmlns="http://ibatis.apache.org/mapping"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <alias>
+    <typeAlias alias="T_Dict" type="ERM.MDL.T_Dict,ERM.MDL" />
+  </alias>
+
+  <resultMaps>
+    <resultMap id="FullResultMap" class="T_Dict">
+      <result property="ID" column="ID" dbType="Int"/>
+      <result property="KeyWord" column="KeyWord" dbType="VarChar"/>
+      <result property="DisplayName" column="DisplayName" dbType="VarChar"/>
+      <result property="ValueName" column="ValueName" dbType="VarChar"/>
+      <result property="OrderIndex" column="OrderIndex" dbType="Int"/>
+    </resultMap>
+  </resultMaps>
+
+  <statements>
+
+    <select id="GetCount" resultClass="System.Int32">
+      SELECT count(*) FROM [T_Dict]
+    </select>
+
+    <select id="GetAll" resultMap="FullResultMap">
+      SELECT *
+      FROM [T_Dict]
+    </select>
+
+    <select id="GetList" parameterClass="String" resultClass="System.Data.DataSet">
+      SELECT *
+      FROM [T_Dict] WHERE (#value#)
+    </select>
+
+    <select id="Exists" parameterClass="T_Dict"  resultClass="System.Boolean">
+      SELECT COUNT(1)
+      FROM [T_Dict] WHERE
+      ([T_Dict].[ID] = #ID#)
+    </select>
+
+    <select id="Find" parameterClass="T_Dict" resultMap="FullResultMap">
+      SELECT * FROM [T_Dict] WHERE
+      ([T_Dict].[ID] = #ID#)
+    </select>
+    <select id="FindByKeyWord" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Dict] WHERE ([T_Dict].[KeyWord] = #value#) ORDER BY OrderIndex ASC
+    </select>
+    <select id="FindByDisplayName" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Dict] WHERE ([T_Dict].[DisplayName] = #value#)
+    </select>
+    <select id="FindByValueName" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Dict] WHERE ([T_Dict].[ValueName] = #value#)
+    </select>
+    <select id="FindByOrderIndex" parameterClass="Int32" resultMap="FullResultMap">
+      SELECT * FROM [T_Dict] WHERE ([T_Dict].[OrderIndex] = #value#)
+    </select>
+
+    <insert id="Insert" parameterClass="T_Dict">
+      INSERT INTO [T_Dict] (
+      [ID]
+      , [KeyWord]
+      , [DisplayName]
+      , [ValueName]
+      , [OrderIndex]
+      ) VALUES (
+      #ID#
+      , #KeyWord,dbType=VarChar#
+      , #DisplayName,dbType=VarChar#
+      , #ValueName,dbType=VarChar#
+      , #OrderIndex#
+      )
+    </insert>
+
+    <update id="Update" parameterClass="T_Dict">
+      UPDATE [T_Dict] SET
+      [KeyWord] = #KeyWord,dbType=VarChar#
+      , [DisplayName] = #DisplayName,dbType=VarChar#
+      , [ValueName] = #ValueName,dbType=VarChar#
+      , [OrderIndex] = #OrderIndex#
+      WHERE
+      ([ID] = #ID#)
+    </update>
+
+    <delete id="Delete" parameterClass="T_Dict">
+      DELETE FROM [T_Dict]
+      WHERE
+      ([ID] = #ID#)
+    </delete>
+
+    <select id="FindByKeyWordBoxtype" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Dict] WHERE ([T_Dict].[KeyWord] = #value#) ORDER BY OrderIndex DESC
+    </select>
+  </statements>
+</sqlMap>

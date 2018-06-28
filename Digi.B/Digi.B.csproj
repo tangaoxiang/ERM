@@ -1,0 +1,684 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{744095AB-63E0-4E96-9B2B-8327F95A4C34}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Digi.B</RootNamespace>
+    <AssemblyName>Digi.B</AssemblyName>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <ApplicationIcon>App.ico</ApplicationIcon>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ERM\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ERM\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ObjectBuilder, Version=1.0.51205.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ERM\bin\Debug\Microsoft.Practices.ObjectBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\CopyDir.cs" />
+    <Compile Include="Common\CursorFactory.cs" />
+    <Compile Include="Common\Functions.cs" />
+    <Compile Include="Common\Globals.cs" />
+    <Compile Include="Common\MyEnum.cs" />
+    <Compile Include="Common\Status.cs" />
+    <Compile Include="Common\TreeFactory.cs" />
+    <Compile Include="Common\TreeNodeEx.cs" />
+    <Compile Include="Controls\ComboBoxEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\CustomPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\CustomStrips.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\InputBoxDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\PanelEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Digi.DAL\Vars.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCellEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCellEdit.designer.cs">
+      <DependentUpon>frmCellEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmExpData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmExpData.designer.cs">
+      <DependentUpon>frmExpData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNewCellEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNewCellEdit.Designer.cs">
+      <DependentUpon>frmNewCellEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSelectTemplate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSelectTemplate.Designer.cs">
+      <DependentUpon>frmSelectTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSetNodeName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSetNodeName.Designer.cs">
+      <DependentUpon>frmSetNodeName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmStandard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStandard.designer.cs">
+      <DependentUpon>frmStandard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSymbol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSymbol.designer.cs">
+      <DependentUpon>frmSymbol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmVarGuide.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmVarGuide.designer.cs">
+      <DependentUpon>frmVarGuide.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmWelcome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWelcome.designer.cs">
+      <DependentUpon>frmWelcome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmXsd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmXsd.Designer.cs">
+      <DependentUpon>frmXsd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Controls\InputBoxDialog.resx">
+      <DependentUpon>InputBoxDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCellEdit.resx">
+      <DependentUpon>frmCellEdit.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmExpData.resx">
+      <DependentUpon>frmExpData.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNewCellEdit.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmNewCellEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSelectTemplate.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmSelectTemplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSetNodeName.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmSetNodeName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmStandard.resx">
+      <DependentUpon>frmStandard.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSymbol.resx">
+      <DependentUpon>frmSymbol.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmVarGuide.resx">
+      <DependentUpon>frmVarGuide.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWelcome.resx">
+      <DependentUpon>frmWelcome.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmXsd.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmXsd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Settings.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AxCELL50LibU">
+      <Guid>{43A7F7CA-12C4-401D-8057-D6A8DEBCFABB}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="CELL50LibU">
+      <Guid>{43A7F7CA-12C4-401D-8057-D6A8DEBCFABB}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\01.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\02.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\03.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\04.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\05.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\06.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\07.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\08.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\09.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\14.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\15.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\17.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\19.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bg.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c_AlignBottom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c_AlignCenter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c_AlignLeft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c_AlignMiddle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c_AlignRight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c_AlignTop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c_AutoFill.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c_BackColor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c_Bold.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c_Border.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c_col.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c_Comma.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c_copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c_cut.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c_DeleteCol.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c_DeleteRow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c_EraseBorder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c_ForeColor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c_gridline.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c_InsertCol.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c_InsertPic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c_InsertRow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c_Italic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c_line.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c_MergeCell.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c_no.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c_paste.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c_Percent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c_print.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c_printpreview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c_readonly.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c_redo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c_row.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c_save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c_Sum.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c_SumH.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c_SumV.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c_symbol.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c_UnderLine.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c_undo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c_UnmergeCell.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c_WordWrap.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c_yes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Customize.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Down1.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\down.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\downdown.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\downhover.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Help.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_collapse.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_del.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_edit.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_expand.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_moveToFolder.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_NewFolder.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_next.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_prev.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_search.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\line.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\login.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\login_cancel.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\login_ok.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\project.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\project_item1.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\project_item2.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\projectarchive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\projectedit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\projectnew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Reports.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Services.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Setup.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stampdemo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tab_archive1.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tab_archive.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tab_close.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tab_maint2.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tab_maint.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tab_standard.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tree_cell.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tree_cell_lock.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tree_file.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tree_file_s.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tree_folder.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tree_folder_s.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tree_home.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tree_text.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UnderLine.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Up1.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\up.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Update.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\www1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="Resources\www.bmp" />
+    <Content Include="wait.ani">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App.ico" />
+    <Content Include="Resources\1.ico" />
+    <Content Include="Resources\2.ico" />
+    <Content Include="Resources\3.ico" />
+    <Content Include="Resources\4.ico" />
+    <Content Include="Resources\add.bmp" />
+    <Content Include="Resources\add.png" />
+    <Content Include="Resources\bottom1.bmp" />
+    <Content Include="Resources\btn01.png" />
+    <Content Include="Resources\btn02.png" />
+    <Content Include="Resources\btn03.png" />
+    <Content Include="Resources\btn04.png" />
+    <Content Include="Resources\btn05.png" />
+    <Content Include="Resources\btn06.png" />
+    <Content Include="Resources\btn07.png" />
+    <Content Include="Resources\button.gif" />
+    <Content Include="Resources\button1.gif" />
+    <Content Include="Resources\buttonbg.gif" />
+    <Content Include="Resources\chaijuan.png" />
+    <Content Include="Resources\close.bmp" />
+    <Content Include="Resources\close.png" />
+    <Content Include="Resources\Editor.bmp" />
+    <Content Include="Resources\Editor.png" />
+    <Content Include="Resources\fanshen.png" />
+    <Content Include="Resources\input.bmp" />
+    <Content Include="Resources\input.png" />
+    <Content Include="Resources\leftbg.jpg" />
+    <Content Include="Resources\login.bmp" />
+    <Content Include="Resources\mainbg2.bmp" />
+    <Content Include="Resources\NoReview.bmp" />
+    <Content Include="Resources\NoReview.png" />
+    <Content Include="Resources\Refresh.png" />
+    <Content Include="Resources\remove.bmp" />
+    <Content Include="Resources\remove.png" />
+    <Content Include="Resources\Review.bmp" />
+    <Content Include="Resources\Review.png" />
+    <Content Include="Resources\search.bmp" />
+    <Content Include="Resources\search.png" />
+    <Content Include="Resources\titlebg.bmp" />
+    <Content Include="Resources\titlebg.jpg" />
+    <Content Include="Resources\title_btnbg.bmp" />
+    <Content Include="Resources\title_btnbg1.png" />
+    <Content Include="Resources\tit_bg.png" />
+    <Content Include="Resources\top.bmp" />
+    <Content Include="Resources\top.jpg" />
+    <None Include="Resources\top1.bmp" />
+    <Content Include="Resources\tree_folder.png" />
+    <Content Include="Resources\tree_home.png" />
+    <Content Include="Resources\删除%28新%29.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Digi.DBUtility\Digi.DBUtility.csproj">
+      <Project>{5F00757F-3E62-45F0-B840-908B3997852C}</Project>
+      <Name>Digi.DBUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DigiPower.ERM.BLL\ERM.BLL.csproj">
+      <Project>{5E4317E4-D54F-4BD5-9A8A-E3B4C773736C}</Project>
+      <Name>DigiPower.ERM.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DigiPower.ERM.CBLL\ERM.CBLL.csproj">
+      <Project>{413DBBC3-2052-4147-9F53-E6188E01284F}</Project>
+      <Name>DigiPower.ERM.CBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DigiPower.ERM.Common\ERM.Common.csproj">
+      <Project>{F9A73151-9ADF-4D59-904D-3BADF783AD11}</Project>
+      <Name>DigiPower.ERM.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DigiPower.ERM.MODEL\ERM.MDL.csproj">
+      <Project>{EB9F512A-4DAC-4CEA-901E-912434C498F1}</Project>
+      <Name>DigiPower.ERM.MODEL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

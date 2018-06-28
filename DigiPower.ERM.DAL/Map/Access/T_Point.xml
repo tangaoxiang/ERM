@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="T_Point"
+	xmlns="http://ibatis.apache.org/mapping"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <alias>
+    <typeAlias alias="T_Point" type="ERM.MDL.T_Point,ERM.MDL" />
+  </alias>
+
+  <resultMaps>
+    <resultMap id="FullResultMap" class="T_Point">
+      <result property="ID" column="ID" dbType="VarChar"/>
+      <result property="X" column="X"/>
+      <result property="Y" column="Y"/>
+      <result property="OrderIndex" column="OrderIndex" dbType="Int"/>
+      <result property="ProjectNo" column="ProjectNo" dbType="VarChar"/>
+    </resultMap>
+  </resultMaps>
+
+  <statements>
+    <select id="GetList" parameterClass="String" resultMap="FullResultMap">
+      SELECT *
+      FROM [T_Point] where ProjectNo=#value# ORDER BY OrderIndex
+    </select>
+    <update id="Update" parameterClass="T_Point">
+      UPDATE [T_Point] SET
+      [X]=#X#,
+      [Y]=#Y#,
+      OrderIndex=#OrderIndex#
+      WHERE ([ID]=#ID,dbType=VarChar#)
+    </update>
+    <delete id="Delete" parameterClass="T_Point">
+      DELETE FROM [T_Point]
+      WHERE
+      ([ID]=#ID,dbType=VarChar#)
+    </delete>
+    <insert  id="Insert" parameterClass="T_Point">
+      Insert into T_Point(ID,X,Y,OrderIndex,ProjectNo)
+      VALUES(#ID#,#X#,#Y#,#OrderIndex#,#ProjectNo#)
+    </insert>
+    <select id="Exists" parameterClass="T_Point" resultMap="FullResultMap">
+      SELECT *
+      FROM [T_Point] where OrderIndex=#OrderIndex# and ProjectNo=#ProjectNo#
+    </select>
+    <delete id="DeleteByProjectNo" parameterClass="String">
+      DELETE FROM [T_Point]
+      WHERE
+      ([ProjectNo]=#value,dbType=VarChar#)
+    </delete>
+  </statements>
+</sqlMap>

@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--工程信息-->
+<root>
+  <columns>
+    <property column="projectname" mappColumn="engName"  description="工程名称" display="1" type="0" default="" />
+    <property column="district" mappColumn="engZone"  description="工程区域" display="1" type="0" default="" />
+    <property column="address" mappColumn="engLocation"  description="工程地址" display="1" type="0" default="" />
+    <property column="ProjectNO" mappColumn="referenceNo"  description="工程编号" display="1" type="0" default="" />
+    <property column="jsdw_mc" mappColumn="developmentsOrgName"  description="建设单位" display="1" type="1" default="" />
+    <property column="sjdw_mc" mappColumn="designOrgSid"  description="设计单位" display="1" type="1" default="" />
+    <property column="kcdw_mc" mappColumn="reconnaissanceOrgSid"  description="勘察单位" display="1" type="1" default="" />
+    <property column="jldw_mc" mappColumn="supervisionOrgSid"  description="监理单位" display="1" type="1" default="" />
+    <property column="pzdw" mappColumn="initiationApprovalOrgSid"  description="立项批准单位" display="1" type="1" default="" />
+    <property column="pzh" mappColumn="initiationApprovalNo"  description="立项批准文号" display="1" type="1" default="" />
+    <property column="ydpzcode" mappColumn="landUsePlanningNo"  description="用地规划许可证号" display="1" type="1" default="" />
+    <property column="sgcode" mappColumn="constructNo"  description="施工许可文号" display="1" type="1" default="" />
+    <property column="planCertificateNo" mappColumn="planCertificateNo"  description="规划验收合格证号" display="1" type="1" default="" />
+    <property column="begindate" mappColumn="startDate"  description="开工时间" display="1" type="1" default="" />
+    <property column="enddate" mappColumn="endDate"  description="竣工时间" display="1" type="1" default="" />
+    <property column="sgdw_mc" mappColumn="constructOrgSid"  description="施工单位" display="1" type="1" default="" />
+    <property column="roadName" mappColumn="roadName"  description="路名" display="1" type="1" default="" />
+    <property column="engFormerName" mappColumn="engFormerName"  description="工程曾用名" display="1" type="1" default="" />
+    <property column="microNo" mappColumn="microNo"  description="光盘缩微号" display="1" type="1" default="" />
+    <property column="oldEngId" mappColumn="oldEngId"  description="原编档号" display="1" type="1" default="" />
+    <property column="projManageName" mappColumn="projManageName"  description="项目管理单位" display="1" type="1" default="" />
+    <property column="serveyOrgSid" mappColumn="serveyOrgSid"  description="测绘单位" display="1" type="1" default="" />
+    <property column="ghcode" mappColumn="engPlanningNo"  description="工程规划文号" display="1" type="1" default="" />
+    <property column="designNo" mappColumn="designNo"  description="设计号" display="1" type="1" default="" />
+    <property column="landNo" mappColumn="landNo"  description="土地证号" display="1" type="1" default="" />
+    <property column="fireOpinionNo" mappColumn="fireOpinionNo"  description="建筑消防验收意见书" display="1" type="1" default="" />
+    <property column="textCount" mappColumn="textCount"  description="文字卷" display="1" type="1" default="" />
+    <property column="drawCount" mappColumn="drawCount"  description="图纸卷" display="1" type="1" default="" />
+    <property column="photoCount" mappColumn="photoCount"  description="照片卷" display="1" type="1" default="" />
+    <property column="cdCount" mappColumn="cdCount"  description="光盘卷（无）" display="1" type="1" default="" />
+    <property column="handoverOrgName" mappColumn="handoverOrgName"  description="移交单位" display="1" type="1" default="" />
+    <property column="transferUser" mappColumn="transferUser"  description="移交人" display="1" type="1" default="" />
+    <property column="archivingDate" mappColumn="archivingDate"  description="进馆日期" display="1" type="1" default="" />
+    <property column="totalLength" mappColumn="totalLength"  description="总长度" display="1" type="1" default="" />
+    <property column="jsdwshr" mappColumn="developmentsOrgCheckby"  description="建设单位审核人" display="1" type="0" default="" />
+    <property column="jsdwyjr" mappColumn="transferUser"  description="建设的单位移交人" display="1" type="0" default="" />
+    <property column="sfz" mappColumn="cardId"  description="身份证" display="1" type="0" default="" />
+    <property column="tel" mappColumn="transferUserTel"  description="联系电话" display="1" type="0" default="" />
+    <property column="yjdw" mappColumn="handoverOrgName"  description="移交单位" display="1" type="0" default="" />
+    <property column="jldwshr" mappColumn="supervisionOrgCheckby"  description="监理单位审核人" display="1" type="0" default="" />
+    <property column="zlr" mappColumn="arrangedBy"  description="整理人" display="1" type="0" default="" />
+    <property column="zlrq" mappColumn="arrangedDt"  description="整理日期" display="1" type="0" default="" />
+    <property column="shr" mappColumn="checkedBy"  description="审核人" display="1" type="0" default="" />
+    <property column="shrq" mappColumn="checkedDt"  description="审核日期" display="1" type="0" default="" />
+    <property column="sjdw_mc" mappColumn="designOrgName"  description="设计单位" display="1" type="1" default="" />
+    <property column="sjdw_xmfzr" mappColumn="designOrgBy"  description="设计单位项目负责人" display="1" type="1" default="" />
+    <property column="jldw_xmfzr" mappColumn="jldw_xmfzr"  description="监理单位项目负责人" display="1" type="1" default="" />
+    <property column="jldw_xmzj" mappColumn="jldw_xmzj"  description="监理单位项目总监" display="1" type="1" default="" />
+    <property column="jldw_xcjl" mappColumn="jldw_xcjl"  description="现场监理" display="1" type="1" default="" />
+    <property column="sgdw_mc" mappColumn="constructOrgName"  description="施工单位" display="1" type="1" default="" />
+    <property column="sgdw_xmfzr" mappColumn="constructOrgBy"  description="施工单位项目经理" display="1" type="1" default="" />
+    <property column="fbdw_mc" mappColumn="subpackageOrgName"  description="分包单位" display="1" type="1" default="" />
+    <property column="fbdw_xmfzr" mappColumn="subpackageOrgBy"  description="分包单位项目经理" display="1" type="1" default="" />
+    <property column="kcdw_xmfzr" mappColumn="reconnaissanceOrgBy"  description="勘察单位" display="1" type="1" default="" />
+    <property column="archCount" mappColumn="archCount"  description="总卷数" display="0" type="1" default="" />-->
+    <property column="start_x" mappColumn="start_x"  description="开始坐标X" display="0" type="0" default="" />
+    <property column="start_y" mappColumn="start_y"  description="开始坐标y" display="0" type="0" default="" />
+    <property column="end_x" mappColumn="end_x"  description="结束坐标" display="0" type="0" default="" />
+    <property column="end_y" mappColumn="end_y"  description="结束坐标" display="0" type="0" default="" />-->
+  </columns>
+  <selects>
+    <select id="queryByProjectNo">
+      select * from t_projects
+    </select>
+  </selects>
+</root>

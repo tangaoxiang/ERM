@@ -1,0 +1,546 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="T_FileList"
+	xmlns="http://ibatis.apache.org/mapping"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <alias>
+    <typeAlias alias="T_FileList" type="ERM.MDL.T_FileList,ERM.MDL" />
+  </alias>
+
+  <resultMaps>
+    <resultMap id="FullResultMap" class="T_FileList">
+      <result property="FileID" column="FileID" dbType="VarChar"/>
+      <result property="ParentID" column="ParentID" dbType="VarChar"/>
+      <result property="ProjectNO" column="ProjectNO" dbType="VarChar"/>
+      <result property="ArchiveID" column="ArchiveID" dbType="VarChar"/>
+      <result property="wjtm" column="wjtm" dbType="NVarChar"/>
+      <result property="selected" column="selected" dbType="Int"/>
+      <result property="id" column="id" dbType="NVarChar"/>
+      <result property="gdwj" column="gdwj" dbType="NVarChar"/>
+      <result property="jsdw" column="jsdw" dbType="NVarChar"/>
+      <result property="sgdw" column="sgdw" dbType="NVarChar"/>
+      <result property="sjdw" column="sjdw" dbType="NVarChar"/>
+      <result property="jldw" column="jldw" dbType="NVarChar"/>
+      <result property="cjdag" column="cjdag" dbType="NVarChar"/>
+      <result property="datawindow_id" column="datawindow_id" dbType="NVarChar"/>
+      <result property="table_name" column="table_name" dbType="NVarChar"/>
+      <result property="table_standerd" column="table_standerd" dbType="NVarChar"/>
+      <result property="extension1" column="extension1" dbType="NVarChar"/>
+      <result property="extension2" column="extension2" dbType="NVarChar"/>
+      <result property="extension3" column="extension3" dbType="NVarChar"/>
+      <result property="wjmj" column="wjmj" dbType="NVarChar"/>
+      <result property="zrr" column="zrr" dbType="NVarChar"/>
+      <result property="gclx" column="gclx" dbType="NVarChar"/>
+      <result property="TreePath" column="TreePath" dbType="NVarChar"/>
+      <result property="OrderIndex" column="OrderIndex" dbType="Int"/>
+      <result property="isvisible" column="isvisible" dbType="Int"/>
+      <result property="pTreePath" column="pTreePath" dbType="NVarChar"/>
+      <result property="wjcj" column="wjcj" dbType="NVarChar"/>
+      <result property="wjbsm" column="wjbsm" dbType="NVarChar"/>
+      <result property="wjmc" column="wjmc" dbType="NVarChar"/>
+      <result property="bzdw" column="bzdw" dbType="NVarChar"/>
+      <result property="wh" column="wh" dbType="NVarChar"/>
+      <result property="bgqx" column="bgqx" dbType="NVarChar"/>
+      <result property="mj" column="mj" dbType="NVarChar"/>
+      <result property="CreateDate" column="CreateDate" dbType="VarChar"/>
+      <result property="CreateDate2" column="CreateDate2" dbType="VarChar"/>
+      <result property="ztlx" column="ztlx" dbType="NVarChar"/>
+      <result property="sl" column="sl" dbType="Int"/>
+      <result property="dw" column="dw" dbType="NVarChar"/>
+      <result property="gg" column="gg" dbType="NVarChar"/>
+      <result property="wjgbdm" column="wjgbdm" dbType="NVarChar"/>
+      <result property="wjlxdm" column="wjlxdm" dbType="NVarChar"/>
+      <result property="wjgs" column="wjgs" dbType="NVarChar"/>
+      <result property="wjdx" column="wjdx" dbType="NVarChar"/>
+      <result property="psdd" column="psdd" dbType="NVarChar"/>
+      <result property="psz" column="psz" dbType="NVarChar"/>
+      <result property="pssj" column="pssj" dbType="DateTime"/>
+      <result property="sb" column="sb" dbType="NVarChar"/>
+      <result property="fbl" column="fbl" dbType="NVarChar"/>
+      <result property="xjpp" column="xjpp" dbType="NVarChar"/>
+      <result property="xjxh" column="xjxh" dbType="NVarChar"/>
+      <result property="bz" column="bz" dbType="NVarChar"/>
+      <result property="filepath" column="filepath" dbType="NVarChar"/>
+      <result property="fileStatus" column="fileStatus" dbType="NVarChar"/>
+      <result property="wzz" column="wzz" dbType="NVarChar"/>
+      <result property="tzz" column="tzz" dbType="NVarChar"/>
+      <result property="dtz" column="dtz" dbType="NVarChar"/>
+      <result property="zpz" column="zpz" dbType="NVarChar"/>
+      <result property="dpz" column="dpz" dbType="NVarChar"/>
+      <result property="isSign" column="isSign" dbType="Int"/>
+    </resultMap>
+  </resultMaps>
+
+  <statements>
+
+    <select id="GetCount" resultClass="System.Int32">
+      SELECT count(*) FROM [dbo].[T_FileList]
+    </select>
+
+    <select id="GetAll" resultMap="FullResultMap">
+      SELECT *
+      FROM [dbo].[T_FileList] ORDER BY ORDERINDEX
+    </select>
+
+    <select id="GetList" parameterClass="T_FileList" resultClass="System.Data.DataSet">
+      SELECT *
+      FROM [dbo].[T_FileList] WHERE (FileID=#FileID,dbType=VarChar#) AND (ProjectNO=#ProjectNO,dbType=VarChar#)
+      ORDER BY ORDERINDEX
+    </select>
+
+    <select id="GetListFile" parameterClass="T_FileList" resultClass="System.Data.DataSet">
+      SELECT  b.ProjectNO as 工程号,b.ArchiveID as 案卷ID , b.FileID as 文件ID,min(a.OrderIndex) as 卷内文件顺序,
+      b.wjmc as 文件题名, b.zrr as 责任者,b.wh as 文图号,b.bgqx as 保管期限,b.mj as 密级,b.CreateDate as 形成起始时间,
+      b.CreateDate2 as 形成终止时间,b.ztlx as 载体类型,b.sl as 数量页,b.dw as 数量张,b.gg as 规格,b.wjgbdm as 文件稿本码,
+      b.wjlxdm as 文件类型代码,b.wjgs as 文件格式,b.wjdx as 文件大小,b.psdd as 拍摄地点,b.psz as 拍摄者,b.pssj as 拍摄时间,
+      b.sb as 色别,b.fbl as 分辨率, b.xjpp as 相机品牌,b.xjxh as 相机型号,b.bz as 备注
+      FROM T_CellAndEFile a,T_FileList b
+      where a.fileID = b.FileID
+      and b.ProjectNO=#ProjectNO,dbType=VarChar#
+        <!--<isNotNull property="ArchiveID">
+          <isNotEmpty property="ArchiveID">-->
+             AND b.ArchiveID=#ArchiveID,dbType=VarChar#
+          <!--</isNotEmpty>
+        </isNotNull>-->      
+      group by b.ProjectNO,b.ArchiveID , b.FileID ,
+      b.wjmc , b.zrr,b.wh ,b.bgqx ,b.mj ,b.CreateDate,
+      b.CreateDate2 ,b.ztlx ,b.sl ,b.dw ,b.gg ,b.wjgbdm ,
+      b.wjlxdm ,b.wjgs ,b.wjdx ,b.psdd ,b.psz ,b.pssj ,
+      b.sb ,b.fbl , b.xjpp ,b.xjxh ,b.bz
+      order by b.ArchiveID,min(a.OrderIndex)
+    </select>
+    
+    <select id="GetChildList" parameterClass="T_FileList" resultMap="FullResultMap">
+      SELECT *
+      FROM [dbo].[T_FileList] WHERE (ParentID=#ParentID,dbType=VarChar#) AND (ProjectNO=#ProjectNO,dbType=VarChar#)
+      ORDER BY ORDERINDEX
+    </select>
+
+    <select id="GetChildDS" parameterClass="T_FileList" resultClass="System.Data.DataSet">
+      SELECT *
+      FROM [dbo].[T_FileList] WHERE (ParentID=#ParentID,dbType=VarChar#) AND (ProjectNO=#ProjectNO,dbType=VarChar#)
+      ORDER BY ORDERINDEX
+    </select>
+
+    <select id="Exists" parameterClass="T_FileList"  resultClass="System.Boolean">
+      SELECT COUNT(1)
+      FROM [dbo].[T_FileList] WHERE
+      ([T_FileList].[FileID] = #FileID,dbType=VarChar#)
+      AND ([T_FileList].[ProjectNO] = #ProjectNO,dbType=VarChar#)
+    </select>
+
+    <select id="Find" parameterClass="T_FileList" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE
+      ([T_FileList].[FileID] = #FileID,dbType=VarChar#)
+      AND ([T_FileList].[ProjectNO] = #ProjectNO,dbType=VarChar#)
+      ORDER BY ORDERINDEX
+    </select>
+
+    <select id="FindByKeyString" parameterClass="T_FileList" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[ProjectNO] = #ProjectNO,dbType=VarChar#)
+      AND WJTM LIKE '%$wjtm$%'
+      AND TABLE_NAME LIKE '%$wjtm$%'
+      ORDER BY ORDERINDEX
+    </select>    
+    
+    <select id="FindByFileID" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[FileID] = #value#)      
+    </select>
+    <select id="FindByParentID" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[ParentID] = #value#)
+    </select>
+    <select id="FindByProjectNO" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[ProjectNO] = #value#)
+    </select>
+    <select id="FindByArchiveID" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[ArchiveID] = #ArchiveID,dbType=VarChar#)
+      AND ([T_FileList].[ProjectNO] = #ProjectNO,dbType=VarChar#)
+    </select>    
+    <select id="FindBywjtm" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[wjtm] = #value#)
+    </select>
+    <select id="FindByselected" parameterClass="Int32" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[selected] = #value#)
+    </select>
+    <select id="FindByid" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[id] = #value#)
+    </select>
+    <select id="FindBygdwj" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[gdwj] = #value#)
+    </select>
+    <select id="FindByjsdw" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[jsdw] = #value#)
+    </select>
+    <select id="FindBysgdw" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[sgdw] = #value#)
+    </select>
+    <select id="FindBysjdw" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[sjdw] = #value#)
+    </select>
+    <select id="FindByjldw" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[jldw] = #value#)
+    </select>
+    <select id="FindBycjdag" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[cjdag] = #value#)
+    </select>
+    <select id="FindBydatawindow_id" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[datawindow_id] = #value#)
+    </select>
+    <select id="FindBytable_name" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[table_name] = #value#)
+    </select>
+    <select id="FindBytable_standerd" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[table_standerd] = #value#)
+    </select>
+    <select id="FindByextension1" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[extension1] = #value#)
+    </select>
+    <select id="FindByextension2" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[extension2] = #value#)
+    </select>
+    <select id="FindByextension3" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[extension3] = #value#)
+    </select>
+    <select id="FindBywjmj" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[wjmj] = #value#)
+    </select>
+    <select id="FindByzrr" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[zrr] = #value#)
+    </select>
+    <select id="FindBygclx" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[gclx] = #value#)
+    </select>
+    <select id="FindByTreePath" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[TreePath] = #value#)
+    </select>
+    <select id="FindByOrderIndex" parameterClass="Int32" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[OrderIndex] = #value#)
+    </select>
+    <select id="FindByisvisible" parameterClass="Int32" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[isvisible] = #value#)
+    </select>
+    <select id="FindBypTreePath" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[pTreePath] = #value#)
+    </select>
+    <select id="FindBywjcj" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[wjcj] = #value#)
+    </select>
+    <select id="FindBywjbsm" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[wjbsm] = #value#)
+    </select>
+    <select id="FindBywjmc" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[wjmc] = #value#)
+    </select>
+    <select id="FindBybzdw" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[bzdw] = #value#)
+    </select>
+    <select id="FindBywh" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[wh] = #value#)
+    </select>
+    <select id="FindBybgqx" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[bgqx] = #value#)
+    </select>
+    <select id="FindBymj" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[mj] = #value#)
+    </select>
+    <select id="FindByCreateDate" parameterClass="DateTime" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[CreateDate] = #value#)
+    </select>
+    <select id="FindByCreateDate2" parameterClass="DateTime" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[CreateDate2] = #value#)
+    </select>
+    <select id="FindByztlx" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[ztlx] = #value#)
+    </select>
+    <select id="FindBysl" parameterClass="Int32" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[sl] = #value#)
+    </select>
+    <select id="FindBydw" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[dw] = #value#)
+    </select>
+    <select id="FindBygg" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[gg] = #value#)
+    </select>
+    <select id="FindBywjgbdm" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[wjgbdm] = #value#)
+    </select>
+    <select id="FindBywjlxdm" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[wjlxdm] = #value#)
+    </select>
+    <select id="FindBywjgs" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[wjgs] = #value#)
+    </select>
+    <select id="FindBywjdx" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[wjdx] = #value#)
+    </select>
+    <select id="FindBypsdd" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[psdd] = #value#)
+    </select>
+    <select id="FindBypsz" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[psz] = #value#)
+    </select>
+    <select id="FindBypssj" parameterClass="DateTime" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[pssj] = #value#)
+    </select>
+    <select id="FindBysb" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[sb] = #value#)
+    </select>
+    <select id="FindByfbl" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[fbl] = #value#)
+    </select>
+    <select id="FindByxjpp" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[xjpp] = #value#)
+    </select>
+    <select id="FindByxjxh" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[xjxh] = #value#)
+    </select>
+    <select id="FindBybz" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[bz] = #value#)
+    </select>
+    <select id="FindByfilepath" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[filepath] = #value#)
+    </select>
+    <select id="FindByfileStatus" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[fileStatus] = #value#)
+    </select>
+    <select id="FindBywzz" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[wzz] = #value#)
+    </select>
+    <select id="FindBytzz" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[tzz] = #value#)
+    </select>
+    <select id="FindBydtz" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[dtz] = #value#)
+    </select>
+    <select id="FindByzpz" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[zpz] = #value#)
+    </select>
+    <select id="FindBydpz" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[dpz] = #value#)
+    </select>
+    <select id="FindByisSign" parameterClass="Int32" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_FileList] WHERE ([T_FileList].[isSign] = #value#)
+    </select>
+
+    <insert id="Insert" parameterClass="T_FileList">
+      INSERT INTO [dbo].[T_FileList] (
+      [FileID]
+      , [ParentID]
+      , [ProjectNO]
+      , [ArchiveID]
+      , [wjtm]
+      , [selected]
+      , [id]
+      , [gdwj]
+      , [jsdw]
+      , [sgdw]
+      , [sjdw]
+      , [jldw]
+      , [cjdag]
+      , [datawindow_id]
+      , [table_name]
+      , [table_standerd]
+      , [extension1]
+      , [extension2]
+      , [extension3]
+      , [wjmj]
+      , [zrr]
+      , [gclx]
+      , [TreePath]
+      , [OrderIndex]
+      , [isvisible]
+      , [pTreePath]
+      , [wjcj]
+      , [wjbsm]
+      , [wjmc]
+      , [bzdw]
+      , [wh]
+      , [bgqx]
+      , [mj]
+      , [CreateDate]
+      , [CreateDate2]
+      , [ztlx]
+      , [sl]
+      , [dw]
+      , [gg]
+      , [wjgbdm]
+      , [wjlxdm]
+      , [wjgs]
+      , [wjdx]
+      , [psdd]
+      , [psz]
+      , [pssj]
+      , [sb]
+      , [fbl]
+      , [xjpp]
+      , [xjxh]
+      , [bz]
+      , [filepath]
+      , [fileStatus]
+      , [wzz]
+      , [tzz]
+      , [dtz]
+      , [zpz]
+      , [dpz]
+      , [isSign]
+      ) VALUES (
+      #FileID,dbType=VarChar#
+      , #ParentID,dbType=VarChar#
+      , #ProjectNO,dbType=VarChar#
+      , #ArchiveID,dbType=VarChar#
+      , #wjtm,dbType=NVarChar#
+      , #selected,dbType=Int#
+      , #id,dbType=NVarChar#
+      , #gdwj,dbType=NVarChar#
+      , #jsdw,dbType=NVarChar#
+      , #sgdw,dbType=NVarChar#
+      , #sjdw,dbType=NVarChar#
+      , #jldw,dbType=NVarChar#
+      , #cjdag,dbType=NVarChar#
+      , #datawindow_id,dbType=NVarChar#
+      , #table_name,dbType=NVarChar#
+      , #table_standerd,dbType=NVarChar#
+      , #extension1,dbType=NVarChar#
+      , #extension2,dbType=NVarChar#
+      , #extension3,dbType=NVarChar#
+      , #wjmj,dbType=NVarChar#
+      , #zrr,dbType=NVarChar#
+      , #gclx,dbType=NVarChar#
+      , #TreePath,dbType=NVarChar#
+      , #OrderIndex,dbType=Int#
+      , #isvisible,dbType=Int#
+      , #pTreePath,dbType=NVarChar#
+      , #wjcj,dbType=NVarChar#
+      , #wjbsm,dbType=NVarChar#
+      , #wjmc,dbType=NVarChar#
+      , #bzdw,dbType=NVarChar#
+      , #wh,dbType=NVarChar#
+      , #bgqx,dbType=NVarChar#
+      , #mj,dbType=NVarChar#
+      , #CreateDate,dbType=DateTime#
+      , #CreateDate2,dbType=DateTime#
+      , #ztlx,dbType=NVarChar#
+      , #sl,dbType=Int#
+      , #dw,dbType=NVarChar#
+      , #gg,dbType=NVarChar#
+      , #wjgbdm,dbType=NVarChar#
+      , #wjlxdm,dbType=NVarChar#
+      , #wjgs,dbType=NVarChar#
+      , #wjdx,dbType=NVarChar#
+      , #psdd,dbType=NVarChar#
+      , #psz,dbType=NVarChar#
+      , #pssj,dbType=DateTime#
+      , #sb,dbType=NVarChar#
+      , #fbl,dbType=NVarChar#
+      , #xjpp,dbType=NVarChar#
+      , #xjxh,dbType=NVarChar#
+      , #bz,dbType=NVarChar#
+      , #filepath,dbType=NVarChar#
+      , #fileStatus,dbType=NVarChar#
+      , #wzz,dbType=NVarChar#
+      , #tzz,dbType=NVarChar#
+      , #dtz,dbType=NVarChar#
+      , #zpz,dbType=NVarChar#
+      , #dpz,dbType=NVarChar#
+      , #isSign,dbType=Int#
+      )
+    </insert>
+
+    <update id="Update" parameterClass="T_FileList">
+      UPDATE [dbo].[T_FileList] SET
+      [ParentID] = #ParentID,dbType=VarChar#
+      , [ArchiveID] = #ArchiveID,dbType=VarChar#
+      , [wjtm] = #wjtm,dbType=NVarChar#
+      , [selected] = #selected,dbType=Int#
+      , [id] = #id,dbType=NVarChar#
+      , [gdwj] = #gdwj,dbType=NVarChar#
+      , [jsdw] = #jsdw,dbType=NVarChar#
+      , [sgdw] = #sgdw,dbType=NVarChar#
+      , [sjdw] = #sjdw,dbType=NVarChar#
+      , [jldw] = #jldw,dbType=NVarChar#
+      , [cjdag] = #cjdag,dbType=NVarChar#
+      , [datawindow_id] = #datawindow_id,dbType=NVarChar#
+      , [table_name] = #table_name,dbType=NVarChar#
+      , [table_standerd] = #table_standerd,dbType=NVarChar#
+      , [extension1] = #extension1,dbType=NVarChar#
+      , [extension2] = #extension2,dbType=NVarChar#
+      , [extension3] = #extension3,dbType=NVarChar#
+      , [wjmj] = #wjmj,dbType=NVarChar#
+      , [zrr] = #zrr,dbType=NVarChar#
+      , [gclx] = #gclx,dbType=NVarChar#
+      , [TreePath] = #TreePath,dbType=NVarChar#
+      , [OrderIndex] = #OrderIndex,dbType=Int#
+      , [isvisible] = #isvisible,dbType=Int#
+      , [pTreePath] = #pTreePath,dbType=NVarChar#
+      , [wjcj] = #wjcj,dbType=NVarChar#
+      , [wjbsm] = #wjbsm,dbType=NVarChar#
+      , [wjmc] = #wjmc,dbType=NVarChar#
+      , [bzdw] = #bzdw,dbType=NVarChar#
+      , [wh] = #wh,dbType=NVarChar#
+      , [bgqx] = #bgqx,dbType=NVarChar#
+      , [mj] = #mj,dbType=NVarChar#
+      , [CreateDate] = #CreateDate,dbType=DateTime#
+      , [CreateDate2] = #CreateDate2,dbType=DateTime#
+      , [ztlx] = #ztlx,dbType=NVarChar#
+      , [sl] = #sl,dbType=Int#
+      , [dw] = #dw,dbType=NVarChar#
+      , [gg] = #gg,dbType=NVarChar#
+      , [wjgbdm] = #wjgbdm,dbType=NVarChar#
+      , [wjlxdm] = #wjlxdm,dbType=NVarChar#
+      , [wjgs] = #wjgs,dbType=NVarChar#
+      , [wjdx] = #wjdx,dbType=NVarChar#
+      , [psdd] = #psdd,dbType=NVarChar#
+      , [psz] = #psz,dbType=NVarChar#
+      , [pssj] = #pssj,dbType=DateTime#
+      , [sb] = #sb,dbType=NVarChar#
+      , [fbl] = #fbl,dbType=NVarChar#
+      , [xjpp] = #xjpp,dbType=NVarChar#
+      , [xjxh] = #xjxh,dbType=NVarChar#
+      , [bz] = #bz,dbType=NVarChar#
+      , [filepath] = #filepath,dbType=NVarChar#
+      , [fileStatus] = #fileStatus,dbType=NVarChar#
+      , [wzz] = #wzz,dbType=NVarChar#
+      , [tzz] = #tzz,dbType=NVarChar#
+      , [dtz] = #dtz,dbType=NVarChar#
+      , [zpz] = #zpz,dbType=NVarChar#
+      , [dpz] = #dpz,dbType=NVarChar#
+      , [isSign] = #isSign,dbType=Int#
+      WHERE
+      ([FileID] = #FileID,dbType=VarChar#)
+      AND ([ProjectNO] = #ProjectNO,dbType=VarChar#)
+    </update>
+
+    <delete id="Delete" parameterClass="T_FileList">
+      DELETE FROM [dbo].[T_FileList]
+      WHERE
+      ([FileID] = #FileID,dbType=VarChar#)
+      AND ([ProjectNO] = #ProjectNO,dbType=VarChar#)
+    </delete>
+
+    <select id="CopyFileList" parameterClass="System.String">
+      INSERT INTO T_FileList(ProjectNO,FileID,ParentID,wjtm,gdwj,jsdw,sgdw,sjdw,jldw,cjdag,datawindow_id,table_name,table_standerd,extension1,extension2,extension3,selected,wjmj,gclx,OrderIndex,isvisible,FileStatus)
+      SELECT #value#,FileID,ParentID,gdwj,gdwj,jsdw,sgdw,sjdw,jldw,cjdag,datawindow_id,table_name,table_standerd,extension1,extension2,extension3,selected,wjmj,gclx,OrderIndex,isvisible,0 FROM T_FileListTemplate
+    </select>
+
+    <delete id="DeleteFileListByProjectNO" parameterClass="System.String">
+      DELETE FROM [dbo].[T_FileList]
+      WHERE
+      ([ProjectNO] = #value#)
+    </delete>
+
+    <select id="GetMaxOrderIndex" parameterClass="T_FileList" resultClass="System.Int32">
+      SELECT MAX(ORDERINDEX) FROM [dbo].[T_FileList]
+      WHERE (ParentID=#ParentID,dbType=VarChar#) 
+      AND (ProjectNO=#ProjectNO,dbType=VarChar#)
+    </select>
+
+    <select id="GetNoInputFile" parameterClass="System.String" resultClass="System.Data.DataSet">
+      SELECT *
+      FROM [dbo].[T_FileList] WHERE (ProjectNO=#ProjectNO,dbType=VarChar#)
+      AND FILESTATUS NOT LIKE '$value$'
+      ORDER BY ORDERINDEX
+    </select>
+    
+
+  </statements>
+</sqlMap>

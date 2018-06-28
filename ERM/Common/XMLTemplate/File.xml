@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--文件XML-->
+<root>
+  <columns>
+    <property column="ArchiveIndex" mappColumn="archFileNo"  description="文件序号" display="1" default="" type="0" />
+    <property column="fileNo" mappColumn="fileNo"  description="文件编号" display="1" default="" type="1" />
+    <property column="zrr" mappColumn="responsibility"  description="责任者" display="1" default="" type="0" />
+    <property column="wjtm" mappColumn="fileTitle"  description="文件题名" display="1" default="" type="0" />
+    <property column="bz" mappColumn="archFileNote"  description="文件备注" display="1" default="" type="0" />
+    <property column="CreateDate" mappColumn="createdStart"  description="形成起始时间" display="1" default="" type="0" />
+    <property column="CreateDate2" mappColumn="createdEnd"  description="形成结束时间" display="1" default="" type="0" />
+    <property column="wh" mappColumn="fileImageNo"  description="文图号" display="1" default="" type="0" />
+    <property column="yc" mappColumn="pageNo"  description="页次" display="1" default="" type="0" />
+    <property column="sl" mappColumn="textNums"  description="文字页数" display="1" default="" type="0" />
+    <property column="dw" mappColumn="drawingNums"  description="图纸页数" display="1" default="" type="0" />
+    <property column="wzz" mappColumn="phoneNums"  description="照片页数" display="1" default="" type="0" />
+    <property column="remark" mappColumn="note"  description="备注" display="1" default="" type="0" />
+    <property column="ztlx" mappColumn="mediaTypeCode"  description="载体类型" display="1" default="" type="0" />
+    <property column="bgqx" mappColumn="storageTypeCode"  description="保管期限" display="1" default="" type="0" />
+    <property column="mj" mappColumn="securityLevelCode"  description="密级" display="1" default="" type="0" />
+    <property column="wjgbdm" mappColumn="manuscriptCode"  description="稿本" display="1" default="" type="0" />
+    <property column="gg" mappColumn="specCode"  description="规格" display="1" default="" type="0" />
+    <property column="storagePeriodCode" mappColumn="storagePeriodCode"  description="保密期限" display="1" default="30年" type="1" />
+    <property column="scanFlag" mappColumn="scanFlag"  description="是否扫描" display="1" default="true" type="1" />
+    <property column="pdfPath" mappColumn="pdfPath"  description="PDF电子文件路径" display="1" default="" type="1" />
+    <property column="pdfName" mappColumn="pdfFilename"  description="电子文件名称" display="1" default="" type="1" />
+    <property column="pdfOurcePath" mappColumn="pdfSourcePath"  description="原文" display="1" default="" type="1" />
+    <property column="note" mappColumn="note"  description="备注" display="1" default="" type="1" />
+  </columns>
+  <selects>
+    <select id="queryByFileNo">
+      select *, '' as [note],iif(IsNull(sl),0,sl)as yc from t_fileList
+    </select>
+    <select id="pb_queryByFileNo" params="ArchiveID,ProjectNo">
+      SELECT  b.ProjectNO as 工程号,b.ArchiveID as 案卷ID , b.FileID as 文件ID,min(b.ArchiveIndex) as 卷内文件顺序,
+      b.wjtm as 文件题名, b.zrr as 责任者,b.wh as 文图号,b.bgqx as 保管期限,b.mj as 密级,IIF(ISNULL(b.CreateDate),'',
+      format(b.CreateDate,'yyyy.mm.dd')) as 形成起始时间,IIF(ISNULL(b.CreateDate2),'',format(b.CreateDate2,'yyyy.mm.dd')) as 形成终止时间,
+      b.ztlx as 载体类型,b.sl as 数量页,b.dw as 数量张,b.gg as 规格,b.wjgbdm as 文件稿本码,b.wjlxdm as 文件类型代码,
+      b.wjgs as 文件格式,b.wjdx as 文件大小,b.psdd as 拍摄地点,b.psz as 拍摄者,IIF(ISNULL(b.pssj),'',format(b.pssj,'yyyy.mm.dd')) as 拍摄时间,
+      b.sb as 色别,b.fbl as 分辨率, b.xjpp as 相机品牌,b.xjxh as 相机型号,b.bz as 备注 FROM T_FileList b
+      where b.ProjectNO=#ProjectNO# AND b.ArchiveID=#ArchiveID#
+      group by b.ProjectNO,b.ArchiveID,b.ArchiveIndex,b.FileID,
+      b.wjtm , b.zrr,b.wh ,b.bgqx ,b.mj ,b.CreateDate,
+      b.CreateDate2 ,b.ztlx ,b.sl ,b.dw ,b.gg ,b.wjgbdm,
+      b.wjlxdm ,b.wjgs ,b.wjdx ,b.psdd ,b.psz ,b.pssj,
+      b.sb ,b.fbl , b.xjpp ,b.xjxh ,b.bz
+      order by b.ArchiveIndex
+    </select>
+    <select id="pb_FindByArchiveID2" params="ArchiveID,ProjectNo">
+      SELECT * FROM [T_FileList] WHERE ([T_FileList].[ArchiveID] = #ArchiveID#)
+      AND ([T_FileList].[ProjectNO] = #ProjectNO#)
+      ORDER BY ArchiveIndex
+    </select>
+  </selects>
+</root>

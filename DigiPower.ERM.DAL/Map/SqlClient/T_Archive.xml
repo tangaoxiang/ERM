@@ -1,0 +1,326 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="T_Archive"
+	xmlns="http://ibatis.apache.org/mapping"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <alias>
+    <typeAlias alias="T_Archive" type="ERM.MDL.T_Archive,ERM.MDL" />
+  </alias>
+
+  <resultMaps>
+    <resultMap id="FullResultMap" class="T_Archive">
+      <result property="ArchiveID" column="ArchiveID" dbType="VarChar"/>
+      <result property="ProjectNO" column="ProjectNO" dbType="VarChar"/>
+      <result property="dh" column="dh" dbType="NVarChar"/>
+      <result property="ajtm" column="ajtm" dbType="NVarChar"/>
+      <result property="bzdw" column="bzdw" dbType="NVarChar"/>
+      <result property="sl" column="sl" dbType="NVarChar"/>
+      <result property="dw" column="dw" dbType="NVarChar"/>
+      <result property="ysfw" column="ysfw" dbType="NVarChar"/>
+      <result property="bgqx" column="bgqx" dbType="NVarChar"/>
+      <result property="mj" column="mj" dbType="NVarChar"/>
+      <result property="ljr" column="ljr" dbType="NVarChar"/>
+      <result property="bzrq" column="bzrq" dbType="NVarChar"/>
+      <result property="ajlx" column="ajlx" dbType="NVarChar"/>
+      <result property="wzz" column="wzz" dbType="NVarChar"/>
+      <result property="tzz" column="tzz" dbType="NVarChar"/>
+      <result property="dtz" column="dtz" dbType="NVarChar"/>
+      <result property="zpz" column="zpz" dbType="NVarChar"/>
+      <result property="dpz" column="dpz" dbType="NVarChar"/>
+      <result property="lydh" column="lydh" dbType="NVarChar"/>
+      <result property="lxdh" column="lxdh" dbType="NVarChar"/>
+      <result property="gpz" column="gpz" dbType="NVarChar"/>
+      <result property="cdh" column="cdh" dbType="NVarChar"/>
+      <result property="cpz" column="cpz" dbType="NVarChar"/>
+      <result property="p" column="p" dbType="NVarChar"/>
+      <result property="z" column="z" dbType="NVarChar"/>
+      <result property="qt" column="qt" dbType="NVarChar"/>
+      <result property="bz" column="bz" dbType="NVarChar"/>
+      <result property="ajs" column="ajs" dbType="NVarChar"/>
+      <result property="swp" column="swp" dbType="NVarChar"/>
+      <result property="jhlx" column="jhlx" dbType="NVarChar"/>
+      <result property="OrderIndex" column="OrderIndex" dbType="Int"/>
+    </resultMap>
+  </resultMaps>
+
+  <statements>
+
+    <select id="GetCount" resultClass="System.Int32">
+      SELECT count(*) FROM [dbo].[T_Archive]
+    </select>
+
+    <select id="GetAll" resultMap="FullResultMap">
+      SELECT *
+      FROM [dbo].[T_Archive] ORDER BY OrderIndex
+    </select>
+
+    <select id="GetList" parameterClass="String" resultClass="System.Data.DataSet">
+      SELECT *
+      FROM [dbo].[T_Archive]
+      <isNotEmpty property="ArchiveID">
+        (WHERE ArchiveID=#value#)
+      </isNotEmpty>
+      ORDER BY OrderIndex
+    </select>
+        
+    <select id="GetListArchive" parameterClass="T_Archive" resultClass="System.Data.DataSet">
+      select b.ArchiveID as 案卷ID, c.orderindex as 案卷序号,c.dh as 档号,
+      c.ajtm as 案卷题名,c.bzdw as 编制单位, c.sl as 数量,c.dw as 单位,
+      c.bgqx as 保管期限,c.mj as 密级,c.ljr as 立卷人,c.bzrq as 编制日期,c.wzz as 文字,
+      c.tzz as 图纸,c.dtz as 底图, c.zpz as 照片,c.dpz as 底片,c.lydh as 录音带,
+      c.lxdh as 录像带,c.gpz as 光盘,c.cdh as 磁带,c.swp as 缩微片,c.cpz as 磁盘,
+      c.qt as 其他,c.bz as 备注,min(b.CreateDate) as 卷内文件起始时间,
+      max(b.CreateDate2) as 卷内文件终止时间,c.ajlx as 案卷类型,c.jhlx as 卷盒类型
+      from  T_CellAndEFile a ,T_FileList b,T_Archive c
+      where b.FileID = a.fileID  and  c.ArchiveID = b.ArchiveID
+      and a.ProjectNO=#ProjectNO,dbType=VarChar#
+      <isNotNull property="ArchiveID">
+        <isNotEmpty prepend=" AND " property="ArchiveID">
+          b.ArchiveID=#ArchiveID,dbType=VarChar#
+        </isNotEmpty>      
+      </isNotNull>
+      group by  b.ArchiveID,c.orderindex ,c.dh , c.ajtm ,c.bzdw , c.sl ,c.dw ,
+      c.bgqx,c.mj,c.ljr,c.bzrq,c.wzz,c.tzz ,c.dtz , c.zpz ,c.dpz,c.lydh ,
+      c.lxdh,c.gpz ,c.cdh,c.swp,c.cpz,c.qt,c.bz,c.ajlx,c.jhlx
+      order by c.orderindex
+    </select>
+
+    <select id="GetListByArchiveID" parameterClass="String" resultClass="System.Data.DataSet">
+      SELECT *
+      FROM [dbo].[T_Archive] WHERE ([T_Archive].[ArchiveID] = #value#)
+      ORDER BY OrderIndex
+    </select>
+
+    <select id="Exists" parameterClass="T_Archive"  resultClass="System.Boolean">
+      SELECT COUNT(1)
+      FROM [dbo].[T_Archive] WHERE
+      ([T_Archive].[ArchiveID] = #ArchiveID,dbType=VarChar#)
+    </select>
+
+    <select id="Find" parameterClass="T_Archive" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Archive] WHERE
+      ([T_Archive].[ArchiveID] = #ArchiveID,dbType=VarChar#)
+      ORDER BY OrderIndex
+    </select>
+    
+    <select id="FindByProjectNO" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Archive] WHERE ([T_Archive].[ProjectNO] = #value#)
+      ORDER BY OrderIndex
+    </select>
+
+    <select id="FindByProjectNO2" parameterClass="String" resultClass="System.Data.DataSet">
+      SELECT * FROM [dbo].[T_Archive] WHERE ([T_Archive].[ProjectNO] = #value#)
+      ORDER BY OrderIndex
+    </select>
+    
+    <select id="FindBydh" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Archive] WHERE ([T_Archive].[dh] = #value#)
+    </select>
+    <select id="FindByajtm" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Archive] WHERE ([T_Archive].[ajtm] = #value#)
+    </select>
+    <select id="FindBybzdw" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Archive] WHERE ([T_Archive].[bzdw] = #value#)
+    </select>
+    <select id="FindBysl" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Archive] WHERE ([T_Archive].[sl] = #value#)
+    </select>
+    <select id="FindBydw" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Archive] WHERE ([T_Archive].[dw] = #value#)
+    </select>
+    <select id="FindByysfw" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Archive] WHERE ([T_Archive].[ysfw] = #value#)
+    </select>
+    <select id="FindBybgqx" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Archive] WHERE ([T_Archive].[bgqx] = #value#)
+    </select>
+    <select id="FindBymj" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Archive] WHERE ([T_Archive].[mj] = #value#)
+    </select>
+    <select id="FindByljr" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Archive] WHERE ([T_Archive].[ljr] = #value#)
+    </select>
+    <select id="FindBybzrq" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Archive] WHERE ([T_Archive].[bzrq] = #value#)
+    </select>
+    <select id="FindByajlx" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Archive] WHERE ([T_Archive].[ajlx] = #value#)
+    </select>
+    <select id="FindBywzz" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Archive] WHERE ([T_Archive].[wzz] = #value#)
+    </select>
+    <select id="FindBytzz" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Archive] WHERE ([T_Archive].[tzz] = #value#)
+    </select>
+    <select id="FindBydtz" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Archive] WHERE ([T_Archive].[dtz] = #value#)
+    </select>
+    <select id="FindByzpz" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Archive] WHERE ([T_Archive].[zpz] = #value#)
+    </select>
+    <select id="FindBydpz" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Archive] WHERE ([T_Archive].[dpz] = #value#)
+    </select>
+    <select id="FindBylydh" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Archive] WHERE ([T_Archive].[lydh] = #value#)
+    </select>
+    <select id="FindBylxdh" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Archive] WHERE ([T_Archive].[lxdh] = #value#)
+    </select>
+    <select id="FindBygpz" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Archive] WHERE ([T_Archive].[gpz] = #value#)
+    </select>
+    <select id="FindBycdh" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Archive] WHERE ([T_Archive].[cdh] = #value#)
+    </select>
+    <select id="FindBycpz" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Archive] WHERE ([T_Archive].[cpz] = #value#)
+    </select>
+    <select id="FindByp" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Archive] WHERE ([T_Archive].[p] = #value#)
+    </select>
+    <select id="FindByz" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Archive] WHERE ([T_Archive].[z] = #value#)
+    </select>
+    <select id="FindByqt" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Archive] WHERE ([T_Archive].[qt] = #value#)
+    </select>
+    <select id="FindBybz" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Archive] WHERE ([T_Archive].[bz] = #value#)
+    </select>
+    <select id="FindByajs" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Archive] WHERE ([T_Archive].[ajs] = #value#)
+    </select>
+    <select id="FindByswp" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Archive] WHERE ([T_Archive].[swp] = #value#)
+    </select>
+    <select id="FindByjhlx" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Archive] WHERE ([T_Archive].[jhlx] = #value#)
+    </select>
+    <select id="FindByOrderIndex" parameterClass="Int32" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Archive] WHERE ([T_Archive].[OrderIndex] = #value#)
+    </select>
+
+    <insert id="Insert" parameterClass="T_Archive">
+      INSERT INTO [dbo].[T_Archive] (
+      [ArchiveID]
+      , [ProjectNO]
+      , [dh]
+      , [ajtm]
+      , [bzdw]
+      , [sl]
+      , [dw]
+      , [ysfw]
+      , [bgqx]
+      , [mj]
+      , [ljr]
+      , [bzrq]
+      , [ajlx]
+      , [wzz]
+      , [tzz]
+      , [dtz]
+      , [zpz]
+      , [dpz]
+      , [lydh]
+      , [lxdh]
+      , [gpz]
+      , [cdh]
+      , [cpz]
+      , [p]
+      , [z]
+      , [qt]
+      , [bz]
+      , [ajs]
+      , [swp]
+      , [jhlx]
+      , [OrderIndex]
+      ) VALUES (
+      #ArchiveID,dbType=VarChar#
+      , #ProjectNO,dbType=VarChar#
+      , #dh,dbType=NVarChar#
+      , #ajtm,dbType=NVarChar#
+      , #bzdw,dbType=NVarChar#
+      , #sl,dbType=NVarChar#
+      , #dw,dbType=NVarChar#
+      , #ysfw,dbType=NVarChar#
+      , #bgqx,dbType=NVarChar#
+      , #mj,dbType=NVarChar#
+      , #ljr,dbType=NVarChar#
+      , #bzrq,dbType=NVarChar#
+      , #ajlx,dbType=NVarChar#
+      , #wzz,dbType=NVarChar#
+      , #tzz,dbType=NVarChar#
+      , #dtz,dbType=NVarChar#
+      , #zpz,dbType=NVarChar#
+      , #dpz,dbType=NVarChar#
+      , #lydh,dbType=NVarChar#
+      , #lxdh,dbType=NVarChar#
+      , #gpz,dbType=NVarChar#
+      , #cdh,dbType=NVarChar#
+      , #cpz,dbType=NVarChar#
+      , #p,dbType=NVarChar#
+      , #z,dbType=NVarChar#
+      , #qt,dbType=NVarChar#
+      , #bz,dbType=NVarChar#
+      , #ajs,dbType=NVarChar#
+      , #swp,dbType=NVarChar#
+      , #jhlx,dbType=NVarChar#
+      , #OrderIndex,dbType=Int#
+      )
+    </insert>
+
+    <update id="Update" parameterClass="T_Archive">
+      UPDATE [dbo].[T_Archive] SET
+      [ProjectNO] = #ProjectNO,dbType=VarChar#
+      , [dh] = #dh,dbType=NVarChar#
+      , [ajtm] = #ajtm,dbType=NVarChar#
+      , [bzdw] = #bzdw,dbType=NVarChar#
+      , [sl] = #sl,dbType=NVarChar#
+      , [dw] = #dw,dbType=NVarChar#
+      , [ysfw] = #ysfw,dbType=NVarChar#
+      , [bgqx] = #bgqx,dbType=NVarChar#
+      , [mj] = #mj,dbType=NVarChar#
+      , [ljr] = #ljr,dbType=NVarChar#
+      , [bzrq] = #bzrq,dbType=NVarChar#
+      , [ajlx] = #ajlx,dbType=NVarChar#
+      , [wzz] = #wzz,dbType=NVarChar#
+      , [tzz] = #tzz,dbType=NVarChar#
+      , [dtz] = #dtz,dbType=NVarChar#
+      , [zpz] = #zpz,dbType=NVarChar#
+      , [dpz] = #dpz,dbType=NVarChar#
+      , [lydh] = #lydh,dbType=NVarChar#
+      , [lxdh] = #lxdh,dbType=NVarChar#
+      , [gpz] = #gpz,dbType=NVarChar#
+      , [cdh] = #cdh,dbType=NVarChar#
+      , [cpz] = #cpz,dbType=NVarChar#
+      , [p] = #p,dbType=NVarChar#
+      , [z] = #z,dbType=NVarChar#
+      , [qt] = #qt,dbType=NVarChar#
+      , [bz] = #bz,dbType=NVarChar#
+      , [ajs] = #ajs,dbType=NVarChar#
+      , [swp] = #swp,dbType=NVarChar#
+      , [jhlx] = #jhlx,dbType=NVarChar#
+      , [OrderIndex] = #OrderIndex,dbType=Int#
+      WHERE
+      ([ArchiveID] = #ArchiveID,dbType=VarChar#)
+    </update>
+
+    <delete id="Delete" parameterClass="T_Archive">
+      DELETE FROM [dbo].[T_Archive]
+      WHERE
+      ([ArchiveID] = #ArchiveID,dbType=VarChar#)
+    </delete>
+
+    <select id="GetMaxOrderIndex" parameterClass="T_Archive" resultClass="System.Int32">
+      SELECT MAX(ORDERINDEX) FROM [dbo].[T_Archive]
+      WHERE (ProjectNO=#ProjectNO,dbType=VarChar#)
+    </select>
+
+    <delete id="DeleteArchiveByProjectNO" parameterClass="System.String">
+      DELETE FROM [dbo].[T_Archive]
+      WHERE
+      ([ProjectNO] = #value#)
+    </delete>
+    
+  </statements>
+</sqlMap>

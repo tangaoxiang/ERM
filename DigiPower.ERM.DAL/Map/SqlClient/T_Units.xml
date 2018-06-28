@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="T_Units"
+	xmlns="http://ibatis.apache.org/mapping"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <alias>
+    <typeAlias alias="T_Units" type="ERM.MDL.T_Units,ERM.MDL" />
+  </alias>
+
+  <resultMaps>
+    <resultMap id="FullResultMap" class="T_Units">
+      <result property="UnitID" column="UnitID" dbType="VarChar"/>
+      <result property="ProjectNO" column="ProjectNO" dbType="VarChar"/>
+      <result property="unittype" column="unittype" dbType="NVarChar"/>
+      <result property="dwmc" column="dwmc" dbType="NVarChar"/>
+      <result property="fzr" column="fzr" dbType="NVarChar"/>
+      <result property="fzrzs" column="fzrzs" dbType="NVarChar"/>
+      <result property="xmjl" column="xmjl" dbType="NVarChar"/>
+      <result property="zzdj" column="zzdj" dbType="NVarChar"/>
+      <result property="zzzh" column="zzzh" dbType="NVarChar"/>
+      <result property="addr" column="addr" dbType="NVarChar"/>
+      <result property="tel" column="tel" dbType="NVarChar"/>
+      <result property="fax" column="fax" dbType="NVarChar"/>
+      <result property="zrzbsm" column="zrzbsm" dbType="NVarChar"/>
+      <result property="zrzlb" column="zrzlb" dbType="NVarChar"/>
+      <result property="zrzmc" column="zrzmc" dbType="NVarChar"/>
+      <result property="zrzzzfw" column="zrzzzfw" dbType="NVarChar"/>
+      <result property="remark" column="remark" dbType="NVarChar"/>
+    </resultMap>
+  </resultMaps>
+
+  <statements>
+
+    <select id="GetCount" resultClass="System.Int32">
+      SELECT count(*) FROM [dbo].[T_Units]
+    </select>
+
+    <select id="GetAll" resultMap="FullResultMap">
+      SELECT *
+      FROM [dbo].[T_Units]
+    </select>
+
+    <select id="GetList" parameterClass="T_Units" resultClass="System.Data.DataSet">
+      SELECT *
+      FROM [dbo].[T_Units] WHERE ProjectNO=#ProjectNO,dbType=VarChar# AND unittype=#unittype,dbType=VarChar#
+    </select>
+    
+    <select id="Exists" parameterClass="T_Units"  resultClass="System.Boolean">
+      SELECT COUNT(1)
+      FROM [dbo].[T_Units] WHERE
+      ([T_Units].[UnitID] = #UnitID,dbType=VarChar#)
+    </select>
+
+    <select id="Find" parameterClass="T_Units" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Units] WHERE
+      ([T_Units].[UnitID] = #UnitID,dbType=VarChar#)
+    </select>
+    <select id="FindByProjectNO" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Units] WHERE ([T_Units].[ProjectNO] = #value#)
+    </select>
+    <select id="FindByunittype" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Units] WHERE ([T_Units].[unittype] = #value#)
+    </select>
+    <select id="FindBydwmc" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Units] WHERE ([T_Units].[dwmc] = #value#)
+    </select>
+    <select id="FindByfzr" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Units] WHERE ([T_Units].[fzr] = #value#)
+    </select>
+    <select id="FindByfzrzs" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Units] WHERE ([T_Units].[fzrzs] = #value#)
+    </select>
+    <select id="FindByxmjl" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Units] WHERE ([T_Units].[xmjl] = #value#)
+    </select>
+    <select id="FindByzzdj" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Units] WHERE ([T_Units].[zzdj] = #value#)
+    </select>
+    <select id="FindByzzzh" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Units] WHERE ([T_Units].[zzzh] = #value#)
+    </select>
+    <select id="FindByaddr" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Units] WHERE ([T_Units].[addr] = #value#)
+    </select>
+    <select id="FindBytel" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Units] WHERE ([T_Units].[tel] = #value#)
+    </select>
+    <select id="FindByfax" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Units] WHERE ([T_Units].[fax] = #value#)
+    </select>
+    <select id="FindByzrzbsm" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Units] WHERE ([T_Units].[zrzbsm] = #value#)
+    </select>
+    <select id="FindByzrzlb" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Units] WHERE ([T_Units].[zrzlb] = #value#)
+    </select>
+    <select id="FindByzrzmc" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Units] WHERE ([T_Units].[zrzmc] = #value#)
+    </select>
+    <select id="FindByzrzzzfw" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Units] WHERE ([T_Units].[zrzzzfw] = #value#)
+    </select>
+    <select id="FindByremark" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Units] WHERE ([T_Units].[remark] = #value#)
+    </select>
+
+    <insert id="Insert" parameterClass="T_Units">
+      INSERT INTO [dbo].[T_Units] (
+      [UnitID]
+      , [ProjectNO]
+      , [unittype]
+      , [dwmc]
+      , [fzr]
+      , [fzrzs]
+      , [xmjl]
+      , [zzdj]
+      , [zzzh]
+      , [addr]
+      , [tel]
+      , [fax]
+      , [zrzbsm]
+      , [zrzlb]
+      , [zrzmc]
+      , [zrzzzfw]
+      , [remark]
+      ) VALUES (
+      #UnitID,dbType=VarChar#
+      , #ProjectNO,dbType=VarChar#
+      , #unittype,dbType=NVarChar#
+      , #dwmc,dbType=NVarChar#
+      , #fzr,dbType=NVarChar#
+      , #fzrzs,dbType=NVarChar#
+      , #xmjl,dbType=NVarChar#
+      , #zzdj,dbType=NVarChar#
+      , #zzzh,dbType=NVarChar#
+      , #addr,dbType=NVarChar#
+      , #tel,dbType=NVarChar#
+      , #fax,dbType=NVarChar#
+      , #zrzbsm,dbType=NVarChar#
+      , #zrzlb,dbType=NVarChar#
+      , #zrzmc,dbType=NVarChar#
+      , #zrzzzfw,dbType=NVarChar#
+      , #remark,dbType=NVarChar#
+      )
+    </insert>
+
+    <update id="Update" parameterClass="T_Units">
+      UPDATE [dbo].[T_Units] SET
+      [ProjectNO] = #ProjectNO,dbType=VarChar#
+      , [unittype] = #unittype,dbType=NVarChar#
+      , [dwmc] = #dwmc,dbType=NVarChar#
+      , [fzr] = #fzr,dbType=NVarChar#
+      , [fzrzs] = #fzrzs,dbType=NVarChar#
+      , [xmjl] = #xmjl,dbType=NVarChar#
+      , [zzdj] = #zzdj,dbType=NVarChar#
+      , [zzzh] = #zzzh,dbType=NVarChar#
+      , [addr] = #addr,dbType=NVarChar#
+      , [tel] = #tel,dbType=NVarChar#
+      , [fax] = #fax,dbType=NVarChar#
+      , [zrzbsm] = #zrzbsm,dbType=NVarChar#
+      , [zrzlb] = #zrzlb,dbType=NVarChar#
+      , [zrzmc] = #zrzmc,dbType=NVarChar#
+      , [zrzzzfw] = #zrzzzfw,dbType=NVarChar#
+      , [remark] = #remark,dbType=NVarChar#
+      WHERE
+      ([UnitID] = #UnitID,dbType=VarChar#)
+    </update>
+
+    <delete id="Delete" parameterClass="T_Units">
+      DELETE FROM [dbo].[T_Units]
+      WHERE
+      ([UnitID] = #UnitID,dbType=VarChar#)
+    </delete>
+
+    <delete id="DeleteUnitByProjectNO" parameterClass="System.String">
+      DELETE FROM [dbo].[T_Units]
+      WHERE
+      ([ProjectNO] = #value#)
+    </delete>
+  </statements>
+</sqlMap>

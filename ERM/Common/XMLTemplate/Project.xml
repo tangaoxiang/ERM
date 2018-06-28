@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--工程信息-->
+<root>
+  <columns>
+    <property column="projectname" mappColumn="engName"  description="工程名称" display="1" type="0" default="" />
+    <property column="district" mappColumn="engZone"  description="工程区域" display="1" type="0" default="" />
+    <property column="address" mappColumn="engLocation"  description="工程地址" display="1" type="0" default="" />
+    <property column="ProjectNO" mappColumn="referenceNo"  description="工程编号" display="1" type="0" default="" />
+    <property column="begindate" mappColumn="startDate"  description="开工时间" display="1" type="0" default="" />
+    <property column="enddate" mappColumn="endDate"  description="竣工时间" display="1" type="0" default="" />
+    <property column="jsdw_mc" mappColumn="developmentsOrgName"  description="建设单位" display="1" type="1" default="" />
+    <property column="jldw_mc" mappColumn="supervisionOrgSid"  description="监理单位" display="1" type="1" default="" />
+    <property column="sgdw_mc" mappColumn="constructOrgSid"  description="施工单位" display="1" type="1" default="" />
+    <property column="kcdw_mc" mappColumn="reconnaissanceOrgSid"  description="勘察单位" display="1" type="1" default="" />
+    <property column="sjdw_mc" mappColumn="designOrgSid"  description="设计单位" display="1" type="1" default="" />
+    <property column="pzdw" mappColumn="initiationApprovalOrgSid"  description="立项批准单位" display="1" type="1" default="" />
+    <property column="pzh" mappColumn="initiationApprovalNo"  description="立项批准文号" display="1" type="1" default="" />
+    <property column="ydpzcode" mappColumn="landUsePlanningNo"  description="用地规划许可证号" display="1" type="0" default="" />
+    <property column="sgcode" mappColumn="constructNo"  description="施工许可文号" display="1" type="1" default="" />
+    <property column="planCertificateNo" mappColumn="planCertificateNo"  description="规划验收合格证号" display="1" type="1" default="" />
+    <property column="roadName" mappColumn="roadName"  description="路名" display="1" type="1" default="" />
+    <property column="engFormerName" mappColumn="engFormerName"  description="工程曾用名" display="1" type="1" default="" />
+    <property column="microNo" mappColumn="microNo"  description="光盘缩微号" display="1" type="1" default="" />
+    <property column="oldEngId" mappColumn="oldEngId"  description="原编档号" display="1" type="1" default="" />
+    <property column="projManageName" mappColumn="projManageName"  description="项目管理单位" display="1" type="1" default="" />
+    <property column="serveyOrgSid" mappColumn="serveyOrgSid"  description="测绘单位" display="1" type="1" default="" />
+    <property column="ghcode" mappColumn="engPlanningNo"  description="工程规划文号" display="1" type="1" default="" />
+    <property column="designNo" mappColumn="designNo"  description="设计号" display="1" type="1" default="" />
+    <property column="landNo" mappColumn="landNo"  description="土地证号" display="1" type="1" default="" />
+    <property column="fireOpinionNo" mappColumn="fireOpinionNo"  description="建筑消防验收意见书" display="1" type="1" default="" />
+    <property column="archCount" mappColumn="archCount"  description="总卷数" display="1" type="1" default="0" />
+    <property column="textCount" mappColumn="textCount"  description="文字卷" display="1" type="1" default="0" />
+    <property column="drawCount" mappColumn="drawCount"  description="图纸卷" display="1" type="1" default="0" />
+    <property column="photoCount" mappColumn="photoCount"  description="照片卷" display="1" type="1" default="0" />
+    <property column="cdCount" mappColumn="cdCount"  description="光盘卷（无）" display="1" type="1" default="" />
+    <property column="handoverOrgName" mappColumn="handoverOrgName"  description="移交单位" display="1" type="1" default="" />
+    <property column="transferUser" mappColumn="transferUser"  description="移交人" display="1" type="1" default="" />
+    <property column="archivingDate" mappColumn="archivingDate"  description="进馆日期" display="1" type="1" default="" />
+  </columns>
+  <selects>
+    <select id="queryByProjectNo">
+      select * from t_projects
+    </select>
+    <select id="pb_queryByProjectNo" params="ProjectNO">
+      SELECT ProjectNO as 工程代码,
+      projectname as 工程名称,
+      address as 工程地址,
+      category as 工程性质,
+      stru as 结构类型,
+      projectCategory as 工程类别,
+      high as 高度,
+      floors1 as 地上层数,
+      floors2 as 地下层数,
+      area1 as 建筑面积,
+      area2 as 用地面积,
+      ydpzcode as 工程用地批准书号,
+      ydxkcode as 用地规划许可证号,
+      ghcode as 规划许可证号,
+      sgcode as 工程施工许可证号,
+      price1 as 工程预算,
+      price2 as 工程决算,
+      begindate as 开工日期,
+      bjdate as 报建日期,
+      enddate as 竣工日期,
+      hjqk as 获奖情况,
+      zzmj as 住宅面积,
+      bgyfmj as 办公用房面积,
+      syyfmj as 商业用房面积,
+      cfmj as 厂房面积,
+      dxsmj as 地下室面积,
+      qtyfmj as 其他用房面积,
+      ts1 as 防火等级,
+      ts2 as 工程质量,
+      ts3 as 项目经理,
+      ts4 as 大户型套数,
+      tstotal as 总套数,
+      zygz as 专业工长,
+      zjy as 项目专业质量检验员,
+      sgbzz as 施工班组长,
+      tbr as 填表人,
+      jsdwshr as 建设单位提交人,
+      jldwshr as 监理单位提交人,
+      createdate as 填表时间 FROM [T_Projects] WHERE
+      [T_Projects].[ProjectNO] = #ProjectNO#
+    </select>
+    <select id="pb_queryByProjectNo_Brige" params="ProjectNO">
+      Select a.ProjectNO as 工程代码,
+      a.projectname as 工程名称,
+      a.address as 工程地址,
+      a.category as 工程性质,
+      a.projecttype as 工程类别,
+      a.ydpzcode as 工程用地批准书号,
+      a.ydxkcode as 用地规划许可证号,
+      a.ghcode as 规划许可证号,
+      a.sgcode as 工程施工许可证号,
+      a.begindate as 开工日期,
+      a.bjdate as 报建日期,
+      a.enddate as 竣工日期,
+      a.zygz as 专业工长,
+      a.zjy as 项目专业质量检验员,
+      a.sgbzz as 施工班组长,
+      b.GCYS as 工程预算,
+      b.GCJS as 工程结算,
+      b.HZ as 荷载,
+      b.StuructType as 构造类型,
+      [b.Level] as 等级,
+      b.Longs as 长度,
+      [b.Width] as 宽度,
+      b.KJ as 跨径,
+      b.JK as 净空,
+      [b.Remark] as 备注
+      from t_projects as a,T_Project_Brige as b where a.projectNo=b.ProjectID and a.ProjectNo=#ProjectNO#
+    </select>
+    <select id="pb_queryByProjectNo_RoadLamp" params="ProjectNO">
+      Select a.ProjectNO as 工程代码,
+      a.projectname as 工程名称,
+      [a.address] as 工程地址,
+      a.category as 工程性质,
+      a.projecttype as 工程类别,
+      a.ydpzcode as 工程用地批准书号,
+      a.ydxkcode as 用地规划许可证号,
+      a.ghcode as 规划许可证号,
+      a.sgcode as 工程施工许可证号,
+      a.begindate as 开工日期,
+      a.bjdate as 报建日期,
+      a.enddate as 竣工日期,
+      a.zygz as 专业工长,
+      a.zjy as 项目专业质量检验员,
+      a.sgbzz as 施工班组长,
+      b.GCYS as 工程预算,
+      [b.Remark] as 备注
+      from t_projects as a,T_Project_RoadLamp as b where a.projectNo=b.ProjectID and a.ProjectNo=#ProjectNO#
+    </select>
+    <select id="pb_queryByProjectNo_Traffic" params="ProjectNO">
+      Select a.ProjectNO as 工程代码,
+      a.projectname as 工程名称,
+      a.address as 工程地址,
+      a.category as 工程性质,
+      a.projecttype as 工程类别,
+      a.ydpzcode as 工程用地批准书号,
+      a.ydxkcode as 用地规划许可证号,
+      a.ghcode as 规划许可证号,
+      a.sgcode as 工程施工许可证号,
+      a.begindate as 开工日期,
+      a.bjdate as 报建日期,
+      a.enddate as 竣工日期,
+      a.zygz as 专业工长,
+      a.zjy as 项目专业质量检验员,
+      a.sgbzz as 施工班组长,
+      b.ID,
+      b.STARTX as 工程起点,
+      b.STARTY as 工程止点,
+      b.ENDX as 起点坐标,
+      b.ENDY as 终点坐标,
+      b.GCYS as 工程预算,
+      b.GCJS as 工程结算,
+      b.Road_Level as 道路级别,
+      b.LongCount as 道路总长度,
+      [b.Width] as 宽度,
+      b.HZ as 荷载,
+      b.ProjectID as 项目编号,
+      [b.Remark] as 备注
+      from t_projects as a,T_Traffic as b
+      where a.projectNo=b.ProjectID and a.ProjectNo=#ProjectNO#
+    </select>
+  </selects>
+</root>

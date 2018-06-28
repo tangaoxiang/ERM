@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <columns>
+    <property column="OrderIndex" mappColumn="pointNo"  description="序号" display="1" type="0" default="" />
+    <property column="X" mappColumn="pointX"  description="坐标X" display="1" type="0" default="0" />
+    <property column="Y" mappColumn="pointY"  description="坐标Y" display="1" type="0" default="0" />
+  </columns>
+  <selects>
+    <select id="queryByProjectID">
+      select * from T_Point
+    </select>
+  </selects>
+</root>

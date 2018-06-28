@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<sqlMap namespace="T_Traffic" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <alias>
+    <typeAlias alias="T_Traffic" type="ERM.MDL.T_Traffic,ERM.MDL" />
+  </alias>
+  <resultMaps>
+    <resultMap id="FullResultMap" class="T_Traffic">
+      <result property="ID" column="ID" />
+      <result property="Road_Level" column="Road_Level" />
+      <result property="LongCount" column="LongCount" />
+      <result property="Width" column="Width" />
+      <result property="HZ" column="HZ" />
+      <result property="JCXS" column="JCXS" />
+      <result property="MCXS" column="MCXS" />
+      <result property="KJ" column="KJ" />
+      <result property="KS" column="KS" />
+      <result property="ZPWS" column="ZPWS" />
+      <result property="PWDJ" column="PWDJ" />
+      <result property="ProjectID" column="ProjectID" />
+      <result property="Remark" column="Remark" />
+      <result property="STARTX" column="STARTX" />
+      <result property="STARTY" column="STARTY" />
+      <result property="ENDX" column="ENDX" />
+      <result property="ENDY" column="ENDY" />
+      <result property="GCYS" column="GCYS" />
+      <result property="GCJS" column="GCJS" />
+      <result property="CD" column="CD" />
+      <result property="SGYL" column="SGYL" />
+      <result property="GG" column="GG" />
+      <result property="ZL" column="ZL" />
+      <result property="HJQK" column="HJQK" />
+      <result property="CZ" column="CZ" />
+    </resultMap>
+  </resultMaps>
+
+  <statements>
+    <select id="QueryTraffic_ByProjID" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Traffic] WHERE
+      ([T_Traffic].[ProjectID] = #value#)
+    </select>
+
+
+    <insert id="InsertT_Traffic" parameterClass="T_Traffic">
+      Insert Into T_Traffic (
+      ID,
+      Road_Level,
+      LongCount,
+      Width,
+      HZ,
+      JCXS,
+      MCXS,
+      KJ,
+      KS,
+      ZPWS,
+      PWDJ,
+      ProjectID,
+      Remark,
+      GCYS,
+      GCJS,
+      STARTX,
+      STARTY,
+      ENDX,
+      ENDY,
+      HJQK,
+      GG,
+      SGYL,
+      CD,
+      ZL,
+      CZ
+      )Values(
+      #ID#,
+      #Road_Level#,
+      #LongCount#,
+      #Width#,
+      #HZ#,
+      #JCXS#,
+      #MCXS#,
+      #KJ#,
+      #KS#,
+      #ZPWS#,
+      #PWDJ#,
+      #ProjectID#,
+      #Remark#,
+      #GCYS#,
+      #GCJS#,
+      #STARTX#,
+      #STARTY#,
+      #ENDX#,
+      #ENDY#,
+      #HJQK#,
+      #GG#,
+      #SGYL#,
+      #CD#,
+      #ZL#,
+      #CZ#
+      )
+
+    </insert>
+
+    <update id="UpdateT_Traffic" parameterClass="T_Traffic">
+      Update T_Traffic Set
+      Road_Level=#Road_Level#,
+      LongCount=#LongCount#,
+      Width=#Width#,
+      HZ=#HZ#,
+      JCXS=#JCXS#,
+      MCXS=#MCXS#,
+      KJ=#KJ#,
+      KS=#KS#,
+      ZPWS=#ZPWS#,
+      PWDJ=#PWDJ#,
+      Remark=#Remark#,
+      GCYS=#GCYS#,
+      GCJS=#GCJS#,
+      STARTX=#STARTX#,
+      STARTY=#STARTY#,
+      ENDX=#ENDX#,
+      ENDY=#ENDY#,
+      HJQK= #HJQK#,
+      GG=#GG#,
+      SGYL=#SGYL#,
+      CD= #CD#,
+      ZL=#ZL#,
+      CZ=#CZ#
+      <dynamic prepend="WHERE">
+        <isParameterPresent>
+          ID=#ID#
+        </isParameterPresent>
+      </dynamic>
+    </update>
+
+    <delete id="DeleteT_Traffic" parameterClass="String">
+      Delete From T_Traffic
+      <dynamic prepend="WHERE">
+        <isParameterPresent>
+          ID=#value#
+        </isParameterPresent>
+      </dynamic>
+    </delete>
+    <delete id="DeleteTrafficByProjectNO" parameterClass="String">
+      Delete From T_Traffic
+      <dynamic prepend="WHERE">
+        <isParameterPresent>
+          ProjectID=#value#
+        </isParameterPresent>
+      </dynamic>
+    </delete>
+  </statements>
+</sqlMap>

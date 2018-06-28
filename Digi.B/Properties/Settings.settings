@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Digi.B.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ProjectPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ProjectPath</Value>
+    </Setting>
+    <Setting Name="descriptive" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Destriptive</Value>
+    </Setting>
+    <Setting Name="MDBPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Program Files\DigiCell\db\data.mdb</Value>
+    </Setting>
+    <Setting Name="CellPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Template</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

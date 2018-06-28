@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="T_EFile"
+	xmlns="http://ibatis.apache.org/mapping"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <alias>
+    <typeAlias alias="T_EFile" type="ERM.MDL.T_EFile,ERM.MDL" />
+  </alias>
+
+  <resultMaps>
+    <resultMap id="FullResultMap" class="T_EFile">
+      <result property="EFileID" column="EFileID" dbType="VarChar"/>
+      <result property="FileID" column="FileID" dbType="VarChar"/>
+      <result property="attachid" column="attachid" dbType="Int"/>
+      <result property="projectno" column="projectno" dbType="VarChar"/>
+      <result property="title" column="title" dbType="VarChar"/>
+      <result property="filepath" column="filepath" dbType="VarChar"/>
+      <result property="fileTreePath" column="fileTreePath" dbType="VarChar"/>
+      <result property="FileOrderIndex" column="FileOrderIndex" dbType="Int"/>
+      <result property="ArchiveID" column="ArchiveID" dbType="VarChar"/>
+      <result property="OrderIndex2" column="OrderIndex2" dbType="Int"/>
+      <result property="zrzbsm" column="zrzbsm" dbType="VarChar"/>
+      <result property="zrzlb" column="zrzlb" dbType="VarChar"/>
+      <result property="zrzmc" column="zrzmc" dbType="VarChar"/>
+      <result property="zezzzfw" column="zezzzfw" dbType="VarChar"/>
+      <result property="ext" column="ext" dbType="VarChar"/>
+      <result property="wjly" column="wjly" dbType="VarChar"/>
+      <result property="DocYs" column="DocYs" dbType="Int"/>
+      <result property="yswjpath" column="yswjpath" dbType="VarChar"/>
+      <result property="docType" column="docType" dbType="VarChar"/>
+      <result property="docFormat" column="docFormat" dbType="VarChar"/>
+      <result property="Draft" column="Draft" dbType="VarChar"/>
+      <result property="OriOpenPro" column="OriOpenPro" dbType="VarChar"/>
+      <result property="OrderIndex" column="OrderIndex" dbType="Int"/>
+    </resultMap>
+  </resultMaps>
+
+  <statements>
+
+    <select id="GetCount" resultClass="System.Int32">
+      SELECT count(*) FROM [T_EFile]
+    </select>
+
+    <select id="GetAll" resultMap="FullResultMap">
+      SELECT *
+      FROM [T_EFile]
+    </select>
+
+    <select id="GetList" parameterClass="String" resultClass="System.Data.DataSet">
+      SELECT *
+      FROM [T_EFile] WHERE (#value#)
+    </select>
+
+    <select id="Exists" parameterClass="T_EFile"  resultClass="System.Boolean">
+      SELECT COUNT(1)
+      FROM [T_EFile] WHERE
+      ([T_EFile].[EFileID] = #EFileID,dbType=VarChar#)
+    </select>
+
+    <select id="Find" parameterClass="T_EFile" resultMap="FullResultMap">
+      SELECT * FROM [T_EFile] WHERE
+      ([T_EFile].[EFileID] = #EFileID,dbType=VarChar#)
+    </select>
+    <select id="FindByFileID" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_EFile] WHERE ([T_EFile].[FileID] = #value#)
+    </select>
+    <select id="FindByattachid" parameterClass="Int32" resultMap="FullResultMap">
+      SELECT * FROM [T_EFile] WHERE ([T_EFile].[attachid] = #value#)
+    </select>
+    <select id="FindByprojectno" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_EFile] WHERE ([T_EFile].[projectno] = #value#)
+    </select>
+    <select id="FindBytitle" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_EFile] WHERE ([T_EFile].[title] = #value#)
+    </select>
+    <select id="FindByfilepath" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_EFile] WHERE ([T_EFile].[filepath] = #value#)
+    </select>
+    <select id="FindByfileTreePath" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_EFile] WHERE ([T_EFile].[fileTreePath] = #value#)
+    </select>
+    <select id="FindByFileOrderIndex" parameterClass="Int32" resultMap="FullResultMap">
+      SELECT * FROM [T_EFile] WHERE ([T_EFile].[FileOrderIndex] = #value#)
+    </select>
+    <select id="FindByArchiveID" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_EFile] WHERE ([T_EFile].[ArchiveID] = #value#)
+    </select>
+    <select id="FindByOrderIndex2" parameterClass="Int32" resultMap="FullResultMap">
+      SELECT * FROM [T_EFile] WHERE ([T_EFile].[OrderIndex2] = #value#)
+    </select>
+    <select id="FindByzrzbsm" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_EFile] WHERE ([T_EFile].[zrzbsm] = #value#)
+    </select>
+    <select id="FindByzrzlb" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_EFile] WHERE ([T_EFile].[zrzlb] = #value#)
+    </select>
+    <select id="FindByzrzmc" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_EFile] WHERE ([T_EFile].[zrzmc] = #value#)
+    </select>
+    <select id="FindByzezzzfw" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_EFile] WHERE ([T_EFile].[zezzzfw] = #value#)
+    </select>
+    <select id="FindByext" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_EFile] WHERE ([T_EFile].[ext] = #value#)
+    </select>
+    <select id="FindBywjly" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_EFile] WHERE ([T_EFile].[wjly] = #value#)
+    </select>
+    <select id="FindByDocYs" parameterClass="Int32" resultMap="FullResultMap">
+      SELECT * FROM [T_EFile] WHERE ([T_EFile].[DocYs] = #value#)
+    </select>
+    <select id="FindByyswjpath" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_EFile] WHERE ([T_EFile].[yswjpath] = #value#)
+    </select>
+    <select id="FindBydocType" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_EFile] WHERE ([T_EFile].[docType] = #value#)
+    </select>
+    <select id="FindBydocFormat" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_EFile] WHERE ([T_EFile].[docFormat] = #value#)
+    </select>
+    <select id="FindByDraft" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_EFile] WHERE ([T_EFile].[Draft] = #value#)
+    </select>
+    <select id="FindByOriOpenPro" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_EFile] WHERE ([T_EFile].[OriOpenPro] = #value#)
+    </select>
+    <select id="FindByOrderIndex" parameterClass="Int32" resultMap="FullResultMap">
+      SELECT * FROM [T_EFile] WHERE ([T_EFile].[OrderIndex] = #value#)
+    </select>
+
+    <insert id="Insert" parameterClass="T_EFile">
+      INSERT INTO [T_EFile] (
+      [EFileID]
+      , [FileID]
+      , [attachid]
+      , [projectno]
+      , [title]
+      , [filepath]
+      , [fileTreePath]
+      , [FileOrderIndex]
+      , [ArchiveID]
+      , [OrderIndex2]
+      , [zrzbsm]
+      , [zrzlb]
+      , [zrzmc]
+      , [zezzzfw]
+      , [ext]
+      , [wjly]
+      , [DocYs]
+      , [yswjpath]
+      , [docType]
+      , [docFormat]
+      , [Draft]
+      , [OriOpenPro]
+      , [OrderIndex]
+      ) VALUES (
+      #EFileID,dbType=VarChar#
+      , #FileID,dbType=VarChar#
+      , #attachid#
+      , #projectno,dbType=VarChar#
+      , #title,dbType=VarChar#
+      , #filepath,dbType=VarChar#
+      , #fileTreePath,dbType=VarChar#
+      , #FileOrderIndex#
+      , #ArchiveID,dbType=VarChar#
+      , #OrderIndex2#
+      , #zrzbsm,dbType=VarChar#
+      , #zrzlb,dbType=VarChar#
+      , #zrzmc,dbType=VarChar#
+      , #zezzzfw,dbType=VarChar#
+      , #ext,dbType=VarChar#
+      , #wjly,dbType=VarChar#
+      , #DocYs#
+      , #yswjpath,dbType=VarChar#
+      , #docType,dbType=VarChar#
+      , #docFormat,dbType=VarChar#
+      , #Draft,dbType=VarChar#
+      , #OriOpenPro,dbType=VarChar#
+      , #OrderIndex#
+      )
+    </insert>
+
+    <update id="Update" parameterClass="T_EFile">
+      UPDATE [T_EFile] SET
+      [FileID] = #FileID,dbType=VarChar#
+      , [attachid] = #attachid#
+      , [projectno] = #projectno,dbType=VarChar#
+      , [title] = #title,dbType=VarChar#
+      , [filepath] = #filepath,dbType=VarChar#
+      , [fileTreePath] = #fileTreePath,dbType=VarChar#
+      , [FileOrderIndex] = #FileOrderIndex#
+      , [ArchiveID] = #ArchiveID,dbType=VarChar#
+      , [OrderIndex2] = #OrderIndex2#
+      , [zrzbsm] = #zrzbsm,dbType=VarChar#
+      , [zrzlb] = #zrzlb,dbType=VarChar#
+      , [zrzmc] = #zrzmc,dbType=VarChar#
+      , [zezzzfw] = #zezzzfw,dbType=VarChar#
+      , [ext] = #ext,dbType=VarChar#
+      , [wjly] = #wjly,dbType=VarChar#
+      , [DocYs] = #DocYs#
+      , [yswjpath] = #yswjpath,dbType=VarChar#
+      , [docType] = #docType,dbType=VarChar#
+      , [docFormat] = #docFormat,dbType=VarChar#
+      , [Draft] = #Draft,dbType=VarChar#
+      , [OriOpenPro] = #OriOpenPro,dbType=VarChar#
+      , [OrderIndex] = #OrderIndex#
+      WHERE
+      ([EFileID] = #EFileID,dbType=VarChar#)
+    </update>
+
+    <delete id="Delete" parameterClass="T_EFile">
+      DELETE FROM [T_EFile]
+      WHERE
+      ([EFileID] = #EFileID,dbType=VarChar#)
+    </delete>
+  </statements>
+</sqlMap>

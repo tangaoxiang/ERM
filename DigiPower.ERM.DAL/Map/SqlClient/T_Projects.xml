@@ -1,0 +1,357 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="T_Projects"
+	xmlns="http://ibatis.apache.org/mapping"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <alias>
+    <typeAlias alias="T_Projects" type="ERM.MDL.T_Projects,ERM.MDL" />
+  </alias>
+
+  <resultMaps>
+    <resultMap id="FullResultMap" class="T_Projects">
+      <result property="ItemID" column="ItemID" dbType="VarChar"/>
+      <result property="ProjectNO" column="ProjectNO" dbType="VarChar"/>
+      <result property="district" column="district" dbType="NVarChar"/>
+      <result property="projectname" column="projectname" dbType="NVarChar"/>
+      <result property="address" column="address" dbType="NVarChar"/>
+      <result property="category" column="category" dbType="NVarChar"/>
+      <result property="stru" column="stru" dbType="NVarChar"/>
+      <result property="projecttype" column="projecttype" dbType="NVarChar"/>
+      <result property="high" column="high" dbType="NVarChar"/>
+      <result property="floors1" column="floors1" dbType="NVarChar"/>
+      <result property="floors2" column="floors2" dbType="NVarChar"/>
+      <result property="area1" column="area1" dbType="NVarChar"/>
+      <result property="area2" column="area2" dbType="NVarChar"/>
+      <result property="ydpzcode" column="ydpzcode" dbType="NVarChar"/>
+      <result property="ydxkcode" column="ydxkcode" dbType="NVarChar"/>
+      <result property="ghcode" column="ghcode" dbType="NVarChar"/>
+      <result property="sgcode" column="sgcode" dbType="NVarChar"/>
+      <result property="price1" column="price1" dbType="Float"/>
+      <result property="price2" column="price2" dbType="Float"/>
+      <result property="begindate" column="begindate" dbType="DateTime"/>
+      <result property="bjdate" column="bjdate" dbType="DateTime"/>
+      <result property="passwd" column="passwd" dbType="NVarChar"/>
+      <result property="enddate" column="enddate" dbType="DateTime"/>
+      <result property="tempid" column="tempid" dbType="Int"/>
+      <result property="hjqk" column="hjqk" dbType="NVarChar"/>
+      <result property="zzmj" column="zzmj" dbType="NVarChar"/>
+      <result property="bgyfmj" column="bgyfmj" dbType="NVarChar"/>
+      <result property="syyfmj" column="syyfmj" dbType="NVarChar"/>
+      <result property="cfmj" column="cfmj" dbType="NVarChar"/>
+      <result property="dxsmj" column="dxsmj" dbType="NVarChar"/>
+      <result property="qtyfmj" column="qtyfmj" dbType="NVarChar"/>
+      <result property="ts1" column="ts1" dbType="NVarChar"/>
+      <result property="ts2" column="ts2" dbType="NVarChar"/>
+      <result property="ts3" column="ts3" dbType="NVarChar"/>
+      <result property="ts4" column="ts4" dbType="NVarChar"/>
+      <result property="tstotal" column="tstotal" dbType="NVarChar"/>
+      <result property="zygz" column="zygz" dbType="NVarChar"/>
+      <result property="zjy" column="zjy" dbType="NVarChar"/>
+      <result property="sgbzz" column="sgbzz" dbType="NVarChar"/>
+      <result property="tbr" column="tbr" dbType="NVarChar"/>
+      <result property="jsdwshr" column="jsdwshr" dbType="NVarChar"/>
+      <result property="jldwshr" column="jldwshr" dbType="NVarChar"/>
+      <result property="createdate" column="createdate" dbType="DateTime"/>
+    </resultMap>
+  </resultMaps>
+
+  <statements>
+
+    <select id="GetCount" resultClass="System.Int32">
+      SELECT count(*) FROM [dbo].[T_Projects]
+    </select>
+
+    <select id="GetAll" resultMap="FullResultMap">
+      SELECT *
+      FROM [dbo].[T_Projects]
+    </select>
+
+    <select id="GetList" parameterClass="String" resultClass="System.Data.DataSet">
+      SELECT *
+      FROM [dbo].[T_Projects] WHERE ([T_Projects].[ProjectNO] = #value#)
+    </select>
+
+    <select id="Exists" parameterClass="T_Projects"  resultClass="System.Boolean">
+      SELECT COUNT(1)
+      FROM [dbo].[T_Projects] WHERE
+      ([T_Projects].[ProjectNO] = #ProjectNO,dbType=VarChar#)
+    </select>
+
+    <select id="Find" parameterClass="T_Projects" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Projects] WHERE
+      ([T_Projects].[ProjectNO] = #ProjectNO,dbType=VarChar#)
+    </select>
+    <select id="FindByItemID" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Projects] WHERE ([T_Projects].[ItemID] = #value#)
+    </select>
+    <select id="FindBydistrict" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Projects] WHERE ([T_Projects].[district] = #value#)
+    </select>
+    <select id="FindByprojectname" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Projects] WHERE ([T_Projects].[projectname] = #value#)
+    </select>
+    <select id="FindByaddress" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Projects] WHERE ([T_Projects].[address] = #value#)
+    </select>
+    <select id="FindBycategory" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Projects] WHERE ([T_Projects].[category] = #value#)
+    </select>
+    <select id="FindBystru" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Projects] WHERE ([T_Projects].[stru] = #value#)
+    </select>
+    <select id="FindByprojecttype" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Projects] WHERE ([T_Projects].[projecttype] = #value#)
+    </select>
+    <select id="FindByhigh" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Projects] WHERE ([T_Projects].[high] = #value#)
+    </select>
+    <select id="FindByfloors1" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Projects] WHERE ([T_Projects].[floors1] = #value#)
+    </select>
+    <select id="FindByfloors2" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Projects] WHERE ([T_Projects].[floors2] = #value#)
+    </select>
+    <select id="FindByarea1" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Projects] WHERE ([T_Projects].[area1] = #value#)
+    </select>
+    <select id="FindByarea2" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Projects] WHERE ([T_Projects].[area2] = #value#)
+    </select>
+    <select id="FindByydpzcode" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Projects] WHERE ([T_Projects].[ydpzcode] = #value#)
+    </select>
+    <select id="FindByydxkcode" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Projects] WHERE ([T_Projects].[ydxkcode] = #value#)
+    </select>
+    <select id="FindByghcode" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Projects] WHERE ([T_Projects].[ghcode] = #value#)
+    </select>
+    <select id="FindBysgcode" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Projects] WHERE ([T_Projects].[sgcode] = #value#)
+    </select>
+    <select id="FindByprice1" parameterClass="Double" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Projects] WHERE ([T_Projects].[price1] = #value#)
+    </select>
+    <select id="FindByprice2" parameterClass="Double" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Projects] WHERE ([T_Projects].[price2] = #value#)
+    </select>
+    <select id="FindBybegindate" parameterClass="DateTime" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Projects] WHERE ([T_Projects].[begindate] = #value#)
+    </select>
+    <select id="FindBybjdate" parameterClass="DateTime" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Projects] WHERE ([T_Projects].[bjdate] = #value#)
+    </select>
+    <select id="FindBypasswd" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Projects] WHERE ([T_Projects].[passwd] = #value#)
+    </select>
+    <select id="FindByenddate" parameterClass="DateTime" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Projects] WHERE ([T_Projects].[enddate] = #value#)
+    </select>
+    <select id="FindBytempid" parameterClass="Int32" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Projects] WHERE ([T_Projects].[tempid] = #value#)
+    </select>
+    <select id="FindByhjqk" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Projects] WHERE ([T_Projects].[hjqk] = #value#)
+    </select>
+    <select id="FindByzzmj" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Projects] WHERE ([T_Projects].[zzmj] = #value#)
+    </select>
+    <select id="FindBybgyfmj" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Projects] WHERE ([T_Projects].[bgyfmj] = #value#)
+    </select>
+    <select id="FindBysyyfmj" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Projects] WHERE ([T_Projects].[syyfmj] = #value#)
+    </select>
+    <select id="FindBycfmj" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Projects] WHERE ([T_Projects].[cfmj] = #value#)
+    </select>
+    <select id="FindBydxsmj" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Projects] WHERE ([T_Projects].[dxsmj] = #value#)
+    </select>
+    <select id="FindByqtyfmj" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Projects] WHERE ([T_Projects].[qtyfmj] = #value#)
+    </select>
+    <select id="FindByts1" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Projects] WHERE ([T_Projects].[ts1] = #value#)
+    </select>
+    <select id="FindByts2" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Projects] WHERE ([T_Projects].[ts2] = #value#)
+    </select>
+    <select id="FindByts3" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Projects] WHERE ([T_Projects].[ts3] = #value#)
+    </select>
+    <select id="FindByts4" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Projects] WHERE ([T_Projects].[ts4] = #value#)
+    </select>
+    <select id="FindBytstotal" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Projects] WHERE ([T_Projects].[tstotal] = #value#)
+    </select>
+    <select id="FindByzygz" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Projects] WHERE ([T_Projects].[zygz] = #value#)
+    </select>
+    <select id="FindByzjy" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Projects] WHERE ([T_Projects].[zjy] = #value#)
+    </select>
+    <select id="FindBysgbzz" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Projects] WHERE ([T_Projects].[sgbzz] = #value#)
+    </select>
+    <select id="FindBytbr" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Projects] WHERE ([T_Projects].[tbr] = #value#)
+    </select>
+    <select id="FindByjsdwshr" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Projects] WHERE ([T_Projects].[jsdwshr] = #value#)
+    </select>
+    <select id="FindByjldwshr" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Projects] WHERE ([T_Projects].[jldwshr] = #value#)
+    </select>
+    <select id="FindBycreatedate" parameterClass="DateTime" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Projects] WHERE ([T_Projects].[createdate] = #value#)
+    </select>
+
+    <insert id="Insert" parameterClass="T_Projects">
+      INSERT INTO [dbo].[T_Projects] (
+      [ItemID]
+      , [ProjectNO]
+      , [district]
+      , [projectname]
+      , [address]
+      , [category]
+      , [stru]
+      , [projecttype]
+      , [high]
+      , [floors1]
+      , [floors2]
+      , [area1]
+      , [area2]
+      , [ydpzcode]
+      , [ydxkcode]
+      , [ghcode]
+      , [sgcode]
+      , [price1]
+      , [price2]
+      , [begindate]
+      , [bjdate]
+      , [passwd]
+      , [enddate]
+      , [tempid]
+      , [hjqk]
+      , [zzmj]
+      , [bgyfmj]
+      , [syyfmj]
+      , [cfmj]
+      , [dxsmj]
+      , [qtyfmj]
+      , [ts1]
+      , [ts2]
+      , [ts3]
+      , [ts4]
+      , [tstotal]
+      , [zygz]
+      , [zjy]
+      , [sgbzz]
+      , [tbr]
+      , [jsdwshr]
+      , [jldwshr]
+      , [createdate]
+      ) VALUES (
+      #ItemID,dbType=VarChar#
+      , #ProjectNO,dbType=VarChar#
+      , #district,dbType=NVarChar#
+      , #projectname,dbType=NVarChar#
+      , #address,dbType=NVarChar#
+      , #category,dbType=NVarChar#
+      , #stru,dbType=NVarChar#
+      , #projecttype,dbType=NVarChar#
+      , #high,dbType=NVarChar#
+      , #floors1,dbType=NVarChar#
+      , #floors2,dbType=NVarChar#
+      , #area1,dbType=NVarChar#
+      , #area2,dbType=NVarChar#
+      , #ydpzcode,dbType=NVarChar#
+      , #ydxkcode,dbType=NVarChar#
+      , #ghcode,dbType=NVarChar#
+      , #sgcode,dbType=NVarChar#
+      , #price1,dbType=Float#
+      , #price2,dbType=Float#
+      , #begindate,dbType=DateTime#
+      , #bjdate,dbType=DateTime#
+      , #passwd,dbType=NVarChar#
+      , #enddate,dbType=DateTime#
+      , #tempid,dbType=Int#
+      , #hjqk,dbType=NVarChar#
+      , #zzmj,dbType=NVarChar#
+      , #bgyfmj,dbType=NVarChar#
+      , #syyfmj,dbType=NVarChar#
+      , #cfmj,dbType=NVarChar#
+      , #dxsmj,dbType=NVarChar#
+      , #qtyfmj,dbType=NVarChar#
+      , #ts1,dbType=NVarChar#
+      , #ts2,dbType=NVarChar#
+      , #ts3,dbType=NVarChar#
+      , #ts4,dbType=NVarChar#
+      , #tstotal,dbType=NVarChar#
+      , #zygz,dbType=NVarChar#
+      , #zjy,dbType=NVarChar#
+      , #sgbzz,dbType=NVarChar#
+      , #tbr,dbType=NVarChar#
+      , #jsdwshr,dbType=NVarChar#
+      , #jldwshr,dbType=NVarChar#
+      , #createdate,dbType=DateTime#
+      )
+    </insert>
+
+    <update id="Update" parameterClass="T_Projects">
+      UPDATE [dbo].[T_Projects] SET
+      [ItemID] = #ItemID,dbType=VarChar#
+      , [district] = #district,dbType=NVarChar#
+      , [projectname] = #projectname,dbType=NVarChar#
+      , [address] = #address,dbType=NVarChar#
+      , [category] = #category,dbType=NVarChar#
+      , [stru] = #stru,dbType=NVarChar#
+      , [projecttype] = #projecttype,dbType=NVarChar#
+      , [high] = #high,dbType=NVarChar#
+      , [floors1] = #floors1,dbType=NVarChar#
+      , [floors2] = #floors2,dbType=NVarChar#
+      , [area1] = #area1,dbType=NVarChar#
+      , [area2] = #area2,dbType=NVarChar#
+      , [ydpzcode] = #ydpzcode,dbType=NVarChar#
+      , [ydxkcode] = #ydxkcode,dbType=NVarChar#
+      , [ghcode] = #ghcode,dbType=NVarChar#
+      , [sgcode] = #sgcode,dbType=NVarChar#
+      , [price1] = #price1,dbType=Float#
+      , [price2] = #price2,dbType=Float#
+      , [begindate] = #begindate,dbType=DateTime#
+      , [bjdate] = #bjdate,dbType=DateTime#
+      , [passwd] = #passwd,dbType=NVarChar#
+      , [enddate] = #enddate,dbType=DateTime#
+      , [tempid] = #tempid,dbType=Int#
+      , [hjqk] = #hjqk,dbType=NVarChar#
+      , [zzmj] = #zzmj,dbType=NVarChar#
+      , [bgyfmj] = #bgyfmj,dbType=NVarChar#
+      , [syyfmj] = #syyfmj,dbType=NVarChar#
+      , [cfmj] = #cfmj,dbType=NVarChar#
+      , [dxsmj] = #dxsmj,dbType=NVarChar#
+      , [qtyfmj] = #qtyfmj,dbType=NVarChar#
+      , [ts1] = #ts1,dbType=NVarChar#
+      , [ts2] = #ts2,dbType=NVarChar#
+      , [ts3] = #ts3,dbType=NVarChar#
+      , [ts4] = #ts4,dbType=NVarChar#
+      , [tstotal] = #tstotal,dbType=NVarChar#
+      , [zygz] = #zygz,dbType=NVarChar#
+      , [zjy] = #zjy,dbType=NVarChar#
+      , [sgbzz] = #sgbzz,dbType=NVarChar#
+      , [tbr] = #tbr,dbType=NVarChar#
+      , [jsdwshr] = #jsdwshr,dbType=NVarChar#
+      , [jldwshr] = #jldwshr,dbType=NVarChar#
+      , [createdate] = #createdate,dbType=DateTime#
+      WHERE
+      ([ProjectNO] = #ProjectNO,dbType=VarChar#)
+    </update>
+
+    <delete id="Delete" parameterClass="T_Projects">
+      DELETE FROM [dbo].[T_Projects]
+      WHERE
+      ([ProjectNO] = #ProjectNO,dbType=VarChar#)
+    </delete>
+  </statements>
+</sqlMap>

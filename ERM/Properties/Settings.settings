@@ -1,0 +1,141 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ERM.UI.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="SPDFPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Pdf</Value>
+    </Setting>
+    <Setting Name="ODOCPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ODoc</Value>
+    </Setting>
+    <Setting Name="MPDFPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">MPdf</Value>
+    </Setting>
+    <Setting Name="CellPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Template</Value>
+    </Setting>
+    <Setting Name="ProjectPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Project</Value>
+    </Setting>
+    <Setting Name="PDFTemp" Type="System.String" Scope="User">
+      <Value Profile="(Default)">PDFTemp</Value>
+    </Setting>
+    <Setting Name="descriptive" Type="System.String" Scope="User">
+      <Value Profile="(Default)">descriptive</Value>
+    </Setting>
+    <Setting Name="DagDh" Type="System.String" Scope="User">
+      <Value Profile="(Default)">档案馆代号</Value>
+    </Setting>
+    <Setting Name="BackupData" Type="System.String" Scope="User">
+      <Value Profile="(Default)">BackupData</Value>
+    </Setting>
+    <Setting Name="tuzhang" Type="System.String" Scope="User">
+      <Value Profile="(Default)">100,100</Value>
+    </Setting>
+    <Setting Name="SignatureModel" Type="System.String" Scope="User">
+      <Value Profile="(Default)">单页签章</Value>
+    </Setting>
+    <Setting Name="SignatureModelPositionX" Type="System.String" Scope="User">
+      <Value Profile="(Default)">237</Value>
+    </Setting>
+    <Setting Name="SignatureModelPositionY" Type="System.String" Scope="User">
+      <Value Profile="(Default)">357</Value>
+    </Setting>
+    <Setting Name="SipIncludeDoc" Type="System.String" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="IsFont" Type="System.String" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="FilterType" Type="System.String" Scope="User">
+      <Value Profile="(Default)">JPG,GIF,BMP,XML,DOC,XLS,PPT,TIF,PDF,DWG,CLL|*.JPG;*.GIF;*.BMP;*.XML;*.DOC;*.XLS;*.PPT;*.TIF;*.PDF;*.DWG;*.CLL|JPG|*.JPG|GIF|*.GIF|BMP|*.BMP|XML|*.XML|DOC|*.DOC|XLS|*.XLS|PPT|*.PPT|TIF|*.TIF|PDF|*.PDF|DWG|*.DWG|CLL|*.CLL</Value>
+    </Setting>
+    <Setting Name="TreeWidth" Type="System.String" Scope="User">
+      <Value Profile="(Default)">320</Value>
+    </Setting>
+    <Setting Name="PrintType" Type="System.String" Scope="User">
+      <Value Profile="(Default)">JPG;XML;DOC;TIF;GIF;BMP;XLS;PPT;PDF;CLL;DWG;</Value>
+    </Setting>
+    <Setting Name="PrintYjml" Type="System.String" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="CellPrinterFoot" Type="System.String" Scope="User">
+      <Value Profile="(Default)">格力房产有限公司</Value>
+    </Setting>
+    <Setting Name="IsPageNo" Type="System.String" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="PageNoLocationX" Type="System.String" Scope="User">
+      <Value Profile="(Default)">50</Value>
+    </Setting>
+    <Setting Name="PageNoLocationY" Type="System.String" Scope="User">
+      <Value Profile="(Default)">50</Value>
+    </Setting>
+    <Setting Name="PageNoLocationSize" Type="System.String" Scope="User">
+      <Value Profile="(Default)">25</Value>
+    </Setting>
+    <Setting Name="IsSignature" Type="System.String" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="TreeSelect" Type="System.String" Scope="User">
+      <Value Profile="(Default)">CJDAG</Value>
+    </Setting>
+    <Setting Name="Module1" Type="System.String" Scope="User">
+      <Value Profile="(Default)">28E6AC73-C17E-4568-AC9F-27FF92BBD43F</Value>
+    </Setting>
+    <Setting Name="Module2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">28E6AC73-C17E-4568-AC9F-27FF92BBD43F</Value>
+    </Setting>
+    <Setting Name="lbl_ProjectNO" Type="System.String" Scope="User">
+      <Value Profile="(Default)">工程编号(备案号)</Value>
+    </Setting>
+    <Setting Name="lbl_wh1" Type="System.String" Scope="User">
+      <Value Profile="(Default)">工程用地批准书号</Value>
+    </Setting>
+    <Setting Name="lbl_wh2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">用地规划许可证号</Value>
+    </Setting>
+    <Setting Name="lbl_wh3" Type="System.String" Scope="User">
+      <Value Profile="(Default)">工程规划许可证号</Value>
+    </Setting>
+    <Setting Name="lbl_wh4" Type="System.String" Scope="User">
+      <Value Profile="(Default)">工程施工许可证号</Value>
+    </Setting>
+    <Setting Name="Module3" Type="System.String" Scope="User">
+      <Value Profile="(Default)">28E6AC73-C17E-4568-AC9F-27FF92BBD43F</Value>
+    </Setting>
+    <Setting Name="Module4" Type="System.String" Scope="User">
+      <Value Profile="(Default)">28E6AC73-C17E-4568-AC9F-27FF92BBD43F</Value>
+    </Setting>
+    <Setting Name="ProjectNameBind" Type="System.String" Scope="User">
+      <Value Profile="(Default)">28E6AC73-C17E-4568-AC9F-27FF92BBD43F</Value>
+    </Setting>
+    <Setting Name="Project_Add" Type="System.String" Scope="User">
+      <Value Profile="(Default)">28E6AC73-C17E-4568-AC9F-27FF92BBD43F</Value>
+    </Setting>
+    <Setting Name="Project_Modefy" Type="System.String" Scope="User">
+      <Value Profile="(Default)">28E6AC73-C17E-4568-AC9F-27FF92BBD43F</Value>
+    </Setting>
+    <Setting Name="Project_Del" Type="System.String" Scope="User">
+      <Value Profile="(Default)">28E6AC73-C17E-4568-AC9F-27FF92BBD43F</Value>
+    </Setting>
+    <Setting Name="fd" Type="System.String" Scope="User">
+      <Value Profile="(Default)">d</Value>
+    </Setting>
+    <Setting Name="lbl_t2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">联系电话：0755-83995038</Value>
+    </Setting>
+    <Setting Name="lbl_t1" Type="System.String" Scope="User">
+      <Value Profile="(Default)">深圳市世纪伟图科技开发有限公司</Value>
+    </Setting>
+    <Setting Name="lbl_t3" Type="System.String" Scope="User">
+      <Value Profile="(Default)">QQ：2689428488</Value>
+    </Setting>
+    <Setting Name="lbl_phone" Type="System.String" Scope="User">
+      <Value Profile="(Default)">联系电话：0755-83995038</Value>
+    </Setting>
+    <Setting Name="lbl_QQ" Type="System.String" Scope="User">
+      <Value Profile="(Default)">QQ：2689428488</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

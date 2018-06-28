@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="T_FileListTemplate"
+	xmlns="http://ibatis.apache.org/mapping"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <alias>
+    <typeAlias alias="T_FileListTemplate" type="ERM.MDL.T_FileListTemplate,ERM.MDL" />
+  </alias>
+
+  <resultMaps>
+    <resultMap id="FullResultMap" class="T_FileListTemplate">
+      <result property="FileID" column="FileID" dbType="VarChar"/>
+      <result property="ParentID" column="ParentID" dbType="VarChar"/>
+      <result property="OrderIndex" column="OrderIndex" dbType="Int"/>
+      <result property="gdwj" column="gdwj" dbType="VarChar"/>
+      <result property="isvisible" column="isvisible" dbType="Int"/>
+      <result property="ParentID_OLD" column="ParentID_OLD" dbType="VarChar"/>
+      <result property="jsdw" column="jsdw" dbType="VarChar"/>
+      <result property="sgdw" column="sgdw" dbType="VarChar"/>
+      <result property="sjdw" column="sjdw" dbType="VarChar"/>
+      <result property="jldw" column="jldw" dbType="VarChar"/>
+      <result property="cjdag" column="cjdag" dbType="VarChar"/>
+      <result property="datawindow_id" column="datawindow_id" dbType="VarChar"/>
+      <result property="table_name" column="table_name" dbType="VarChar"/>
+      <result property="table_standerd" column="table_standerd" dbType="VarChar"/>
+      <result property="extension1" column="extension1" dbType="VarChar"/>
+      <result property="extension2" column="extension2" dbType="VarChar"/>
+      <result property="extension3" column="extension3" dbType="VarChar"/>
+      <result property="wjmj" column="wjmj" dbType="VarChar"/>
+      <result property="gclx" column="gclx" dbType="VarChar"/>
+      <result property="GDID" column="GDID" dbType="VarChar"/>
+      <result property="ProjectCategory" column="ProjectCategory" dbType="VarChar"/>
+    </resultMap>
+  </resultMaps>
+
+  <statements>
+
+    <select id="GetCount" resultClass="System.Int32">
+      SELECT count(*) FROM [T_FileListTemplate]
+    </select>
+    <select id="FindByProjectCategory" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_FileListTemplate] WHERE ([T_FileListTemplate].[ProjectCategory] = #value# and ParentID<![CDATA[=]]>"")
+    </select>
+    <select id="GetAll" resultMap="FullResultMap">
+      SELECT *
+      FROM [T_FileListTemplate] ORDER BY ORDERINDEX
+    </select>
+
+    <select id="GetList" parameterClass="T_FileListTemplate" resultClass="System.Data.DataSet">
+      SELECT  * 
+      FROM [T_FileListTemplate] where (ParentID<![CDATA[<>]]>"") 
+      <isNotNull property="ProjectCategory">
+        <isNotEmpty property="ProjectCategory">
+          AND ProjectCategory=#ProjectCategory,dbType=VarChar# 
+        </isNotEmpty>
+      </isNotNull>
+      <isNotNull property="gdwj">
+        <isNotEmpty property="gdwj">
+          AND gdwj like '%$gdwj$%'
+        </isNotEmpty>
+      </isNotNull>
+      <isNotNull property="GDID">
+        <isNotEmpty property="GDID">
+          AND GDID = #GDID,dbType=VarChar#
+        </isNotEmpty>
+      </isNotNull>
+      and gdid is not null
+      ORDER BY projectCategory,ORDERINDEX
+    </select>
+
+    <select id="Find" parameterClass="T_FileListTemplate" resultMap="FullResultMap">
+      SELECT * FROM [T_FileListTemplate] where ProjectCategory=#ProjectCategory#
+      AND (ParentID<![CDATA[<>]]>"") 
+      and gdid is null
+      ORDER BY ORDERINDEX
+    </select>
+    
+    <update id="Update" parameterClass="T_FileListTemplate">
+      UPDATE [T_FileListTemplate] SET
+      gdwj = #gdwj#,
+      GDID=#GDID#,
+      OrderIndex = #OrderIndex#
+      where FileID=#FileID#
+    </update>
+
+    <insert id="Insert" parameterClass="T_FileListTemplate">
+      INSERT INTO T_FileListTemplate(FileID,ParentID,gdwj,OrderIndex,isvisible,ProjectCategory,GDID)
+      VALUES (#FileID#,#ParentID#,#gdwj#,#OrderIndex#,#isvisible#,#ProjectCategory#,#GDID#)
+    </insert>
+
+    <select id="FindByid" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_FileListTemplate] WHERE ([T_FileListTemplate].[fileid] = #value#)
+    </select>
+
+    <select id="GetAllByCategory" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_FileListTemplate] WHERE ([T_FileListTemplate].[ProjectCategory] = #value#)
+    </select>
+    <select id="GetFileTypeByCategory" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_FileListTemplate] WHERE ([T_FileListTemplate].[ProjectCategory] = #value#) 
+      and gdid is null and (ParentID<![CDATA[<>]]>"") order by orderindex
+    </select>
+    <delete id="Delete" parameterClass="String">
+      DELETE FROM [T_FileListTemplate]
+      WHERE
+      FileID= #value,dbType=VarChar#
+    </delete>
+  </statements>
+</sqlMap>

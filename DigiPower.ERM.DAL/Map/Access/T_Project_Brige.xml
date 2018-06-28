@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<sqlMap namespace="T_Project_Brige" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <alias>
+    <typeAlias alias="T_Project_Brige" type="ERM.MDL.T_Project_Brige,ERM.MDL" />
+  </alias>
+  <resultMaps>
+    <resultMap id="FullResultMap" class="T_Project_Brige">
+      <result property="ID" column="ID" />
+      <result property="ProjectID" column="ProjectID" />
+      <result property="StuructType" column="StuructType" />
+      <result property="Level" column="Level" />
+      <result property="Longs" column="Longs" />
+      <result property="Width" column="Width" />
+      <result property="KJ" column="KJ" />
+      <result property="JK" column="JK" />
+      <result property="JCXS" column="JCXS" />
+      <result property="SBGZ" column="SBGZ" />
+      <result property="XBGZ" column="XBGZ" />
+      <result property="MCXS" column="MCXS" />
+      <result property="ACJGXS" column="ACJGXS" />
+      <result property="DZ" column="DZ" />
+      <result property="SSF" column="SSF" />
+      <result property="Remark" column="Remark" />
+      <result property="HZ" column="HZ" />
+      <result property="GCYS" column="GCYS" />
+      <result property="GCJS" column="GCJS" />
+      <result property="ZCD" column="ZCD" />
+      <result property="KZ" column="KZ" />
+      <result property="LB" column="LB" />
+      <result property="GCZL" column="GCZL" />
+      <result property="HJQK" column="HJQK" />
+    </resultMap>
+  </resultMaps>
+
+  <statements>
+    <select id="QueryBrige_ByProjID" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Project_Brige] WHERE
+      ([T_Project_Brige].[ProjectID] = #value#)
+    </select>
+
+    <insert id="InsertT_Brige" parameterClass="T_Project_Brige" useGeneratedKeys="false">
+      Insert Into T_Project_Brige (
+      ID,
+      ProjectID,
+      StuructType,
+      [Level],
+      Longs,
+      [Width],
+      KJ,
+      JK,
+      JCXS,
+      SBGZ,
+      XBGZ,
+      MCXS,
+      ACJGXS,
+      DZ,
+      SSF,
+      Remark,
+      HZ,
+      GCYS,
+      GCJS
+      ,ZCD
+      ,HJQK
+      ,KZ
+      ,LB
+      ,GCZL
+      )Values(
+      #ID#,
+      #ProjectID#,
+      #StuructType#,
+      #Level#,
+      #Longs#,
+      #Width#,
+      #KJ#,
+      #JK#,
+      #JCXS#,
+      #SBGZ#,
+      #XBGZ#,
+      #MCXS#,
+      #ACJGXS#,
+      #DZ#,
+      #SSF#,
+      #Remark#,
+      #HZ#,
+      #GCYS#,
+      #GCJS#
+      ,#ZCD#
+      ,#HJQK#
+      ,#KZ#
+      ,#LB#
+      ,#GCZL#
+      )
+    </insert>
+
+    <update id="UpdateT_Brige" parameterClass="T_Project_Brige">
+      Update T_Project_Brige Set
+      StuructType=#StuructType#,
+      [Level]=#Level#,
+      Longs=#Longs#,
+      [Width]=#Width#,
+      KJ=#KJ#,
+      JK=#JK#,
+      JCXS=#JCXS#,
+      SBGZ=#SBGZ#,
+      XBGZ=#XBGZ#,
+      MCXS=#MCXS#,
+      ACJGXS=#ACJGXS#,
+      DZ=#DZ#,
+      SSF=#SSF#,
+      Remark=#Remark#,
+      HZ=#HZ#,
+      GCYS=#GCYS#,
+      GCJS=#GCJS#
+      ,ZCD=#ZCD#
+      ,HJQK=#HJQK#
+      ,KZ=#KZ#
+      ,LB=#LB#
+      ,GCZL=#GCZL#
+      <dynamic prepend="WHERE">
+        <isParameterPresent>
+          ID=#ID#
+        </isParameterPresent>
+      </dynamic>
+    </update>
+
+    <delete id="DeleteT_Brige" parameterClass="String">
+      Delete From T_Project_Brige
+      <dynamic prepend="WHERE">
+        <isParameterPresent>
+          ID=#value#
+        </isParameterPresent>
+      </dynamic>
+    </delete>
+    <delete id="DeleteBrigeByProjectNO" parameterClass="String">
+      Delete From T_Project_Brige
+      <dynamic prepend="WHERE">
+        <isParameterPresent>
+          ProjectID=#value#
+        </isParameterPresent>
+      </dynamic>
+    </delete>
+  </statements>
+</sqlMap>

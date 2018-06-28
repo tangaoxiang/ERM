@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="T_Users"
+	xmlns="http://ibatis.apache.org/mapping"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <alias>
+    <typeAlias alias="T_Users" type="ERM.MDL.T_Users,ERM.MDL" />
+  </alias>
+
+  <resultMaps>
+    <resultMap id="FullResultMap" class="T_Users">
+      <result property="userid" column="userid" dbType="Int"/>
+      <result property="login" column="login" dbType="VarChar"/>
+      <result property="password" column="password" dbType="VarChar"/>
+      <result property="fullname" column="fullname" dbType="VarChar"/>
+      <result property="title" column="title" dbType="VarChar"/>
+      <result property="phone" column="phone" dbType="VarChar"/>
+      <result property="sh" column="sh" dbType="Int"/>
+      <result property="theme" column="theme" dbType="Int"/>
+      <result property="units" column="units" dbType="VarChar"/>
+      <result property="unitstype" column="unitstype" dbType="VarChar"/>
+    </resultMap>
+  </resultMaps>
+
+  <statements>
+
+    <select id="GetCount" resultClass="System.Int32">
+      SELECT count(*) FROM [T_Users]
+    </select>
+
+    <select id="GetAll" resultMap="FullResultMap">
+      SELECT *
+      FROM [T_Users]
+    </select>
+
+    <select id="GetList" parameterClass="String" resultClass="System.Data.DataSet">
+      SELECT *
+      FROM [T_Users] WHERE (#value,dbType=VarChar#)
+    </select>
+
+    <select id="Exists" parameterClass="T_Users"  resultClass="System.Boolean">
+      SELECT COUNT(1)
+      FROM [T_Users] WHERE
+      ([T_Users].[userid] = #userid#)
+    </select>
+
+    <select id="Find" parameterClass="T_Users" resultMap="FullResultMap">
+      SELECT * FROM [T_Users] WHERE
+      ([T_Users].[userid] = #userid#)
+    </select>
+    <select id="FindBylogin" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Users] WHERE ([T_Users].[login] = #value#)
+    </select>
+    <select id="FindBypassword" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Users] WHERE ([T_Users].[password] = #value#)
+    </select>
+    <select id="FindByfullname" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Users] WHERE ([T_Users].[fullname] = #value#)
+    </select>
+    <select id="FindBytitle" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Users] WHERE ([T_Users].[title] = #value#)
+    </select>
+    <select id="FindByphone" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Users] WHERE ([T_Users].[phone] = #value#)
+    </select>
+    <select id="FindBysh" parameterClass="Int32" resultMap="FullResultMap">
+      SELECT * FROM [T_Users] WHERE ([T_Users].[sh] = #value#)
+    </select>
+    <select id="FindBytheme" parameterClass="Int32" resultMap="FullResultMap">
+      SELECT * FROM [T_Users] WHERE ([T_Users].[theme] = #value#)
+    </select>
+    <select id="FindByunits" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Users] WHERE ([T_Users].[units] = #value#)
+    </select>
+    <select id="FindByunitstype" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Users] WHERE ([T_Users].[unitstype] = #value#)
+    </select>
+
+    <insert id="Insert" parameterClass="T_Users">
+      INSERT INTO [T_Users] (
+      [login]
+      , [password]
+      , [fullname]
+      , [title]
+      , [phone]
+      , [sh]
+      , [theme]
+      , [units]
+      , [unitstype]
+      ) VALUES (
+      #login,dbType=VarChar#
+      , #password,dbType=VarChar#
+      , #fullname,dbType=VarChar#
+      , #title,dbType=VarChar#
+      , #phone,dbType=VarChar#
+      , #sh#
+      , #theme#
+      , #units,dbType=VarChar#
+      , #unitstype,dbType=VarChar#
+      )
+    </insert>
+
+    <update id="Update" parameterClass="T_Users">
+      UPDATE [T_Users] SET
+      [login] = #login,dbType=VarChar#
+      , [password] = #password,dbType=VarChar#
+      , [fullname] = #fullname,dbType=VarChar#
+      , [title] = #title,dbType=VarChar#
+      , [phone] = #phone,dbType=VarChar#
+      , [sh] = #sh#
+      , [theme] = #theme#
+      , [units] = #units,dbType=VarChar#
+      , [unitstype] = #unitstype,dbType=VarChar#
+      WHERE
+      ([userid] = #userid#)
+    </update>
+
+    <delete id="Delete" parameterClass="T_Users">
+      DELETE FROM [T_Users]
+      WHERE
+      ([userid] = #userid#)
+    </delete>
+  </statements>
+</sqlMap>

@@ -1,0 +1,819 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+using DigiPower.ERM.Common;
+
+namespace DigiPower.ERM
+{
+    public partial class frmProject : Form
+    {
+
+        public bool HasChange = false;
+        private bool Welcome;
+        #region
+        /// <summary>
+        /// 工程编号主键
+        /// </summary>
+        private string projectno;
+        public string ProjectNo
+        {
+            set { this.projectno = value; }
+            get { return this.projectno; }
+        }
+
+        //单位信息数据集
+        private DataView dvUnits;
+
+        public frmProject(string _projectNo)
+        {
+            InitializeComponent();
+            this.ProjectNo = _projectNo;
+            //cPanel1.Dock = DockStyle.Fill;
+            cPanel2.Dock = DockStyle.Fill;
+        }
+
+        public frmProject(string _projectNo,bool _welcome)
+        {
+            InitializeComponent();
+            this.ProjectNo = _projectNo;
+            //cPanel1.Dock = DockStyle.Fill;
+            cPanel2.Dock = DockStyle.Fill;
+            Welcome = _welcome;
+        }
+
+        #endregion
+        private void frmProject_Load(object sender, EventArgs e)
+        {
+            Init();
+        }
+
+        DigiPower.ERM.Model.Projects model_Pro;
+        DigiPower.ERM.Model.Item model_Item;
+        DigiPower.ERM.BLL.Units unitData;
+        //初始化
+        private void Init()
+        {
+            DigiPower.ERM.BLL.Dict dicData = new DigiPower.ERM.BLL.Dict();
+            DigiPower.ERM.BLL.District disData = new DigiPower.ERM.BLL.District();
+            DigiPower.ERM.BLL.Projects proData = new DigiPower.ERM.BLL.Projects();
+            unitData = new DigiPower.ERM.BLL.Units();
+
+            DataSet ds;
+
+            //区域
+            ds = disData.GetList("");
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            {
+                cboDistrict.Items.Add(ds.Tables[0].Rows[i]["DistrictName"].ToString());
+            }
+            if (cboDistrict.Items.Count > 0)
+            {
+                cboDistrict.SelectedIndex = 0;
+            }
+
+            //结构类型
+            ds = dicData.GetList("  KeyWord='stru' order by orderindex");
+            cboStru.DisplayMember = "displayname";
+            cboStru.ValueMember = "valuename";
+            cboStru.DataSource = ds.Tables[0].DefaultView;
+
+            //工程类别
+            ds = dicData.GetList("  KeyWord='projecttype' order by orderindex");
+            cboProjectType.DisplayMember = "displayname";
+            cboProjectType.ValueMember = "valuename";
+            cboProjectType.DataSource = ds.Tables[0].DefaultView;
+
+            //初始化工程相关资料
+            if (ProjectNo != "")  //编辑模式
+            {
+                //编辑情况下工程代码、组卷模板为不可改
+                txtProjectNo.Enabled = false;
+
+                //取得工程基本信息
+                model_Pro = proData.GetModel(ProjectNo);
+                model_Item = new DigiPower.ERM.BLL.Item().GetModel(model_Pro.ItemID);
+                DataTable dt = ds.Tables[0];
+                if (dt.Rows.Count > 0)
+                {
+                    txtProjectNo.Text = model_Pro.projectno; //工程代码
+                    cboDistrict.Text = model_Pro.district; //区域
+                    txtProjectName.Text = model_Pro.projectname;  //工程名称
+                    txtAddress.Text = model_Pro.address;  //工程地址
+                    txtCategory.Text = model_Pro.category;  //建筑性质
+                    cboStru.Text = model_Pro.stru;  //结构类型
+                    cboProjectType.Text = model_Pro.projecttype;  //工程类别
+                    txtHigh.Text = model_Pro.high.ToString();  //高度
+                    txtFloors1.Text = model_Pro.floors1.ToString(); //地上层数
+                    txtFloors2.Text = model_Pro.floors2.ToString(); //地下层数
+                    txtArea1.Text = model_Pro.area1.ToString();  //建筑面积
+                    txtArea2.Text = model_Pro.area2.ToString();  //用地面积
+                    txtYdpzcode.Text = model_Pro.ydpzcode; //工程用地批准书号
+                    txtYdxkcode.Text = model_Pro.ydxkcode; //用地规划许可证号
+                    txtGhcode.Text = model_Pro.ghcode;  //规划许可证号
+                    txtSgcode.Text = model_Pro.sgcode; //工程施工许可证号
+                    txtPrice1.Text = model_Pro.price1.ToString(); //工程预算
+                    txtPrice2.Text = model_Pro.price2.ToString(); //工程决算
+                    dtpBeginDate.Value = model_Pro.begindate; //开工日期
+                    //竣工日期
+                    if (model_Pro.enddate.ToString("yyyy-MM-dd") == "1905-03-12")
+                    {
+                        dtpEndDate.Checked = false;
+                    }
+                    else
+                        dtpEndDate.Value = model_Pro.enddate; 
+
+                    //工程
+                    txtZzmj.Text = model_Pro.zzmj;
+                    txtBgyfmj.Text = model_Pro.bgyfmj;
+                    txtSyyfmj.Text = model_Pro.syyfmj;
+                    txtCfmj.Text = model_Pro.cfmj;
+                    txtDxsmj.Text = model_Pro.dxsmj;
+                    txtQtyfmj.Text = model_Pro.qtyfmj;
+                    txtTs1.Text = model_Pro.ts1;
+                    txtTs2.Text = model_Pro.ts2;
+                    txtTs3.Text = model_Pro.ts3;
+                    txtTs4.Text = model_Pro.ts4;
+                    txtTsTotal.Text = model_Pro.tstotal;
+                    txtHjqk.Text = model_Pro.hjqk;
+                    txtZygz.Text = model_Pro.zygz;
+                    txtZjy.Text = model_Pro.zjy;
+                    txtSgbzz.Text = model_Pro.sgbzz;
+                    txtTbr.Text = model_Pro.tbr;
+                    txtJsdwshr.Text = model_Pro.jsdwshr;
+                    txtJldwshr.Text = model_Pro.jldwshr;
+
+
+
+                    dtpBjDate.Value = model_Pro.bjdate; //报建日期
+                    txtPasswd.Text = model_Pro.passwd; //为工程设置密码
+                }
+
+                //取得单位信息
+                dvUnits = unitData.GetList(" projectno='" + projectno + "'").Tables[0].DefaultView;
+            }
+            else
+            {
+                btnExpotProject.Visible = false;
+                model_Pro = new DigiPower.ERM.Model.Projects();
+                model_Item = new DigiPower.ERM.Model.Item();
+
+                #region 赋0值
+                model_Item.ConStructionProjectName = "";
+                //model_Item.Respective = "";
+                //model_Item.ConstructionProjectAdd = "";
+                //model_Item.ProjectType = "";
+                model_Item.UseSoiAreaSum = "0";
+                model_Item.ConstructionAreaSum = "0";
+                //model_Item.ConstructionScale = "0";
+                model_Item.ProjectCost = "0";
+                model_Item.ProjectSettlement = "0";
+                //model_Item.StartDate = "";
+                //model_Item.FinishDate = "";
+                //model_Item.UseSoiType = "0";
+                //model_Item.CollectionType = "";
+                //model_Item.OriginalSoiType = "";
+                model_Item.UseSoiArea = "0";
+                //model_Item.Approvedate = "0";
+                //model_Item.CreateUnit = "";
+                //model_Item.ItemFzr = "";
+                model_Item.AllCost = "0";
+                model_Item.VolumeFar = "0";
+                model_Item.GreenFar = "0";
+                model_Item.BuildingDensity = "0";
+                #endregion
+                dvUnits = unitData.GetList(" projectno=''").Tables[0].DefaultView;
+            }
+
+
+
+            //选中工程信息选单
+            //this.LinkClicked(lblProjectInfo, null);
+        }
+        #region Link 相关操作
+        //点击各 Link 引发的事件
+        private void LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            //link的反应
+            LinkLabel link = (LinkLabel)sender;
+
+            ClearLinkBackColor();  //清楚背景色
+            link.BackColor = Color.FromArgb(214, 214, 214);  //设置背景颜色
+
+            //右边Panel的反应
+            if (link.Name == "lblProjectInfo")
+            {
+                //cPanel1.Visible = true;
+                cPanel2.Visible = false;
+            }
+            else
+            {
+                //cPanel1.Visible = false;
+                cPanel2.Visible = true;
+
+                //加载数据
+                if (link.Name == "lblUnitAll")
+                {
+                    txtUnittype.Text = "";
+                    LoadDataFromView(string.Empty);
+                }
+                else
+                {
+                    txtUnittype.Text = link.Name.Replace("lbl", "").ToLower();  //当前的单位类别
+                    LoadDataFromView(link.Name.Replace("lbl", "").ToLower());
+                }
+            }
+        }
+
+        //清楚所有 Link 的背景颜色
+        private void ClearLinkBackColor()
+        {
+            //lblProjectInfo.BackColor = tableLayoutPanel1.BackColor;
+            lblUnit1.BackColor = tableLayoutPanel1.BackColor;
+            lblUnit2.BackColor = tableLayoutPanel1.BackColor;
+            lblUnit3.BackColor = tableLayoutPanel1.BackColor;
+            lblUnit4.BackColor = tableLayoutPanel1.BackColor;
+            lblUnit5.BackColor = tableLayoutPanel1.BackColor;
+            lblUnit6.BackColor = tableLayoutPanel1.BackColor;
+            lblUnit7.BackColor = tableLayoutPanel1.BackColor;
+            lblUnit8.BackColor = tableLayoutPanel1.BackColor;
+            lblUnit9.BackColor = tableLayoutPanel1.BackColor;
+            lblUnit10.BackColor = tableLayoutPanel1.BackColor;
+            lblUnit11.BackColor = tableLayoutPanel1.BackColor;
+            lblUnit12.BackColor = tableLayoutPanel1.BackColor;
+            lblUnit13.BackColor = tableLayoutPanel1.BackColor;
+            lblUnitAll.BackColor = tableLayoutPanel1.BackColor;
+        }
+        #endregion
+
+        #region button事件
+
+        //建筑性质
+        private void btnCategoryMore_Click(object sender, EventArgs e)
+        {
+            frmCategory frm = new frmCategory(true);
+            frm.ShowDialog();
+            txtCategory.Text = frm.strCategory;
+        }
+
+        //项目信息
+        private void btnInfoExt_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(model_Item.ConStructionProjectName))
+            {
+                model_Item.ConStructionProjectName = txtProjectName.Text;
+            }
+            if (string.IsNullOrEmpty(model_Item.ConstructionProjectAdd ))
+            {
+                model_Item.ConstructionProjectAdd = txtAddress.Text;
+            }
+            if (string.IsNullOrEmpty(model_Item.Respective))
+            {
+                model_Item.Respective = cboDistrict.Text;
+            }
+            if (string.IsNullOrEmpty(model_Item.ProjectType))
+            {
+                model_Item.ProjectType = cboProjectType.Text;
+            }
+            frmProjectInfoExt frmExt = new frmProjectInfoExt(model_Pro, model_Item);
+
+            frmExt.ShowDialog();
+
+        }
+
+        //删除单位信息
+        private void btnDel_Click(object sender, EventArgs e)
+        {
+            if (Dgv1.Rows.Count == 0) return;
+            if (Dgv1.CurrentRow.Index < 0) return;
+            string unitid = Dgv1.Rows[Dgv1.CurrentRow.Index].Cells[0].Value.ToString(); //当前unitid
+            dvUnits.Sort = "unitid";
+            int index = dvUnits.Find(unitid);
+            dvUnits.Delete(index);
+
+            //从缓存中载入数据到Grid
+            this.LoadDataFromView(txtUnittype.Text);
+        }
+
+        //新增  单位信息
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            frmUnit frm = new frmUnit(txtUnittype.Text, null);
+            DialogResult ret = frm.ShowDialog();
+            if (ret == DialogResult.OK)
+            {
+                string unittype = frm.cboUnittype.SelectedValue.ToString();
+
+                //增新的单位信息保存到缓存
+                DataRowView row = dvUnits.AddNew();
+                row["unitid"] = Guid.NewGuid();
+                row["unittype"] = unittype;
+
+                if (string.Compare(unittype, "unit12", true) == 0 || string.Compare(unittype, "unit13", true) == 0)
+                {
+                    row["dwmc"] = frm.label5.Text;
+                    //如果是班组长或专业工长就存到负责人这一栏
+                    row["fzr"] = DigiPower.ERM.Common.Functions.ToSqlString(frm.txtOther.Text.Trim());
+                    row["fzrzs"] = string.Empty;
+                    row["xmjl"] = string.Empty;
+                    row["zzdj"] = string.Empty;
+                    row["zzzh"] = string.Empty;
+                    row["addr"] = string.Empty;
+                    row["tel"] = string.Empty;
+                    row["fax"] = string.Empty;
+                    row["remark"] = string.Empty;
+                }
+                else
+                {
+                    row["dwmc"] = DigiPower.ERM.Common.Functions.ToSqlString(frm.txtDwmc.Text.Trim());
+                    row["fzr"] = DigiPower.ERM.Common.Functions.ToSqlString(frm.txtFzr.Text.Trim());
+                    row["fzrzs"] = DigiPower.ERM.Common.Functions.ToSqlString(frm.txtFzrzs.Text.Trim());
+                    row["xmjl"] = DigiPower.ERM.Common.Functions.ToSqlString(frm.txtXmjl.Text.Trim());
+                    row["zzdj"] = DigiPower.ERM.Common.Functions.ToSqlString(frm.txtZzdj.Text.Trim());
+                    row["zzzh"] = DigiPower.ERM.Common.Functions.ToSqlString(frm.txtZzzh.Text.Trim());
+                    row["addr"] = DigiPower.ERM.Common.Functions.ToSqlString(frm.txtAddr.Text.Trim());
+                    row["tel"] = DigiPower.ERM.Common.Functions.ToSqlString(frm.txtTel.Text.Trim());
+                    row["fax"] = DigiPower.ERM.Common.Functions.ToSqlString(frm.txtFax.Text.Trim());
+                    row["remark"] = DigiPower.ERM.Common.Functions.ToSqlString(frm.txtRemark.Text.Trim());
+                }
+                row.EndEdit();
+
+                //从缓存中载入数据到Grid
+                this.LoadDataFromView(txtUnittype.Text);
+            }
+        }
+        //修改单位信息
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (Dgv1.Rows.Count == 0) return;
+            if (Dgv1.CurrentRow.Index < 0)
+                return;
+            string unitid = Dgv1.Rows[Dgv1.CurrentRow.Index].Cells[0].Value.ToString(); //当前unitid
+            dvUnits.RowFilter = "";
+            DataTable dt = dvUnits.ToTable().Copy();
+            DataView dv = dt.DefaultView;
+            dv.RowFilter = "unitid = '" + unitid + "'";  //需要编辑的那条数据
+
+            frmUnit frm = new frmUnit(txtUnittype.Text, dv);
+            DialogResult ret = frm.ShowDialog();  //open
+
+            //save
+            if (ret == DialogResult.OK)
+            {
+                //save the updated data to cache
+                dvUnits.Sort = "unitid";
+                int index = dvUnits.Find(frm.txtUnitid.Text);
+                DataRowView row = dvUnits[index];
+
+                string unittype = frm.cboUnittype.SelectedValue.ToString();
+                row["unittype"] = unittype;
+
+                if (string.Compare(unittype, "unit12", true) == 0 || string.Compare(unittype, "unit13", true) == 0)
+                {
+                    row["dwmc"] = frm.label5.Text;
+                    //如果是班组长或专业工长就存到负责人这一栏
+                    row["fzr"] = DigiPower.ERM.Common.Functions.ToSqlString(frm.txtOther.Text.Trim());
+                    row["fzrzs"] = string.Empty;
+                    row["xmjl"] = string.Empty;
+                    row["zzdj"] = string.Empty;
+                    row["zzzh"] = string.Empty;
+                    row["addr"] = string.Empty;
+                    row["tel"] = string.Empty;
+                    row["fax"] = string.Empty;
+                    row["remark"] = string.Empty;
+                }
+                else
+                {
+                    row["dwmc"] = DigiPower.ERM.Common.Functions.ToSqlString(frm.txtDwmc.Text.Trim());
+                    row["fzr"] = DigiPower.ERM.Common.Functions.ToSqlString(frm.txtFzr.Text.Trim());
+                    row["fzrzs"] = DigiPower.ERM.Common.Functions.ToSqlString(frm.txtFzrzs.Text.Trim());
+                    row["xmjl"] = DigiPower.ERM.Common.Functions.ToSqlString(frm.txtXmjl.Text.Trim());
+                    row["zzdj"] = DigiPower.ERM.Common.Functions.ToSqlString(frm.txtZzdj.Text.Trim());
+                    row["zzzh"] = DigiPower.ERM.Common.Functions.ToSqlString(frm.txtZzzh.Text.Trim());
+                    row["addr"] = DigiPower.ERM.Common.Functions.ToSqlString(frm.txtAddr.Text.Trim());
+                    row["tel"] = DigiPower.ERM.Common.Functions.ToSqlString(frm.txtTel.Text.Trim());
+                    row["fax"] = DigiPower.ERM.Common.Functions.ToSqlString(frm.txtFax.Text.Trim());
+                    row["remark"] = DigiPower.ERM.Common.Functions.ToSqlString(frm.txtRemark.Text.Trim());
+                }
+                row.EndEdit();
+
+                //从缓存中载入数据到Grid
+                this.LoadDataFromView(txtUnittype.Text);
+            }
+        }
+
+        //保存
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (SaveData())
+            {
+                if (Welcome)
+                {
+                    Globals.Projectname = txtProjectName.Text.Trim();
+                }
+                Functions.ShowInfo("保存成功！"); ;
+            }
+        }
+        //关闭
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        
+        //双击datagridview
+        private void Dgv1_DoubleClick(object sender, EventArgs e)
+        {
+            btnEdit.PerformClick();
+        }
+        //按下DEl键
+        private void Dgv1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                btnDel.PerformClick();
+            }
+        }
+        //导出
+        private void btnExpotProject_Click(object sender, EventArgs e)
+        {
+            ExprotProject();
+        }
+        #endregion
+
+        #region 方法
+        /// <summary>
+        /// 保存
+        /// </summary>
+        /// <returns></returns>
+        private bool SaveData()
+        {
+            #region 验证
+            //选中工程基本信息选单
+            //if (cPanel1.Visible == false)
+            //    this.LinkClicked(lblProjectInfo, null);
+
+            //必填字段验证
+            if (txtProjectNo.Text.Trim() == "")
+            {
+                Functions.ShowWarning("工程编号必须填写！");
+                txtProjectNo.Focus();
+                return false;
+            }
+
+            if (projectno == "")//不是编辑
+            {
+                DigiPower.ERM.BLL.Projects ProjectDB = new DigiPower.ERM.BLL.Projects();
+                if (ProjectDB.Exists(txtProjectNo.Text.Trim()))
+                {
+                    Functions.ShowWarning("工程编号有重复的请重新填写！");
+                    txtProjectNo.Focus();
+                    return false;
+                }
+            }
+
+            if (txtProjectName.Text.Trim() == "")
+            {
+                Functions.ShowWarning("工程名称必须填写！");
+                txtProjectName.Focus();
+                return false;
+            }
+            if (cboProjectType.Text.Trim() == "")
+            {
+                Functions.ShowWarning("工程类别必须填写！");
+                cboProjectType.Focus();
+                return false;
+            }
+            #endregion
+            if (!Check())
+                return false;
+            this.Cursor = Cursors.WaitCursor;
+            #region modelProject
+            model_Pro.projectno = DigiPower.ERM.Common.Functions.ToSqlString(txtProjectNo.Text);
+            model_Pro.district = Functions.ToSqlString(cboDistrict.Text);
+            model_Pro.projectname = Functions.ToSqlString(txtProjectName.Text);
+            model_Pro.address = Functions.ToSqlString(txtAddress.Text);
+            model_Pro.category = Functions.ToSqlString(txtCategory.Text);
+            model_Pro.stru = Functions.ToSqlString(cboStru.Text);
+            model_Pro.projecttype = Functions.ToSqlString(cboProjectType.Text);
+            model_Pro.high = txtHigh.GetDecimal;
+            model_Pro.floors1 = txtFloors1.GetInt;
+            model_Pro.floors2 = txtFloors2.GetInt;
+            model_Pro.area1 = txtArea1.GetDecimal;
+            model_Pro.area2 = txtArea2.GetDecimal;
+            model_Pro.ydpzcode = Functions.ToSqlString(txtYdpzcode.Text);
+            model_Pro.ydxkcode = Functions.ToSqlString(txtYdxkcode.Text);
+            model_Pro.ghcode = Functions.ToSqlString(txtGhcode.Text);
+            model_Pro.sgcode = Functions.ToSqlString(txtSgcode.Text);
+            model_Pro.price1 = txtPrice1.GetDecimal;
+            model_Pro.price2 = txtPrice2.GetDecimal;
+            model_Pro.begindate =  dtpBeginDate.Value;
+            model_Pro.bjdate = dtpBjDate.Value;
+
+            //工程
+            model_Pro.zzmj = DigiPower.ERM.Common.Functions.ToSqlString(txtZzmj.GetText);
+            model_Pro.bgyfmj = DigiPower.ERM.Common.Functions.ToSqlString(txtBgyfmj.GetText);
+            model_Pro.syyfmj = DigiPower.ERM.Common.Functions.ToSqlString(txtSyyfmj.GetText);
+            model_Pro.cfmj = DigiPower.ERM.Common.Functions.ToSqlString(txtCfmj.GetText);
+            model_Pro.dxsmj = DigiPower.ERM.Common.Functions.ToSqlString(txtDxsmj.GetText);
+            model_Pro.qtyfmj = DigiPower.ERM.Common.Functions.ToSqlString(txtQtyfmj.GetText);
+            model_Pro.ts1 = DigiPower.ERM.Common.Functions.ToSqlString(txtTs1.GetText);
+            model_Pro.ts2 = DigiPower.ERM.Common.Functions.ToSqlString(txtTs2.GetText);
+            model_Pro.ts3 = DigiPower.ERM.Common.Functions.ToSqlString(txtTs3.GetText);
+            model_Pro.ts4 = DigiPower.ERM.Common.Functions.ToSqlString(txtTs4.GetText);
+            model_Pro.tstotal = DigiPower.ERM.Common.Functions.ToSqlString(txtTsTotal.GetText);
+            model_Pro.hjqk = DigiPower.ERM.Common.Functions.ToSqlString(txtHjqk.Text);
+            model_Pro.zygz = DigiPower.ERM.Common.Functions.ToSqlString( txtZygz.Text);
+            model_Pro.zjy = DigiPower.ERM.Common.Functions.ToSqlString(txtZjy.Text);
+            model_Pro.sgbzz = DigiPower.ERM.Common.Functions.ToSqlString(txtSgbzz.Text);
+            model_Pro.tbr = DigiPower.ERM.Common.Functions.ToSqlString(txtTbr.Text);
+            model_Pro.jsdwshr = DigiPower.ERM.Common.Functions.ToSqlString(txtJsdwshr.Text);
+            model_Pro.jldwshr = DigiPower.ERM.Common.Functions.ToSqlString(txtJldwshr.Text);
+
+            //Leo
+            SaveProjectInfo();
+ 
+
+            dvUnits.RowFilter = "";//前面可能已经过滤过,保存前使用这句
+
+            if (dtpEndDate.Checked)
+            {
+                model_Pro.enddate = dtpEndDate.Value;
+            }
+            else
+            {
+                model_Pro.enddate = DateTime.Parse("1905-03-12");
+            }
+            #endregion
+            this.Cursor = Cursors.Default;
+            try
+            {
+                if (this.projectno == "")
+                {
+                    #region 新增
+                    model_Pro.createdate = DateTime.Now;
+                    if (!new DigiPower.ERM.CBLL.Projects().Add(model_Pro, model_Item, dvUnits))
+                    {
+                        Functions.ShowWarning("保存失败！");
+
+                        return false;
+                    }
+                    int NewItemid = new DigiPower.ERM.CBLL.Item().GetNewId();
+                    model_Item.id = NewItemid;
+                    model_Pro.ItemID = NewItemid;
+
+                    new DigiPower.ERM.BLL.Projects().Update(model_Pro);
+                    this.projectno = txtProjectNo.Text;
+                    txtProjectNo.Enabled = false;
+                    try
+                    {
+                        System.IO.Directory.CreateDirectory(Globals.ProjectPath + "\\" + Functions.ToSqlString(txtProjectNo.Text));
+                    }
+                    catch
+                    {
+                        Functions.ShowWarning("发生错误，请检查存放电子文件的目录是否存在及可写！");
+                    }
+                    #endregion
+                }
+                else
+                {
+                    #region 修改
+                    if (!new DigiPower.ERM.CBLL.Projects().Update(model_Pro, model_Item, dvUnits))
+                    {
+                        Functions.ShowWarning("保存失败！");
+                        return false;
+                    }
+                    HasChange = true;
+                }
+                btnExpotProject.Visible = true;
+                return true;
+                    #endregion
+            }
+            catch (Exception ex)
+            {
+                Functions.ShowErrors(ex);
+                return false;   
+            }
+        }
+
+        /// <summary>
+        /// 将DataView的单位信息数据加载到Grid中
+        /// </summary>
+        /// <param name="unittype">单位类别，为空表示全部</param>
+        private void LoadDataFromView(string unittype)
+        {
+            dvUnits.Sort = "";
+            if (unittype != "")
+                dvUnits.RowFilter = "unittype = '" + unittype + "'";
+            else
+                dvUnits.RowFilter = "";
+
+            Dgv1.Rows.Clear();
+            for (int i = 0; i < dvUnits.Count; i++)
+            {
+                Dgv1.Rows.Add();
+                Dgv1.Rows[i].Cells[0].Value = dvUnits[i]["unitid"];
+                Dgv1.Rows[i].Cells[1].Value = dvUnits[i]["unittype"];
+                Dgv1.Rows[i].Cells[2].Value = dvUnits[i]["dwmc"];
+                Dgv1.Rows[i].Cells[3].Value = dvUnits[i]["fzr"];
+                Dgv1.Rows[i].Cells[4].Value = dvUnits[i]["fzrzs"];
+                Dgv1.Rows[i].Cells[5].Value = dvUnits[i]["xmjl"];
+                Dgv1.Rows[i].Cells[6].Value = dvUnits[i]["zzdj"];
+                Dgv1.Rows[i].Cells[7].Value = dvUnits[i]["zzzh"];
+                Dgv1.Rows[i].Cells[8].Value = dvUnits[i]["addr"];
+                Dgv1.Rows[i].Cells[9].Value = dvUnits[i]["tel"];
+                Dgv1.Rows[i].Cells[10].Value = dvUnits[i]["fax"];
+                Dgv1.Rows[i].Cells[11].Value = dvUnits[i]["remark"];
+            }
+        }
+
+        /// <summary>
+        /// 判断 数字和日期
+        /// </summary>
+        /// <returns></returns>
+        private bool Check()
+        {
+            foreach (Control c in groupBox3.Controls)
+            {
+                if (c.GetType() == typeof(TextBox))
+                {
+                    TextBox t = (TextBox)c;
+                    if (t.Text != "" && t.Tag != null)
+                    {
+                        string[] strArr = t.Tag.ToString().ToLower().Split(',');
+                        if (strArr.Length != 2)
+                            continue;
+                        string tag = strArr[1];
+                        if (tag == "number")
+                        {
+                            #region tag为number的 一般数字 
+                            if (!Functions.ProjectIsNumericParse(t.Text))
+                            {
+                                Functions.ShowInfo("\"" + t.Tag.ToString().Split(',')[0] + "\" 必须是数字且为正数！");
+                                t.Text = "0";
+                                t.Focus();
+                                return false;
+                            }
+                            else
+                            {
+                                string[] sp = t.Text.Trim().Split('.');
+                                if (sp.Length > 1)
+                                {
+                                    if (sp[1].Length > 3)
+                                    {
+                                        t.Text = sp[0] + "." + sp[1].Substring(0, 3);
+                                    }
+                                }
+                            }
+                            #endregion
+                        }
+                        else if (tag == "int")
+                        {
+                            #region tag为int的 整数
+                            if (!Functions.ProjectIsIntParse(t.Text))
+                            {
+                                Functions.ShowInfo("\"" + t.Tag.ToString().Split(',')[0] + "\" 必须是整数且为正数！");
+                                t.Text = "0";
+                                t.Focus();
+                                return false;
+                            }
+                            #endregion
+                        }
+
+                    }
+                }
+            }
+            return true;
+        }
+        /// <summary>
+        /// 导出工程信息
+        /// </summary>
+        private void ExprotProject()
+        {
+            if (projectno == "")
+                return;
+            else
+            {
+                #region 提示是否需要保存正在编辑的信息 如果保存，会循环验证字段信息
+                DialogResult drs2 = DigiPower.ERM.Common.Functions.ShowYesNoCancel("需要保存正在编辑的信息吗？");
+                if (drs2 == DialogResult.Yes)
+                { 
+                    if (!SaveData())
+                    {
+                        return;
+                    }                    
+                }
+                else if (drs2 == DialogResult.Cancel)
+                {
+                    return;
+                }
+ 
+                #endregion
+            }
+
+            ExprotSave(projectno);
+        }
+
+        public void ExprotSave(string ProjectNo)
+        {
+            SaveFileDialog saveDialog = new SaveFileDialog();
+            #region 保存对话框
+            saveDialog.Title = "导出工程信息";
+            saveDialog.InitialDirectory = "C:\\";
+            saveDialog.FileName = ProjectNo;
+            saveDialog.FilterIndex = 0;
+            saveDialog.Filter = "SIP包|*.sip";
+            #endregion
+            DialogResult drs = saveDialog.ShowDialog();
+            if (drs == DialogResult.OK)
+            {
+                DigiPower.ERM.CBLL.Projects cbll_projects = new DigiPower.ERM.CBLL.Projects();
+                try
+                {
+                    DataSet ds = cbll_projects.GetExportProject(ProjectNo);
+                    System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(Application.StartupPath + "\\Temp");
+                    if (dir.Exists)
+                    {
+                        dir.Delete(true);
+                    }
+                    dir.Create();
+                    ds.WriteXml(dir.FullName + "\\" + "project-" + ProjectNo + ".xml", XmlWriteMode.WriteSchema);
+                    DigiPower.ERM.Common.ZipFile zip = new ZipFile(dir.FullName, saveDialog.FileName);
+                    zip.StartZip();
+                    dir.Delete(true);
+                    Functions.ShowInfo("导出成功！");
+                }
+                catch (Exception ex)
+                {
+                    Functions.ShowErrors(ex);
+                }
+            }
+        }
+        #endregion
+
+        private void cboDistrict_TextChanged(object sender, EventArgs e)
+        {
+            ComboBox cbo = (ComboBox)sender;
+            if (cbo.Text.Length > 20)
+            {
+                cbo.Text = cbo.Text.Substring(0, 20);
+                cbo.SelectionStart = cbo.Text.Length;
+            }
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedIndex == 3)
+            {
+                //DigiPower.ERM.Model.Item model_Item = new DigiPower.ERM.BLL.Item().GetModel(model_Pro.ItemID);
+                if (string.IsNullOrEmpty(model_Item.ConStructionProjectName))
+                {
+                    model_Item.ConStructionProjectName = txtProjectName.Text;
+                }
+                if (string.IsNullOrEmpty(model_Item.ConstructionProjectAdd))
+                {
+                    model_Item.ConstructionProjectAdd = txtAddress.Text;
+                }
+                if (string.IsNullOrEmpty(model_Item.Respective))
+                {
+                    model_Item.Respective = cboDistrict.Text;
+                }
+                if (string.IsNullOrEmpty(model_Item.ProjectType))
+                {
+                    model_Item.ProjectType = cboProjectType.Text;
+                }
+
+                //项目
+                txtConStructionProjectName.Text = model_Item.ConStructionProjectName;
+                txtRespective.Text = model_Item.Respective;
+                txtConstructionProjectAdd.Text = model_Item.ConstructionProjectAdd;
+                txtProjectType.Text = model_Item.ProjectType;
+                txtUseSoiAreaSum.Text = model_Item.UseSoiAreaSum;
+                txtConstructionAreaSum.Text = model_Item.ConstructionAreaSum;
+                txtConstructionScale.Text = model_Item.ConstructionScale;
+                txtProjectCost.Text = model_Item.ProjectCost;
+                txtProjectSettlement.Text = model_Item.ProjectSettlement;
+                if (!string.IsNullOrEmpty(model_Item.StartDate))
+                    dtpBeginDate.Value = Convert.ToDateTime(model_Item.StartDate);
+                if (!string.IsNullOrEmpty(model_Item.FinishDate))
+                {
+                    dtpEndDate.Value = Convert.ToDateTime(model_Item.FinishDate);
+                }
+                txtUseSoiType.Text = model_Item.UseSoiType;
+                txtCollectionType.Text = model_Item.CollectionType;
+                txtOriginalSoiType.Text = model_Item.OriginalSoiType;
+                txtUseSoiArea.Text = model_Item.UseSoiArea;
+                if (!string.IsNullOrEmpty(model_Item.Approvedate))
+                    dtpApprove.Value = Convert.ToDateTime(model_Item.Approvedate);
+                txtCreateUnit.Text = model_Item.CreateUnit;
+                txtItemFzr.Text = model_Item.ItemFzr;
+                txtAllCost.Text = model_Item.AllCost;
+                txtVolumeFar.Text = model_Item.VolumeFar;
+                txtGreenFar.Text = model_Item.GreenFar;
+                txtBuildingDensity.Text = model_Item.BuildingDensity;
+            }
+        }
+    }
+}

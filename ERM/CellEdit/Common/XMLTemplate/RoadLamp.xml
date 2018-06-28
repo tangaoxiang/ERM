@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <!-- 市政路灯模板
+      column:数据库字段  
+      mappColumn:输出的字段别名 
+      description:字段描述   
+      display:是否输出显示,1为显示,0为不输出显示 
+      type:是否为数据库取值,默认为0,自定义为1
+      default:"默认值"
+  -->
+  <columns>
+    <property column="GCYS" mappColumn="GCYS"  description="工程预算" display="1" type="0" default="" />
+    <property column="DLGG" mappColumn="DLGG"  description="电缆规格" display="1" type="0" default="" />
+    <property column="DLCD" mappColumn="DLCD"  description="电缆长度" display="1" type="0" default="" />
+    <property column="XBXH" mappColumn="XBXH"  description="箱变型号" display="1" type="0" default="" />
+    <property column="LDXS_ST" mappColumn="LDXS_ST"  description="路灯形式—单头" display="1" type="0" default="" />
+    <property column="LDXS_MT" mappColumn="LDXS_MT"  description="路灯形式-双头" display="1" type="0" default="" />
+    <property column="DGZS" mappColumn="DGZS"  description="灯杆总数" display="1" type="0" default="" />
+    <property column="DGGD" mappColumn="DGGD"  description="灯杆高度" display="1" type="0" default="" />
+    <property column="GGDS" mappColumn="GGDS"  description="高杆灯数" display="1" type="0" default="" />
+    <property column="GGDGD" mappColumn="GGDGD"  description="高杆灯高度" display="1" type="0" default="" />
+    <property column="GYLX" mappColumn="GYLX"  description="光源类型" display="1" type="0" default="" />
+    <property column="GL" mappColumn="GL"  description="功率" display="1" type="0" default="" />
+    <property column="DJZL" mappColumn="DJZL"  description="灯具类型" display="1" type="0" default="" />
+    <property column="DGJJL" mappColumn="DGJJL"  description="灯杆间距" display="1" type="0" default="" />
+    <property column="DJBC" mappColumn="DJBC"  description="灯具臂长" display="1" type="0" default="" />
+    <property column="JXJ" mappColumn="JXJ"  description="接线井" display="1" type="0" default="" />
+    <property column="Remark" mappColumn="Remark"  description="备注" display="1" type="0" default="" />
+  </columns>
+  <selects>
+    <select id="queryByProjectID">
+      select * from t_project_roadlamp
+    </select>
+  </selects>
+</root>

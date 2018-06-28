@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="T_Settings"
+	xmlns="http://ibatis.apache.org/mapping"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <alias>
+    <typeAlias alias="T_Settings" type="ERM.MDL.T_Settings,ERM.MDL" />
+  </alias>
+
+  <resultMaps>
+    <resultMap id="FullResultMap" class="T_Settings">
+      <result property="ID" column="ID" dbType="VarChar"/>
+      <result property="AppTitle" column="AppTitle" dbType="VarChar"/>
+      <result property="PromptTitle" column="PromptTitle" dbType="VarChar"/>
+      <result property="UserTitle" column="UserTitle" dbType="VarChar"/>
+      <result property="UserTitle2" column="UserTitle2" dbType="VarChar"/>
+      <result property="Ver" column="Ver" dbType="VarChar"/>
+      <result property="defaultTempID" column="defaultTempID" dbType="Int"/>
+      <result property="ServerAddr" column="ServerAddr" dbType="VarChar"/>
+      <result property="port" column="port" dbType="VarChar"/>
+      <result property="timeout" column="timeout" dbType="Int"/>
+    </resultMap>
+  </resultMaps>
+
+  <statements>
+
+    <select id="GetCount" resultClass="System.Int32">
+      SELECT count(*) FROM [T_Settings]
+    </select>
+
+    <select id="GetAll" resultMap="FullResultMap">
+      SELECT * FROM [T_Settings]
+    </select>
+
+    <select id="GetList" parameterClass="String" resultClass="System.Data.DataSet">
+      SELECT *
+      FROM [T_Settings] WHERE
+    </select>
+
+    <select id="Exists" parameterClass="T_Settings"  resultClass="System.Boolean">
+      SELECT COUNT(1)
+      FROM [T_Settings] WHERE
+      ([T_Settings].[ID] = #ID,dbType=VarChar#)
+    </select>
+
+    <select id="Find" parameterClass="T_Settings" resultMap="FullResultMap">
+      SELECT * FROM [T_Settings] WHERE
+      ([T_Settings].[ID] = #ID,dbType=VarChar#)
+    </select>
+    <select id="FindByAppTitle" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Settings] WHERE ([T_Settings].[AppTitle] = #value#)
+    </select>
+    <select id="FindByPromptTitle" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Settings] WHERE ([T_Settings].[PromptTitle] = #value#)
+    </select>
+    <select id="FindByUserTitle" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Settings] WHERE ([T_Settings].[UserTitle] = #value#)
+    </select>
+    <select id="FindByUserTitle2" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Settings] WHERE ([T_Settings].[UserTitle2] = #value#)
+    </select>
+    <select id="FindByVer" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Settings] WHERE ([T_Settings].[Ver] = #value#)
+    </select>
+    <select id="FindBydefaultTempID" parameterClass="Int32" resultMap="FullResultMap">
+      SELECT * FROM [T_Settings] WHERE ([T_Settings].[defaultTempID] = #value#)
+    </select>
+    <select id="FindByServerAddr" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Settings] WHERE ([T_Settings].[ServerAddr] = #value#)
+    </select>
+    <select id="FindByport" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Settings] WHERE ([T_Settings].[port] = #value#)
+    </select>
+    <select id="FindBytimeout" parameterClass="Int32" resultMap="FullResultMap">
+      SELECT * FROM [T_Settings] WHERE ([T_Settings].[timeout] = #value#)
+    </select>
+
+    <insert id="Insert" parameterClass="T_Settings">
+      INSERT INTO [T_Settings] (
+      [ID]
+      , [AppTitle]
+      , [PromptTitle]
+      , [UserTitle]
+      , [UserTitle2]
+      , [Ver]
+      , [defaultTempID]
+      , [ServerAddr]
+      , [port]
+      , [timeout]
+      ) VALUES (
+      #ID,dbType=VarChar#
+      , #AppTitle,dbType=VarChar#
+      , #PromptTitle,dbType=VarChar#
+      , #UserTitle,dbType=VarChar#
+      , #UserTitle2,dbType=VarChar#
+      , #Ver,dbType=VarChar#
+      , #defaultTempID#
+      , #ServerAddr,dbType=VarChar#
+      , #port,dbType=VarChar#
+      , #timeout#
+      )
+    </insert>
+
+    <update id="Update" parameterClass="T_Settings">
+      UPDATE [T_Settings] SET
+      [AppTitle] = #AppTitle,dbType=VarChar#
+      , [PromptTitle] = #PromptTitle,dbType=VarChar#
+      , [UserTitle] = #UserTitle,dbType=VarChar#
+      , [UserTitle2] = #UserTitle2,dbType=VarChar#
+      , [Ver] = #Ver,dbType=VarChar#
+      , [defaultTempID] = #defaultTempID#
+      , [ServerAddr] = #ServerAddr,dbType=VarChar#
+      , [port] = #port,dbType=VarChar#
+      , [timeout] = #timeout#
+      WHERE
+      ([ID] = #ID,dbType=VarChar#)
+    </update>
+
+    <delete id="Delete" parameterClass="T_Settings">
+      DELETE FROM [T_Settings]
+      WHERE
+      ([ID] = #ID,dbType=VarChar#)
+    </delete>
+  </statements>
+</sqlMap>

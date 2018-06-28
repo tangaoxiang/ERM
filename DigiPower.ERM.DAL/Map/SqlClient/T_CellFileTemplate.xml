@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="T_CellFileTemplate"
+	xmlns="http://ibatis.apache.org/mapping"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <alias>
+    <typeAlias alias="T_CellFileTemplate" type="ERM.MDL.T_CellFileTemplate,ERM.MDL" />
+  </alias>
+
+  <resultMaps>
+    <resultMap id="FullResultMap" class="T_CellFileTemplate">
+      <result property="FileID" column="FileID" dbType="VarChar"/>
+      <result property="CellID" column="CellID" dbType="VarChar"/>
+      <result property="MyID" column="MyID" dbType="VarChar"/>
+      <result property="parentid" column="parentid" dbType="VarChar"/>
+      <result property="codeno" column="codeno" dbType="NVarChar"/>
+      <result property="title" column="title" dbType="NVarChar"/>
+      <result property="filepath" column="filepath" dbType="NVarChar"/>
+      <result property="isvisible" column="isvisible" dbType="Int"/>
+      <result property="orderindex" column="orderindex" dbType="Int"/>
+    </resultMap>
+  </resultMaps>
+
+  <statements>
+
+    <select id="GetCount" resultClass="System.Int32">
+      SELECT count(*) FROM [dbo].[T_CellFileTemplate]
+    </select>
+
+    <select id="GetAll" resultMap="FullResultMap">
+      SELECT *
+      FROM [dbo].[T_CellFileTemplate]
+    </select>
+
+    <select id="GetList" parameterClass="String" resultClass="System.Data.DataSet">
+      SELECT *
+      FROM [dbo].[T_CellFileTemplate] WHERE (#value#)
+    </select>
+
+    <select id="Exists" parameterClass="T_CellFileTemplate"  resultClass="System.Boolean">
+      SELECT COUNT(1)
+      FROM [dbo].[T_CellFileTemplate] WHERE
+      ([T_CellFileTemplate].[CellID] = #CellID,dbType=VarChar#)
+    </select>
+
+    <select id="Find" parameterClass="T_CellFileTemplate" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_CellFileTemplate] WHERE
+      ([T_CellFileTemplate].[CellID] = #CellID,dbType=VarChar#)
+    </select>
+    <select id="FindByFileID" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_CellFileTemplate] WHERE ([T_CellFileTemplate].[FileID] = #value#)
+    </select>
+    <select id="FindByMyID" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_CellFileTemplate] WHERE ([T_CellFileTemplate].[MyID] = #value#)
+    </select>
+    <select id="FindByparentid" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_CellFileTemplate] WHERE ([T_CellFileTemplate].[parentid] = #value#)
+    </select>
+    <select id="FindBycodeno" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_CellFileTemplate] WHERE ([T_CellFileTemplate].[codeno] = #value#)
+    </select>
+    <select id="FindBytitle" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_CellFileTemplate] WHERE ([T_CellFileTemplate].[title] = #value#)
+    </select>
+    <select id="FindByfilepath" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_CellFileTemplate] WHERE ([T_CellFileTemplate].[filepath] = #value#)
+    </select>
+    <select id="FindByisvisible" parameterClass="Int32" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_CellFileTemplate] WHERE ([T_CellFileTemplate].[isvisible] = #value#)
+    </select>
+    <select id="FindByorderindex" parameterClass="Int32" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_CellFileTemplate] WHERE ([T_CellFileTemplate].[orderindex] = #value#)
+    </select>
+
+    <insert id="Insert" parameterClass="T_CellFileTemplate">
+      INSERT INTO [dbo].[T_CellFileTemplate] (
+      [FileID]
+      , [CellID]
+      , [MyID]
+      , [parentid]
+      , [codeno]
+      , [title]
+      , [filepath]
+      , [isvisible]
+      , [orderindex]
+      ) VALUES (
+      #FileID,dbType=VarChar#
+      , #CellID,dbType=VarChar#
+      , #MyID,dbType=VarChar#
+      , #parentid,dbType=VarChar#
+      , #codeno,dbType=NVarChar#
+      , #title,dbType=NVarChar#
+      , #filepath,dbType=NVarChar#
+      , #isvisible,dbType=Int#
+      , #orderindex,dbType=Int#
+      )
+    </insert>
+
+    <update id="Update" parameterClass="T_CellFileTemplate">
+      UPDATE [dbo].[T_CellFileTemplate] SET
+      [FileID] = #FileID,dbType=VarChar#
+      , [MyID] = #MyID,dbType=VarChar#
+      , [parentid] = #parentid,dbType=VarChar#
+      , [codeno] = #codeno,dbType=NVarChar#
+      , [title] = #title,dbType=NVarChar#
+      , [filepath] = #filepath,dbType=NVarChar#
+      , [isvisible] = #isvisible,dbType=Int#
+      , [orderindex] = #orderindex,dbType=Int#
+      WHERE
+      ([CellID] = #CellID,dbType=VarChar#)
+    </update>
+
+    <delete id="Delete" parameterClass="T_CellFileTemplate">
+      DELETE FROM [dbo].[T_CellFileTemplate]
+      WHERE
+      ([CellID] = #CellID,dbType=VarChar#)
+    </delete>
+  </statements>
+</sqlMap>

@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="T_Dict"
+	xmlns="http://ibatis.apache.org/mapping"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <alias>
+    <typeAlias alias="T_Dict" type="ERM.MDL.T_Dict,ERM.MDL" />
+  </alias>
+
+  <resultMaps>
+    <resultMap id="FullResultMap" class="T_Dict">
+      <result property="ID" column="ID" dbType="Int"/>
+      <result property="KeyWord" column="KeyWord" dbType="NVarChar"/>
+      <result property="DisplayName" column="DisplayName" dbType="NVarChar"/>
+      <result property="ValueName" column="ValueName" dbType="NVarChar"/>
+      <result property="OrderIndex" column="OrderIndex" dbType="Int"/>
+    </resultMap>
+  </resultMaps>
+
+  <statements>
+
+    <select id="GetCount" resultClass="System.Int32">
+      SELECT count(*) FROM [dbo].[T_Dict]
+    </select>
+
+    <select id="GetAll" resultMap="FullResultMap">
+      SELECT *
+      FROM [dbo].[T_Dict]
+    </select>
+
+    <select id="GetList" parameterClass="String" resultClass="System.Data.DataSet">
+      SELECT *
+      FROM [dbo].[T_Dict] WHERE (#value#)
+    </select>
+
+    <select id="Exists" parameterClass="T_Dict"  resultClass="System.Boolean">
+      SELECT COUNT(1)
+      FROM [dbo].[T_Dict] WHERE
+      ([T_Dict].[ID] = #ID,dbType=Int#)
+    </select>
+
+    <select id="Find" parameterClass="T_Dict" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Dict] WHERE
+      ([T_Dict].[ID] = #ID,dbType=Int#)
+    </select>
+    <select id="FindByKeyWord" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Dict] WHERE ([T_Dict].[KeyWord] = #value#)
+    </select>
+    <select id="FindByDisplayName" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Dict] WHERE ([T_Dict].[DisplayName] = #value#)
+    </select>
+    <select id="FindByValueName" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Dict] WHERE ([T_Dict].[ValueName] = #value#)
+    </select>
+    <select id="FindByOrderIndex" parameterClass="Int32" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Dict] WHERE ([T_Dict].[OrderIndex] = #value#)
+    </select>
+
+    <insert id="Insert" parameterClass="T_Dict">
+      INSERT INTO [dbo].[T_Dict] (
+      [ID]
+      , [KeyWord]
+      , [DisplayName]
+      , [ValueName]
+      , [OrderIndex]
+      ) VALUES (
+      #ID,dbType=Int#
+      , #KeyWord,dbType=NVarChar#
+      , #DisplayName,dbType=NVarChar#
+      , #ValueName,dbType=NVarChar#
+      , #OrderIndex,dbType=Int#
+      )
+    </insert>
+
+    <update id="Update" parameterClass="T_Dict">
+      UPDATE [dbo].[T_Dict] SET
+      [KeyWord] = #KeyWord,dbType=NVarChar#
+      , [DisplayName] = #DisplayName,dbType=NVarChar#
+      , [ValueName] = #ValueName,dbType=NVarChar#
+      , [OrderIndex] = #OrderIndex,dbType=Int#
+      WHERE
+      ([ID] = #ID,dbType=Int#)
+    </update>
+
+    <delete id="Delete" parameterClass="T_Dict">
+      DELETE FROM [dbo].[T_Dict]
+      WHERE
+      ([ID] = #ID,dbType=Int#)
+    </delete>
+  </statements>
+</sqlMap>

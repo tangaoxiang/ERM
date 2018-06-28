@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <!-- 市政交通模板
+      column:数据库字段  
+      mappColumn:输出的字段别名 
+      description:字段描述   
+      display:是否输出显示,1为显示,0为不输出显示 
+      type:是否为数据库取值,默认为0,自定义为1
+      default:"默认值"
+  -->
+  <columns>
+    <property column="STARTX" mappColumn="STARTX"  description="坐标点X" display="1" type="0" default="" />
+    <property column="STARTY" mappColumn="STARTY"  description="坐标点Y" display="1" type="0" default="" />
+    <property column="ENDX" mappColumn="ENDX"  description="坐标点X" display="1" type="0" default="" />
+    <property column="ENDY" mappColumn="ENDY"  description="坐标点Y" display="1" type="0" default="" />
+    <property column="GCYS" mappColumn="GCYS"  description="工程预算" display="1" type="0" default="" />
+    <property column="GCJS" mappColumn="GCJS"  description="工程结算" display="1" type="0" default="" />
+    <property column="Road_Level" mappColumn="Road_Level"  description="道路级别" display="1" type="0" default="" />
+    <property column="LongCount" mappColumn="LongCount"  description="总长度" display="1" type="0" default="" />
+    <property column="Width" mappColumn="Width"  description="宽度" display="1" type="0" default="" />
+    <property column="HZ" mappColumn="HZ"  description="荷载" display="1" type="0" default="" />
+    <property column="JCXS" mappColumn="JCXS"  description="基础形式" display="1" type="0" default="" />
+    <property column="MCXS" mappColumn="MCXS"  description="面层形式" display="1" type="0" default="" />
+    <property column="KJ" mappColumn="KJ"  description="跨径" display="1" type="0" default="" />
+    <property column="KS" mappColumn="KS"  description="孔数" display="1" type="0" default="" />
+    <property column="ZPWS" mappColumn="ZPWS"  description="总泊位数" display="1" type="0" default="" />
+    <property column="PWDJ" mappColumn="PWDJ"  description="泊位吨级" display="1" type="0" default="" />
+    <property column="ProjectID" mappColumn="ProjectID"  description="项目编号" display="1" type="0" default="" />
+    <property column="Remark" mappColumn="Remark"  description="备注" display="1" type="0" default="" />
+  </columns>
+  <selects>
+    <select id="queryByProjectID">
+      select * from t_traffic
+    </select>
+  </selects>
+</root>

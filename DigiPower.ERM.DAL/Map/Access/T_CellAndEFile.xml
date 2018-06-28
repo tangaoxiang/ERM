@@ -1,0 +1,469 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="T_CellAndEFile"
+	xmlns="http://ibatis.apache.org/mapping"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<alias>
+		<typeAlias alias="T_CellAndEFile" type="ERM.MDL.T_CellAndEFile,ERM.MDL" />
+	</alias>
+
+	<resultMaps>
+		<resultMap id="FullResultMap" class="T_CellAndEFile">
+			<result property="CellID" column="CellID" dbType="VarChar"/>
+			<result property="FileID" column="FileID" dbType="VarChar"/>
+			<result property="id" column="id" dbType="VarChar"/>
+			<result property="ProjectNO" column="ProjectNO" dbType="VarChar"/>
+			<result property="TreePath" column="TreePath" dbType="VarChar"/>
+			<result property="parentid" column="parentid" dbType="VarChar"/>
+			<result property="PTreePath" column="PTreePath" dbType="VarChar"/>
+			<result property="title" column="title" dbType="VarChar"/>
+			<result property="filepath" column="filepath" dbType="VarChar"/>
+			<result property="examplepath" column="examplepath" dbType="VarChar"/>
+			<result property="codeno" column="codeno" dbType="VarChar"/>
+			<result property="customdefine" column="customdefine" dbType="Int"/>
+			<result property="zrr" column="zrr" dbType="VarChar"/>
+			<result property="codetype" column="codetype" dbType="Int"/>
+			<result property="fbmc" column="fbmc" dbType="VarChar"/>
+			<result property="fxmc" column="fxmc" dbType="VarChar"/>
+			<result property="zfbmc" column="zfbmc" dbType="VarChar"/>
+			<result property="ys" column="ys" dbType="Int"/>
+			<result property="isvisible" column="isvisible" dbType="Int"/>
+			<result property="orderindex" column="orderindex" dbType="Int"/>
+			<result property="DoStatus" column="DoStatus" dbType="Int"/>
+			<result property="attachid" column="attachid" dbType="Int"/>
+			<result property="fileTreePath" column="fileTreePath" dbType="VarChar"/>
+			<result property="zrzbsm" column="zrzbsm" dbType="VarChar"/>
+			<result property="zrzlb" column="zrzlb" dbType="VarChar"/>
+			<result property="zrzmc" column="zrzmc" dbType="VarChar"/>
+			<result property="zezzzfw" column="zezzzfw" dbType="VarChar"/>
+			<result property="ext" column="ext" dbType="VarChar"/>
+			<result property="wjly" column="wjly" dbType="VarChar"/>
+			<result property="DocYs" column="DocYs" dbType="Int"/>
+			<result property="yswjpath" column="yswjpath" dbType="VarChar"/>
+			<result property="docType" column="docType" dbType="VarChar"/>
+			<result property="docFormat" column="docFormat" dbType="VarChar"/>
+			<result property="Draft" column="Draft" dbType="VarChar"/>
+			<result property="OriOpenPro" column="OriOpenPro" dbType="VarChar"/>
+			<result property="EFileType" column="EFileType" dbType="Bit"/>
+			<result property="FileType" column="FileType" dbType="VarChar"/>
+			<result property="GdFileID" column="GdFileID" dbType="VarChar"/>
+			<result property="GdOrderIndex" column="GdOrderIndex" dbType="Int"/>
+		</resultMap>
+	</resultMaps>
+
+	<statements>
+
+		<select id="GetCount" resultClass="System.Int32">
+			SELECT count(*) FROM [T_CellAndEFile]
+		</select>
+
+		<select id="GetAll" resultMap="FullResultMap">
+			SELECT *
+			FROM [T_CellAndEFile] ORDER BY ORDERINDEX
+		</select>
+
+		<select id="GetList" parameterClass="String" resultClass="System.Data.DataSet">
+			SELECT *
+			FROM [T_CellAndEFile] WHERE FileID=#FileID,dbType=VarChar# ORDER BY ORDERINDEX
+		</select>
+
+		<select id="GetListByProjectNo" parameterClass="String" resultClass="System.Data.DataSet">
+			SELECT *
+			FROM [T_CellAndEFile] WHERE ProjectNO=#ProjectNO,dbType=VarChar# ORDER BY ORDERINDEX
+		</select>
+
+		<select id="Exists" parameterClass="T_CellAndEFile"  resultClass="System.Boolean">
+			SELECT COUNT(1)
+			FROM [T_CellAndEFile] WHERE
+			([T_CellAndEFile].[CellID] = #CellID,dbType=VarChar#)
+			AND
+			([T_CellAndEFile].[ProjectNO] = #ProjectNO,dbType=VarChar#)
+		</select>
+
+		<select id="Find" parameterClass="T_CellAndEFile" resultMap="FullResultMap">
+			SELECT * FROM [T_CellAndEFile] WHERE
+			([T_CellAndEFile].[CellID] = #CellID,dbType=VarChar#
+			AND [T_CellAndEFile].[ProjectNO] = #ProjectNO,dbType=VarChar#) ORDER BY ORDERINDEX
+		</select>
+
+		<select id="FindByFileID" parameterClass="T_CellAndEFile" resultMap="FullResultMap">
+			SELECT * FROM [T_CellAndEFile] WHERE ([T_CellAndEFile].[FileID] = #FileID,dbType=VarChar#
+			AND [T_CellAndEFile].[ProjectNO] = #ProjectNO,dbType=VarChar#
+			<isGreaterThan prepend=" AND " property="DoStatus" compareValue="0">
+				DoStatus=#DoStatus#
+			</isGreaterThan>
+			)
+			ORDER BY ORDERINDEX
+		</select>
+
+		<select id="FindByFileIDAndNOCell" parameterClass="T_CellAndEFile" resultMap="FullResultMap">
+			SELECT * FROM [T_CellAndEFile] WHERE ([T_CellAndEFile].[FileID] = #FileID,dbType=VarChar#)
+			AND ([T_CellAndEFile].[ProjectNO] = #ProjectNO,dbType=VarChar#)
+			AND ([T_CellAndEFile].[DoStatus]=1)
+			ORDER BY ORDERINDEX
+		</select>
+
+		<select id="FindByid" parameterClass="String" resultMap="FullResultMap">
+			SELECT * FROM [T_CellAndEFile] WHERE ([T_CellAndEFile].[id] = #value#)
+		</select>
+		<select id="FindByProjectNO" parameterClass="String" resultMap="FullResultMap">
+			SELECT * FROM [T_CellAndEFile] WHERE ([T_CellAndEFile].[ProjectNO] = #value#)
+		</select>
+		<select id="FindByTreePath" parameterClass="String" resultMap="FullResultMap">
+			SELECT * FROM [T_CellAndEFile] WHERE ([T_CellAndEFile].[TreePath] = #value#)
+		</select>
+		<select id="FindByparentid" parameterClass="String" resultMap="FullResultMap">
+			SELECT * FROM [T_CellAndEFile] WHERE ([T_CellAndEFile].[parentid] = #value#)
+		</select>
+		<select id="FindByPTreePath" parameterClass="String" resultMap="FullResultMap">
+			SELECT * FROM [T_CellAndEFile] WHERE ([T_CellAndEFile].[PTreePath] = #value#)
+		</select>
+		<select id="FindBytitle" parameterClass="String" resultMap="FullResultMap">
+			SELECT * FROM [T_CellAndEFile] WHERE ([T_CellAndEFile].[title] = #value#)
+		</select>
+		<select id="FindByfilepath" parameterClass="String" resultMap="FullResultMap">
+			SELECT * FROM [T_CellAndEFile] WHERE ([T_CellAndEFile].[filepath] = #value#)
+		</select>
+		<select id="FindByexamplepath" parameterClass="String" resultMap="FullResultMap">
+			SELECT * FROM [T_CellAndEFile] WHERE ([T_CellAndEFile].[examplepath] = #value#)
+		</select>
+		<select id="FindBycodeno" parameterClass="String" resultMap="FullResultMap">
+			SELECT * FROM [T_CellAndEFile] WHERE ([T_CellAndEFile].[codeno] = #value#)
+		</select>
+		<select id="FindBycustomdefine" parameterClass="Int32" resultMap="FullResultMap">
+			SELECT * FROM [T_CellAndEFile] WHERE ([T_CellAndEFile].[customdefine] = #value#)
+		</select>
+		<select id="FindByzrr" parameterClass="String" resultMap="FullResultMap">
+			SELECT * FROM [T_CellAndEFile] WHERE ([T_CellAndEFile].[zrr] = #value#)
+		</select>
+		<select id="FindBycodetype" parameterClass="Int32" resultMap="FullResultMap">
+			SELECT * FROM [T_CellAndEFile] WHERE ([T_CellAndEFile].[codetype] = #value#)
+		</select>
+		<select id="FindByfbmc" parameterClass="String" resultMap="FullResultMap">
+			SELECT * FROM [T_CellAndEFile] WHERE ([T_CellAndEFile].[fbmc] = #value#)
+		</select>
+		<select id="FindByfxmc" parameterClass="String" resultMap="FullResultMap">
+			SELECT * FROM [T_CellAndEFile] WHERE ([T_CellAndEFile].[fxmc] = #value#)
+		</select>
+		<select id="FindByzfbmc" parameterClass="String" resultMap="FullResultMap">
+			SELECT * FROM [T_CellAndEFile] WHERE ([T_CellAndEFile].[zfbmc] = #value#)
+		</select>
+		<select id="FindByys" parameterClass="Int32" resultMap="FullResultMap">
+			SELECT * FROM [T_CellAndEFile] WHERE ([T_CellAndEFile].[ys] = #value#)
+		</select>
+		<select id="FindByisvisible" parameterClass="Int32" resultMap="FullResultMap">
+			SELECT * FROM [T_CellAndEFile] WHERE ([T_CellAndEFile].[isvisible] = #value#)
+		</select>
+		<select id="FindByorderindex" parameterClass="Int32" resultMap="FullResultMap">
+			SELECT * FROM [T_CellAndEFile] WHERE ([T_CellAndEFile].[orderindex] = #value#)
+		</select>
+		<select id="FindByDoStatus" parameterClass="Int32" resultMap="FullResultMap">
+			SELECT * FROM [T_CellAndEFile] WHERE ([T_CellAndEFile].[DoStatus] = #value#)
+		</select>
+		<select id="FindByattachid" parameterClass="Int32" resultMap="FullResultMap">
+			SELECT * FROM [T_CellAndEFile] WHERE ([T_CellAndEFile].[attachid] = #value#)
+		</select>
+		<select id="FindByfileTreePath" parameterClass="String" resultMap="FullResultMap">
+			SELECT * FROM [T_CellAndEFile] WHERE ([T_CellAndEFile].[fileTreePath] = #value#)
+		</select>
+		<select id="FindByzrzbsm" parameterClass="String" resultMap="FullResultMap">
+			SELECT * FROM [T_CellAndEFile] WHERE ([T_CellAndEFile].[zrzbsm] = #value#)
+		</select>
+		<select id="FindByzrzlb" parameterClass="String" resultMap="FullResultMap">
+			SELECT * FROM [T_CellAndEFile] WHERE ([T_CellAndEFile].[zrzlb] = #value#)
+		</select>
+		<select id="FindByzrzmc" parameterClass="String" resultMap="FullResultMap">
+			SELECT * FROM [T_CellAndEFile] WHERE ([T_CellAndEFile].[zrzmc] = #value#)
+		</select>
+		<select id="FindByzezzzfw" parameterClass="String" resultMap="FullResultMap">
+			SELECT * FROM [T_CellAndEFile] WHERE ([T_CellAndEFile].[zezzzfw] = #value#)
+		</select>
+		<select id="FindByext" parameterClass="String" resultMap="FullResultMap">
+			SELECT * FROM [T_CellAndEFile] WHERE ([T_CellAndEFile].[ext] = #value#)
+		</select>
+		<select id="FindBywjly" parameterClass="String" resultMap="FullResultMap">
+			SELECT * FROM [T_CellAndEFile] WHERE ([T_CellAndEFile].[wjly] = #value#)
+		</select>
+		<select id="FindByDocYs" parameterClass="Int32" resultMap="FullResultMap">
+			SELECT * FROM [T_CellAndEFile] WHERE ([T_CellAndEFile].[DocYs] = #value#)
+		</select>
+		<select id="FindByyswjpath" parameterClass="String" resultMap="FullResultMap">
+			SELECT * FROM [T_CellAndEFile] WHERE ([T_CellAndEFile].[yswjpath] = #value#)
+		</select>
+		<select id="FindBydocType" parameterClass="String" resultMap="FullResultMap">
+			SELECT * FROM [T_CellAndEFile] WHERE ([T_CellAndEFile].[docType] = #value#)
+		</select>
+		<select id="FindBydocFormat" parameterClass="String" resultMap="FullResultMap">
+			SELECT * FROM [T_CellAndEFile] WHERE ([T_CellAndEFile].[docFormat] = #value#)
+		</select>
+		<select id="FindByDraft" parameterClass="String" resultMap="FullResultMap">
+			SELECT * FROM [T_CellAndEFile] WHERE ([T_CellAndEFile].[Draft] = #value#)
+		</select>
+		<select id="FindByOriOpenPro" parameterClass="String" resultMap="FullResultMap">
+			SELECT * FROM [T_CellAndEFile] WHERE ([T_CellAndEFile].[OriOpenPro] = #value#)
+		</select>
+		<select id="FindByEFileType" parameterClass="Boolean" resultMap="FullResultMap">
+			SELECT * FROM [T_CellAndEFile] WHERE ([T_CellAndEFile].[EFileType] = #value#)
+		</select>
+		<select id="FindByFileType" parameterClass="String" resultMap="FullResultMap">
+			SELECT * FROM [T_CellAndEFile] WHERE ([T_CellAndEFile].[FileType] = #value#)
+		</select>
+
+		<insert id="Insert" parameterClass="T_CellAndEFile">
+			INSERT INTO [T_CellAndEFile] (
+			[CellID]
+			, [FileID]
+			, [id]
+			, [ProjectNO]
+			, [TreePath]
+			, [parentid]
+			, [PTreePath]
+			, [title]
+			, [filepath]
+			, [examplepath]
+			, [codeno]
+			, [customdefine]
+			, [zrr]
+			, [codetype]
+			, [fbmc]
+			, [fxmc]
+			, [zfbmc]
+			, [ys]
+			, [isvisible]
+			, [orderindex]
+			, [DoStatus]
+			, [attachid]
+			, [fileTreePath]
+			, [zrzbsm]
+			, [zrzlb]
+			, [zrzmc]
+			, [zezzzfw]
+			, [ext]
+			, [wjly]
+			, [DocYs]
+			, [yswjpath]
+			, [docType]
+			, [docFormat]
+			, [Draft]
+			, [OriOpenPro]
+			, [EFileType]
+			, [FileType]
+			, [GdFileID]
+			, [GdOrderIndex]
+			) VALUES (
+			#CellID,dbType=VarChar#
+			, #FileID,dbType=VarChar#
+			, #id,dbType=VarChar#
+			, #ProjectNO,dbType=VarChar#
+			, #TreePath,dbType=VarChar#
+			, #parentid,dbType=VarChar#
+			, #PTreePath,dbType=VarChar#
+			, #title,dbType=VarChar#
+			, #filepath,dbType=VarChar#
+			, #examplepath,dbType=VarChar#
+			, #codeno,dbType=VarChar#
+			, #customdefine#
+			, #zrr,dbType=VarChar#
+			, #codetype#
+			, #fbmc,dbType=VarChar#
+			, #fxmc,dbType=VarChar#
+			, #zfbmc,dbType=VarChar#
+			, #ys#
+			, #isvisible#
+			, #orderindex#
+			, #DoStatus#
+			, #attachid#
+			, #fileTreePath,dbType=VarChar#
+			, #zrzbsm,dbType=VarChar#
+			, #zrzlb,dbType=VarChar#
+			, #zrzmc,dbType=VarChar#
+			, #zezzzfw,dbType=VarChar#
+			, #ext,dbType=VarChar#
+			, #wjly,dbType=VarChar#
+			, #DocYs#
+			, #yswjpath,dbType=VarChar#
+			, #docType,dbType=VarChar#
+			, #docFormat,dbType=VarChar#
+			, #Draft,dbType=VarChar#
+			, #OriOpenPro,dbType=VarChar#
+			, #EFileType#
+			, #FileType,dbType=VarChar#
+			, #GdFileID#
+			, #GdOrderIndex#
+			)
+		</insert>
+
+		<update id="Update" parameterClass="T_CellAndEFile">
+			UPDATE [T_CellAndEFile] SET
+			[FileID] = #FileID,dbType=VarChar#
+			, [id] = #id,dbType=VarChar#
+			, [ProjectNO] = #ProjectNO,dbType=VarChar#
+			, [TreePath] = #TreePath,dbType=VarChar#
+			, [parentid] = #parentid,dbType=VarChar#
+			, [PTreePath] = #PTreePath,dbType=VarChar#
+			, [title] = #title,dbType=VarChar#
+			, [filepath] = #filepath,dbType=VarChar#
+			, [examplepath] = #examplepath,dbType=VarChar#
+			, [codeno] = #codeno,dbType=VarChar#
+			, [customdefine] = #customdefine#
+			, [zrr] = #zrr,dbType=VarChar#
+			, [codetype] = #codetype#
+			, [fbmc] = #fbmc,dbType=VarChar#
+			, [fxmc] = #fxmc,dbType=VarChar#
+			, [zfbmc] = #zfbmc,dbType=VarChar#
+			, [ys] = #ys#
+			, [isvisible] = #isvisible#
+			, [orderindex] = #orderindex#
+			, [DoStatus] = #DoStatus#
+			, [attachid] = #attachid#
+			, [fileTreePath] = #fileTreePath,dbType=VarChar#
+			, [zrzbsm] = #zrzbsm,dbType=VarChar#
+			, [zrzlb] = #zrzlb,dbType=VarChar#
+			, [zrzmc] = #zrzmc,dbType=VarChar#
+			, [zezzzfw] = #zezzzfw,dbType=VarChar#
+			, [ext] = #ext,dbType=VarChar#
+			, [wjly] = #wjly,dbType=VarChar#
+			, [DocYs] = #DocYs#
+			, [yswjpath] = #yswjpath,dbType=VarChar#
+			, [docType] = #docType,dbType=VarChar#
+			, [docFormat] = #docFormat,dbType=VarChar#
+			, [Draft] = #Draft,dbType=VarChar#
+			, [OriOpenPro] = #OriOpenPro,dbType=VarChar#
+			, [EFileType] = #EFileType#
+			, [FileType] = #FileType,dbType=VarChar#
+			, [GdFileID] = #GdFileID#
+			, [GdOrderIndex] = #GdOrderIndex#
+			WHERE
+			([CellID] = #CellID,dbType=VarChar#)
+			AND ([ProjectNO] = #ProjectNO,dbType=VarChar#)
+		</update>
+
+		<delete id="Delete" parameterClass="T_CellAndEFile">
+			DELETE FROM [T_CellAndEFile]
+			WHERE
+			([CellID] = #CellID,dbType=VarChar#)
+			AND ([ProjectNO] = #ProjectNO,dbType=VarChar#)
+		</delete>
+
+		<select id="CopyCellFileList" parameterClass="System.String">
+			insert into T_CellAndEFile(ProjectNO,FileID, CellID,  parentid, codeno, title,filepath, isvisible, orderindex)
+			select #value#,FileID, CellID,  parentid, codeno, title,'', isvisible, orderindex from [T_CellFileTemplate]
+		</select>
+
+		<delete id="DeleteCellFileByProjectNO" parameterClass="System.String">
+			DELETE FROM [T_CellAndEFile]
+			WHERE
+			([ProjectNO] = #value#)
+		</delete>
+
+		<delete id="DeleteByFileID" parameterClass="T_CellAndEFile">
+			DELETE FROM [T_CellAndEFile]
+			WHERE
+			([ProjectNO] = #ProjectNO#
+			AND FileID = #FileID#)
+		</delete>
+
+		<select id="GetMaxOrderIndex" parameterClass="T_CellAndEFile" resultClass="System.Int32">
+			SELECT MAX(ORDERINDEX) FROM [T_CellAndEFile]
+			WHERE (FileID=#FileID,dbType=VarChar#)
+			AND (ProjectNO=#ProjectNO,dbType=VarChar#)
+		</select>
+
+		<select id="FindByFileIDNoStatus" parameterClass="T_CellAndEFile" resultMap="FullResultMap">
+			SELECT * FROM [T_CellAndEFile] WHERE ([T_CellAndEFile].[FileID] = #FileID,dbType=VarChar#
+			AND [T_CellAndEFile].[ProjectNO] = #ProjectNO,dbType=VarChar#)
+			ORDER BY ORDERINDEX
+		</select>
+		
+		<select id="FindByGdFileID" parameterClass="T_CellAndEFile" resultMap="FullResultMap">
+      SELECT * FROM [T_CellAndEFile] WHERE ([T_CellAndEFile].[GdFileID] = #GdFileID#
+      AND [T_CellAndEFile].[ProjectNO] = #ProjectNO#)
+      ORDER BY GdOrderIndex
+    </select>
+
+		<select id="GetMaxGdFileOrderIndex" parameterClass="T_CellAndEFile" resultClass="System.Int32">
+			SELECT MAX(GdOrderIndex) FROM [T_CellAndEFile]
+			WHERE (GdFileID=#GdFileID#)
+			AND (ProjectNO=#ProjectNO,dbType=VarChar#)
+		</select>
+
+		<select id="CopyCellFileListByProjectNO" parameterClass="T_CellAndEFile">
+			insert into T_CellAndEFile([CellID]
+			, [FileID]
+			, [id]
+			, [ProjectNO]
+			, [TreePath]
+			, [parentid]
+			, [PTreePath]
+			, [title]
+			, [filepath]
+			, [examplepath]
+			, [codeno]
+			, [customdefine]
+			, [zrr]
+			, [codetype]
+			, [fbmc]
+			, [fxmc]
+			, [zfbmc]
+			, [ys]
+			, [isvisible]
+			, [orderindex]
+			, [DoStatus]
+			, [attachid]
+			, [fileTreePath]
+			, [zrzbsm]
+			, [zrzlb]
+			, [zrzmc]
+			, [zezzzfw]
+			, [ext]
+			, [wjly]
+			, [DocYs]
+			, [yswjpath]
+			, [docType]
+			, [docFormat]
+			, [Draft]
+			, [OriOpenPro]
+			, [EFileType]
+			, [FileType]
+			, [GdFileID]
+			, [GdOrderIndex])
+			select [CellID]
+			, [FileID]
+			, [id]
+			, #FileID#
+			, [TreePath]
+			, [parentid]
+			, [PTreePath]
+			, [title]
+			, [filepath]
+			, [examplepath]
+			, [codeno]
+			, [customdefine]
+			, [zrr]
+			, [codetype]
+			, [fbmc]
+			, [fxmc]
+			, [zfbmc]
+			, [ys]
+			, [isvisible]
+			, [orderindex]
+			, [DoStatus]
+			, [attachid]
+			, [fileTreePath]
+			, [zrzbsm]
+			, [zrzlb]
+			, [zrzmc]
+			, [zezzzfw]
+			, [ext]
+			, [wjly]
+			, [DocYs]
+			, [yswjpath]
+			, [docType]
+			, [docFormat]
+			, [Draft]
+			, [OriOpenPro]
+			, [EFileType]
+			, [FileType], [GdFileID], [GdOrderIndex] from [T_CellAndEFile] WHERE ([ProjectNO]=#ProjectNO,dbType=VarChar#)
+		</select>
+	</statements>
+</sqlMap>

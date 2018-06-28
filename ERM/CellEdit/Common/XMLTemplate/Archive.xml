@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--案卷XML-->
+<root>
+  <columns>
+    <property column="OrderIndex" mappColumn="engArchNo"  description="序号" display="1" type="0"  default="" />
+    <property column="singleProjName" mappColumn="singleProjName"  description="单工程名称" display="1" type="1" default="" />
+    <property column="ajtm" mappColumn="archTitle"  description="案卷题名" display="1" type="0" default="" />
+    <property column="drawPages" mappColumn="drawPages"  description="图纸卷内页数" display="1" type="1" default="" />
+    <property column="filePages" mappColumn="filePages"  description="文件卷内页数" display="1" type="1" default="" />
+    <property column="photoPages" mappColumn="photoPages"  description="照片卷内页数" display="1" type="1" default="" />
+    <property column="efilePages" mappColumn="efilePages"  description="电子文件卷内页数" display="1" type="1" default="" />
+    <property column="bzdw" mappColumn="makeOrgName"  description="编制单位" display="1" type="0" default="" />
+    <property column="bzksrq" mappColumn="startDate"  description="形成开始日期" display="1" type="0" default="" />
+    <property column="bzjsrq" mappColumn="endDate"  description="形成结束日期" display="1" type="0" default="" />
+    <property column="ajlx" mappColumn="archTypeCode"  description="案卷类型" display="1" type="0" default="" />
+    <property column="ljr" mappColumn="ljr"  description="立卷人" display="1" type="0" default="" />
+    <property column="oldArchId" mappColumn="oldArchId"  description="原档号" display="1" type="1" default="" />
+    <property column="shelvingTypeCode" mappColumn="shelvingTypeCode"  description="装盒类型" display="1" type="1" default="单卷" />
+    <property column="archWidth" mappColumn="archWidth"  description="案卷厚度" display="1" type="1" default="" />
+    <property column="bz" mappColumn="archSummary"  description="案卷备注" display="1" type="0" default="" />
+    <property column="bgqx" mappColumn="storageTypeCode"  description="保管期限" display="1" type="0" default="" />
+    <property column="mj" mappColumn="securityLevelCode"  description="密级" display="1" type="0" default="" />
+    <property column="bzksrq" mappColumn="makeDate"  description="编制日期" display="1" type="0" default="" />
+    <property column="wzz" mappColumn="textNums"  description="文字页数" display="1" type="0" default="" />
+    <property column="drawNums1" mappColumn="drawNums"  description="图纸页数" display="1" type="1" default="" />
+    <property column="photoNums1" mappColumn="photoNums"  description="图片页数" display="1" type="1" default="" />
+    <property column="efileNums" mappColumn="efileNums"  description="电子文件页数" display="1" type="1" default="" />
+    <property column="zlr" mappColumn="arrangedBy"  description="整理人" display="1" type="0" default="" />
+    <property column="zlrq" mappColumn="arrangedDt"  description="整理日期" display="1" type="0" default="" />
+    <property column="ljrq" mappColumn="ljsj"  description="立卷时间" display="1" type="0" default="" />
+    <property column="ajs" mappColumn="chenckBy"  description="审核人" display="1" type="0" default="" />
+    <property column="shrq" mappColumn="checkedDt"  description="审核日期" display="1" type="0" default="" />
+  </columns>
+  <selects>
+    <select id="queryByProjectNO">
+      select *, cint(tzz+dtz) as drawNums1,cint(zpz+dpz+swp) as photoNums1 from T_Archive 
+    </select>
+  </selects>
+</root>

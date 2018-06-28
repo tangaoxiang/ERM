@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <!-- 
+      column:房屋建筑
+      mappColumn:输出的字段别名 
+      description:字段描述   
+      display:是否输出显示,1为显示,0为不输出显示 
+      type:是否为数据库取值,默认为0,自定义为1
+  -->
+  <columns>
+    <property column="totalLength" mappColumn="totalLength"  description="总长度" display="1" type="1" default="0" />
+    <property column="stru" mappColumn="consTypeCode"  description="结构类型" display="1" type="0" default="" />
+    <property column="gcjs" mappColumn="projectCost"  description="工程造价" display="1" type="0" default="0" />
+    <property column="high" mappColumn="height"  description="高度" display="1" type="0" default="0" />
+    <property column="landUseArea" mappColumn="landUseArea"  description="总占地面积-房屋" display="1" type="1" default="" />
+    <property column="handoverOrgName" mappColumn="constructionArea"  description="总建筑面积-房屋" display="1" type="1" default="" />
+    <property column="ds" mappColumn="buildingNums"  description="栋数" display="1" type="1" default="0" />
+    <property column="floors1" mappColumn="underNums"  description="地下层数" display="1" type="0" default="0" />
+    <property column="floors2" mappColumn="overNums"  description="地上层数" display="1" type="0" default="0" /> 
+    <property column="finishArea" mappColumn="finishArea"  description="竣工面积" display="1" type="1" default="" />
+    <property column="holenums" mappColumn="holenums"  description="孔数" display="1" type="1" default="0" />
+    <property column="startX" mappColumn="startX"  description="起点" display="1" type="1" default="" />
+    <property column="endX" mappColumn="endX"  description="止点" display="1" type="1" default="" />
+    <property column="length" mappColumn="length"  description="长度" display="1" type="1" default="0" />
+    <property column="width" mappColumn="width"  description="宽度" display="1" type="1" default="0" />
+    <property column="span" mappColumn="span"  description="跨径" display="1" type="1" default="" />
+    <property column="loadCode" mappColumn="loadCode"  description="荷载级别" display="1" type="1" default="" />
+    <property column="headroom" mappColumn="headroom"  description="净空" display="1" type="1" default="" />
+    <property column="pipeDiameter" mappColumn="pipeDiameter"  description="直径" display="1" type="1" default="" />
+    <property column="pipeMaterial" mappColumn="pipeMaterial"  description="管材" display="1" type="1" default="" />
+    <property column="basisTypeCode" mappColumn="basisTypeCode"  description="地基处理" display="1" type="1" default="" />
+    <property column="dxsmj" mappColumn="underArea"  description="地下建筑面积" display="1" type="0" default="" />
+    <property column="projCount" mappColumn="projCount"  description="单位工程数" display="1" type="1" default="1" />
+    <property column="singlePointX" mappColumn="singlePointX"  description="项目工程x" display="1" type="1" default="" />
+    <property column="singlePointY" mappColumn="singlePointY"  description="项目工程Y" display="1" type="1" default="" />
+    <property column="designLevel" mappColumn="designLevel"  description="桥梁级别" display="1" type="1" default="" />
+    <property column="gg" mappColumn="specCode"  description="规格" display="1" type="1" default="" />
+    <property column="price1" mappColumn="engBudget"  description="工程预算(万元)" display="1" type="0" default="0" />
+    <property column="price2" mappColumn="engCost"  description="工程决算(万元)" display="1" type="0" default="0" />
+    <property column="zzmj" mappColumn="housingArea"  description="住宅面积" display="1" type="0" default="0" />
+    <property column="bgyfmj" mappColumn="officeSpaceArea"  description="办公用房面积" display="1" type="0" default="0" />
+    <property column="syyfmj" mappColumn="commercialSpaceArea"  description="商业用房面积" display="1" type="0" default="0" />
+    <property column="cfmj" mappColumn="plantArea"  description="厂房面积" display="1" type="0" default="0" />
+    <property column="dxsmj" mappColumn="basementArea"  description="地下室面积" display="1" type="0" default="0" />
+    <property column="qtyfmj" mappColumn="otherSpaceArea"  description="其他用房面积" display="1" type="0" default="0" />
+    <property column="area2" mappColumn="airDefenseArea"  description="人防面积" display="1" type="0" default="0" />
+    <property column="TS1" mappColumn="fireRating"  description="防火等级" display="1" type="0" default="" />
+    <property column="kzsfcd" mappColumn="seismicLevel"  description="抗震等级" display="1" type="0" default="" />
+    <property column="singleApartmentPloidy" mappColumn="singleApartmentPloidy"  description="单身公寓套数" display="1" type="1" default="" />
+    <property column="duplexCopyNumber" mappColumn="duplexCopyNumber"  description="复式套数" display="1" type="1" default="0" />
+    <property column="tstotal" mappColumn="totalUnits"  description="总套数" display="1" type="1" default="0" />
+    <property column="ztcw" mappColumn="numberOfParkingSpaces"  description="车位数" display="1" type="0" default="0" />
+    <property column="TS2" mappColumn="engineeringQuality"  description="工程质量" display="1" type="0" default="" />
+    <property column="hjqk" mappColumn="awards"  description="获奖情况" display="1" type="0" default="" />
+    <property column="projectDirector" mappColumn="projectDirector"  description="项目总监" display="1" type="1" default="" />
+    <property column="XMJL" mappColumn="siteSupervision"  description="现场监理" display="1" type="0" default="" />
+    <property column="YJDW" mappColumn="subcontractors"  description="分包单位" display="1" type="0" default="" />
+    <property column="TS3" mappColumn="projectManager"  description="项目经理" display="1" type="0" default="" />
+    <property column="jldwshr" mappColumn="supervisionUnitsReviewer"  description="监理单位审核人" display="1" type="0" default="" />
+    <property column="jsdwshr" mappColumn="constructionUnitReviewer"  description="建设单位审核人" display="1" type="0" default="" />
+    <property column="notes" mappColumn="notes"  description="附注" display="1" type="1" default="" />
+    <property column="acceptanceRecordNum" mappColumn="acceptanceRecordNum"  description="验收备案号" display="1" type="1" default="" />
+  </columns>
+  <selects>
+    <select id="queryByProjectNo">
+      select a.*,b.* from t_projects as a,t_item as b where a.itemid=b.itemid
+    </select>
+  </selects>
+</root>

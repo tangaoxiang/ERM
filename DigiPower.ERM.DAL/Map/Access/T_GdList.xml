@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="T_GdList"
+	xmlns="http://ibatis.apache.org/mapping"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<alias>
+		<typeAlias alias="T_GdList" type="ERM.MDL.T_GdList,ERM.MDL" />
+	</alias>
+
+	<resultMaps>
+		<resultMap id="FullResultMap" class="T_GdList">
+			<result property="ID" column="ID" dbType="VarChar"/>
+			<result property="GdName" column="GdName" dbType="VarChar"/>
+			<result property="ProjectNo" column="ProjectNo" dbType="VarChar"/>
+			<result property="OrderIndex" column="OrderIndex" dbType="Int"/>
+			<result property="IsShow" column="IsShow" dbType="Int"/>
+      <result property="ProjectCategory" column="ProjectCategory" dbType="VarChar"/>
+    </resultMap>
+	</resultMaps>
+
+	<statements>
+		<select id="GetCount" resultClass="System.Int32">
+			SELECT count(*) FROM [T_GdList]
+		</select>
+		<select id="GetAll" resultMap="FullResultMap">
+			SELECT * FROM [T_GdList]
+		</select>
+		<select id="FindID" parameterClass="T_GdList" resultMap="FullResultMap">
+			SELECT * FROM [T_GdList] WHERE ([T_GdList].[ID] = #ID#)
+		</select>
+		<select id="FindByProjectNo" parameterClass="T_GdList" resultMap="FullResultMap">
+      SELECT * FROM [T_GdList] WHERE T_GdList.ProjectNo = #ProjectNo#
+      ORDER BY OrderIndex
+    </select>
+		<insert id="Insert" parameterClass="T_GdList">
+      INSERT INTO [T_GdList] (
+      [ID]
+      , [GdName]
+      , [ProjectNo]
+      , [OrderIndex]
+      , [IsShow]
+      , ProjectCategory
+      ) VALUES (
+      #ID#
+      , #GdName#
+      , #ProjectNo#
+      , #OrderIndex#
+      , #IsShow#
+      , #ProjectCategory#
+      )
+    </insert>
+		<update id="Update" parameterClass="T_GdList">
+			UPDATE [T_GdList] SET
+			[GdName] = #GdName#, [ProjectNo] = #ProjectNo#, [OrderIndex] = #OrderIndex#, [IsShow] = #IsShow#
+			WHERE
+			([ID] = #ID#)
+		</update>
+		<delete id="Delete" parameterClass="T_GdList">
+			DELETE FROM [T_GdList] WHERE ([ID] = #ID#)
+		</delete>
+    <delete id="DeleteProjectNo" parameterClass="System.String">
+      DELETE FROM [T_GdList] WHERE ([ProjectNo] = #value#)
+    </delete>
+		<select id="CopyGdList" parameterClass="System.String">
+      INSERT INTO T_GdList(ID,GdName,OrderIndex,ProjectNo,IsShow,ProjectCategory)
+      SELECT ID,GdName,OrderIndex,#ProjectNo#,IsShow,#ProjectCategory# FROM T_GdListTemplate
+      WHERE ProjectCategory=#ProjectCategory#
+    </select>		
+		<delete id="DeleteGdFileByProjectNO" parameterClass="System.String">
+			DELETE FROM [T_GdList]
+			WHERE
+			([ProjectNo] = #value#)
+		</delete>
+		<select id="CopyGdFileByProjectNO" parameterClass="T_GdList">
+			INSERT INTO T_GdList([ID]
+			, [GdName]
+			, [ProjectNo]
+			, [OrderIndex]
+			, [IsShow]
+			)
+			SELECT [ID]
+			, [GdName]
+			,#ID#
+			, [OrderIndex]
+			, [IsShow]
+			FROM T_GdList WHERE ([ProjectNo]=#ProjectNo#)
+		</select>
+		<select id="FindIDAndProjectNo" parameterClass="T_GdList" resultMap="FullResultMap">
+			SELECT * FROM [T_GdList] WHERE ([T_GdList].[ID] = #ID# and [T_GdList].[ProjectNo] = #ProjectNo#)
+		</select>
+    <select id="GetMaxTemplateOrderIndex" parameterClass="T_GdList" resultClass="System.Int32">
+      SELECT MAX(OrderIndex) FROM [T_GdList] where ([ProjectNo] = #ProjectNo#)
+    </select>
+	</statements>
+</sqlMap>

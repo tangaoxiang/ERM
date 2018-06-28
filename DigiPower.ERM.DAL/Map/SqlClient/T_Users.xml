@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="T_Users"
+	xmlns="http://ibatis.apache.org/mapping"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <alias>
+    <typeAlias alias="T_Users" type="ERM.MDL.T_Users,ERM.MDL" />
+  </alias>
+
+  <resultMaps>
+    <resultMap id="FullResultMap" class="T_Users">
+      <result property="userid" column="userid" dbType="Int"/>
+      <result property="login" column="login" dbType="NVarChar"/>
+      <result property="password" column="password" dbType="NVarChar"/>
+      <result property="fullname" column="fullname" dbType="NVarChar"/>
+      <result property="title" column="title" dbType="NVarChar"/>
+      <result property="phone" column="phone" dbType="NVarChar"/>
+      <result property="sh" column="sh" dbType="Int"/>
+      <result property="theme" column="theme" dbType="Int"/>
+      <result property="units" column="units" dbType="NVarChar"/>
+      <result property="unitstype" column="unitstype" dbType="NVarChar"/>
+    </resultMap>
+  </resultMaps>
+
+  <statements>
+
+    <select id="GetCount" resultClass="System.Int32">
+      SELECT count(*) FROM [dbo].[T_Users]
+    </select>
+
+    <select id="GetAll" resultMap="FullResultMap">
+      SELECT *
+      FROM [dbo].[T_Users]
+    </select>
+
+    <select id="GetList" parameterClass="String" resultClass="System.Data.DataSet">
+      SELECT *
+      FROM [dbo].[T_Users] WHERE (#value,dbType=NVarChar#)
+    </select>
+
+    <select id="Exists" parameterClass="T_Users"  resultClass="System.Boolean">
+      SELECT COUNT(1)
+      FROM [dbo].[T_Users] WHERE
+      ([T_Users].[userid] = #userid,dbType=Int#)
+    </select>
+
+    <select id="Find" parameterClass="T_Users" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Users] WHERE
+      ([T_Users].[userid] = #userid,dbType=Int#)
+    </select>
+    <select id="FindBylogin" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Users] WHERE ([T_Users].[login] = #value#)
+    </select>
+    <select id="FindBypassword" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Users] WHERE ([T_Users].[password] = #value#)
+    </select>
+    <select id="FindByfullname" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Users] WHERE ([T_Users].[fullname] = #value#)
+    </select>
+    <select id="FindBytitle" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Users] WHERE ([T_Users].[title] = #value#)
+    </select>
+    <select id="FindByphone" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Users] WHERE ([T_Users].[phone] = #value#)
+    </select>
+    <select id="FindBysh" parameterClass="Int32" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Users] WHERE ([T_Users].[sh] = #value#)
+    </select>
+    <select id="FindBytheme" parameterClass="Int32" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Users] WHERE ([T_Users].[theme] = #value#)
+    </select>
+    <select id="FindByunits" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Users] WHERE ([T_Users].[units] = #value#)
+    </select>
+    <select id="FindByunitstype" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [dbo].[T_Users] WHERE ([T_Users].[unitstype] = #value#)
+    </select>
+
+    <insert id="Insert" parameterClass="T_Users">
+      INSERT INTO [dbo].[T_Users] (
+      [userid]
+      , [login]
+      , [password]
+      , [fullname]
+      , [title]
+      , [phone]
+      , [sh]
+      , [theme]
+      , [units]
+      , [unitstype]
+      ) VALUES (
+      #userid,dbType=Int#
+      , #login,dbType=NVarChar#
+      , #password,dbType=NVarChar#
+      , #fullname,dbType=NVarChar#
+      , #title,dbType=NVarChar#
+      , #phone,dbType=NVarChar#
+      , #sh,dbType=Int#
+      , #theme,dbType=Int#
+      , #units,dbType=NVarChar#
+      , #unitstype,dbType=NVarChar#
+      )
+    </insert>
+
+    <update id="Update" parameterClass="T_Users">
+      UPDATE [dbo].[T_Users] SET
+      [login] = #login,dbType=NVarChar#
+      , [password] = #password,dbType=NVarChar#
+      , [fullname] = #fullname,dbType=NVarChar#
+      , [title] = #title,dbType=NVarChar#
+      , [phone] = #phone,dbType=NVarChar#
+      , [sh] = #sh,dbType=Int#
+      , [theme] = #theme,dbType=Int#
+      , [units] = #units,dbType=NVarChar#
+      , [unitstype] = #unitstype,dbType=NVarChar#
+      WHERE
+      ([userid] = #userid,dbType=Int#)
+    </update>
+
+    <delete id="Delete" parameterClass="T_Users">
+      DELETE FROM [dbo].[T_Users]
+      WHERE
+      ([userid] = #userid,dbType=Int#)
+    </delete>
+  </statements>
+</sqlMap>

@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<sqlMap namespace="T_Project_RoadLamp" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <alias>
+    <typeAlias alias="T_Project_RoadLamp" type="ERM.MDL.T_Project_RoadLamp,ERM.MDL" />
+  </alias>
+  <resultMaps>
+    <resultMap id="FullResultMap" class="T_Project_RoadLamp">
+      <result property="ID" column="ID" />
+      <result property="ProjectID" column="ProjectID" />
+      <result property="DLGG" column="DLGG" />
+      <result property="DLCD" column="DLCD" />
+      <result property="XBXH" column="XBXH" />
+      <result property="LDXS_ST" column="LDXS_ST" />
+      <result property="LDXS_MT" column="LDXS_MT" />
+      <result property="DGZS" column="DGZS" />
+      <result property="DGGD" column="DGGD" />
+      <result property="GGDS" column="GGDS" />
+      <result property="GGDGD" column="GGDGD" />
+      <result property="GYLX" column="GYLX" />
+      <result property="GL" column="GL" />
+      <result property="DJZL" column="DJZL" />
+      <result property="DGJJL" column="DGJJL" />
+      <result property="DJBC" column="DJBC" />
+      <result property="JXJ" column="JXJ" />
+      <result property="Remark" column="Remark" />
+      <result property="GCYS" column="GCYS" />
+      <result property="DLMJ" column="DLMJ" />
+      <result property="DLDJ" column="DLDJ" />
+      <result property="LK" column="LK" />
+      <result property="ZL" column="ZL" />
+      <result property="ZD" column="ZD" />
+      <result property="GCJS" column="GCJS" />
+      <result property="ZCD" column="ZCD" />
+      <result property="HJQK" column="HJQK" />
+      <result property="DLZCD" column="DLZCD" />
+      <result property="GCQD" column="GCQD" />
+      <result property="GCZD" column="GCZD" />
+    </resultMap>
+  </resultMaps>
+
+  <statements>
+    <select id="QueryRoadLamp_ByProjID" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Project_RoadLamp] WHERE
+      ([T_Project_RoadLamp].[ProjectID] = #value#)
+    </select>
+
+    <insert id="InsertT_RoadLamp" parameterClass="T_Project_RoadLamp">
+      Insert Into T_Project_RoadLamp (
+      ID,
+      ProjectID,
+      DLGG,
+      DLCD,
+      XBXH,
+      LDXS_ST,
+      LDXS_MT,
+      DGZS,
+      DGGD,
+      GGDS,
+      GGDGD,
+      GYLX,
+      GL,
+      DJZL,
+      DGJJL,
+      DJBC,
+      JXJ,
+      Remark,
+      GCYS,
+      DLMJ,
+      DLDJ,
+      LK,
+      ZL,
+      ZD,
+      GCJS,
+      ZCD,
+      HJQK,
+      DLZCD,
+      GCQD,
+      GCZD
+      )Values(
+      #ID#,
+      #ProjectID#,
+      #DLGG#,
+      #DLCD#,
+      #XBXH#,
+      #LDXS_ST#,
+      #LDXS_MT#,
+      #DGZS#,
+      #DGGD#,
+      #GGDS#,
+      #GGDGD#,
+      #GYLX#,
+      #GL#,
+      #DJZL#,
+      #DGJJL#,
+      #DJBC#,
+      #JXJ#,
+      #Remark#,
+      #GCYS#,
+      #DLMJ#,
+      #DLDJ#,
+      #LK#,
+      #ZL#,
+      #ZD#,
+      #GCJS#,
+      #ZCD#,
+      #HJQK#,
+      #DLZCD#,
+      #GCQD#,
+      #GCZD#
+      )
+    </insert>
+
+    <update id="UpdateT_RoadLamp" parameterClass="T_Project_RoadLamp">
+      Update T_Project_RoadLamp Set
+      DLGG=#DLGG#,
+      DLCD=#DLCD#,
+      XBXH=#XBXH#,
+      LDXS_ST=#LDXS_ST#,
+      LDXS_MT=#LDXS_MT#,
+      DGZS=#DGZS#,
+      DGGD=#DGGD#,
+      GGDS=#GGDS#,
+      GGDGD=#GGDGD#,
+      GYLX=#GYLX#,
+      GL=#GL#,
+      DJZL=#DJZL#,
+      DGJJL=#DGJJL#,
+      DJBC=#DJBC#,
+      JXJ=#JXJ#,
+      Remark=#Remark#,
+      GCYS=#GCYS#,
+      DLMJ=#DLMJ#,
+      DLDJ= #DLDJ#,
+      LK=#LK#,
+      ZL=#ZL#,
+      ZD= #ZD#,
+      GCJS= #GCJS#,
+      ZCD= #ZCD#,
+      HJQK= #HJQK#,
+      DLZCD= #DLZCD#,
+      GCQD= #GCQD#,
+      GCZD= #GCZD#
+      <dynamic prepend="WHERE">
+        <isParameterPresent>
+          ID=#ID#
+        </isParameterPresent>
+      </dynamic>
+    </update>
+
+    <delete id="DeleteT_Project_RoadLamp" parameterClass="String">
+      Delete From T_Project_RoadLamp
+      <dynamic prepend="WHERE">
+        <isParameterPresent>
+          ID=#value#
+        </isParameterPresent>
+      </dynamic>
+    </delete>
+    <delete id="DeleteRoadLampByProjectNO" parameterClass="String">
+      Delete From T_Project_RoadLamp
+      <dynamic prepend="WHERE">
+        <isParameterPresent>
+          ProjectID=#value#
+        </isParameterPresent>
+      </dynamic>
+    </delete>
+  </statements>
+</sqlMap>

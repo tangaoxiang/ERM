@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="T_GdListTemplate"
+	xmlns="http://ibatis.apache.org/mapping"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<alias>
+		<typeAlias alias="T_GdListTemplate" type="ERM.MDL.T_GdListTemplate,ERM.MDL" />
+	</alias>
+
+	<resultMaps>
+		<resultMap id="FullResultMap" class="T_GdListTemplate">
+			<result property="ID" column="ID" dbType="VarChar"/>
+			<result property="GdName" column="GdName" dbType="VarChar"/>
+			<result property="OrderIndex" column="OrderIndex" dbType="Int"/>
+			<result property="IsShow" column="IsShow" dbType="Int"/>
+      <result property="ProjectCategory" column="ProjectCategory" dbType="VarChar"/>
+		</resultMap>
+	</resultMaps>
+
+	<statements>
+		<select id="GetCount" resultClass="System.Int32">
+			SELECT count(*) FROM [T_GdListTemplate]
+		</select>
+		<select id="GetAll" resultMap="FullResultMap">
+			SELECT * FROM [T_GdListTemplate]
+		</select>
+    
+    <select id="GetAllByCategory" parameterClass="T_GdListTemplate" resultMap="FullResultMap">
+      SELECT * FROM [T_GdListTemplate] where ProjectCategory=#ProjectCategory#
+      <isNotNull property="GdName">
+        <isNotEmpty property="GdName">
+          AND GdName LIKE '%$GdName$%'
+        </isNotEmpty>
+      </isNotNull>
+      order by orderindex
+    </select>
+    
+    <select id="FindID" parameterClass="T_GdListTemplate" resultMap="FullResultMap">
+			SELECT * FROM [T_GdListTemplate] WHERE ([T_GdListTemplate].[ID] = #ID#)
+		</select>
+		<insert id="Insert" parameterClass="T_GdListTemplate">
+      INSERT INTO [T_GdListTemplate] (
+      [ID]
+      , [GdName]
+      , [OrderIndex]
+      , [IsShow]
+      , ProjectCategory
+      ) VALUES (
+      #ID#
+      , #GdName#
+      , #OrderIndex#
+      , #IsShow#
+      , #ProjectCategory#
+      )
+    </insert>
+		<update id="Update" parameterClass="T_GdListTemplate">
+      UPDATE [T_GdListTemplate] SET
+      [GdName] = #GdName#, [OrderIndex] = #OrderIndex#, [IsShow] = #IsShow#,
+      [ProjectCategory]=#ProjectCategory#
+      WHERE
+      ([ID] = #ID#)
+    </update>
+		<delete id="Delete" parameterClass="T_GdListTemplate">
+			DELETE FROM [T_GdListTemplate] WHERE ([ID] = #ID#)
+		</delete>
+    
+    <select id="FindOrderIndex" parameterClass="T_GdListTemplate" resultMap="FullResultMap">
+      SELECT * FROM [T_GdListTemplate] WHERE ([T_GdListTemplate].[OrderIndex] = #OrderIndex#)
+    </select>
+	</statements>
+</sqlMap>

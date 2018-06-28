@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="T_Units"
+	xmlns="http://ibatis.apache.org/mapping"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <alias>
+    <typeAlias alias="T_Units" type="ERM.MDL.T_Units,ERM.MDL" />
+  </alias>
+
+  <resultMaps>
+    <resultMap id="FullResultMap" class="T_Units">
+      <result property="UnitID" column="UnitID" dbType="VarChar"/>
+      <result property="ProjectNO" column="ProjectNO" dbType="VarChar"/>
+      <result property="unittype" column="unittype" dbType="VarChar"/>
+      <result property="dwmc" column="dwmc" dbType="VarChar"/>
+      <result property="fzr" column="fzr" dbType="VarChar"/>
+      <result property="fzrzs" column="fzrzs" dbType="VarChar"/>
+      <result property="xmjl" column="xmjl" dbType="VarChar"/>
+      <result property="zzdj" column="zzdj" dbType="VarChar"/>
+      <result property="zzzh" column="zzzh" dbType="VarChar"/>
+      <result property="addr" column="addr" dbType="VarChar"/>
+      <result property="tel" column="tel" dbType="VarChar"/>
+      <result property="fax" column="fax" dbType="VarChar"/>
+      <result property="zrzbsm" column="zrzbsm" dbType="VarChar"/>
+      <result property="zrzlb" column="zrzlb" dbType="VarChar"/>
+      <result property="zrzmc" column="zrzmc" dbType="VarChar"/>
+      <result property="zrzzzfw" column="zrzzzfw" dbType="VarChar"/>
+      <result property="remark" column="remark" dbType="VarChar"/>
+      <result property="xmzyzljcy" column="xmzyzljcy" dbType="VarChar"/>
+      <result property="zlfzr" column="zlfzr" dbType="VarChar"/>
+      <result property="jccsfzr" column="jccsfzr" dbType="VarChar"/>
+      <result property="syxfzr" column="syxfzr" dbType="VarChar"/>
+      <result property="tsfzr" column="tsfzr" dbType="VarChar"/>
+      <result property="xcjl" column="xcjl" dbType="VarChar"/>
+    </resultMap>
+  </resultMaps>
+
+  <statements>
+
+    <select id="GetCount" resultClass="System.Int32">
+      SELECT count(*) FROM [T_Units]
+    </select>
+
+    <select id="GetAll" resultMap="FullResultMap">
+      SELECT *
+      FROM [T_Units]
+    </select>
+
+    <select id="GetList" parameterClass="T_Units" resultClass="System.Data.DataSet">
+      SELECT *
+      FROM [T_Units] WHERE ProjectNO=#ProjectNO,dbType=VarChar# AND unittype=#unittype,dbType=VarChar#
+    </select>
+    
+    <select id="Exists" parameterClass="T_Units"  resultClass="System.Boolean">
+      SELECT COUNT(1)
+      FROM [T_Units] WHERE
+      ([T_Units].[UnitID] = #UnitID,dbType=VarChar#)
+    </select>
+
+    <select id="Find" parameterClass="T_Units" resultMap="FullResultMap">
+      SELECT * FROM [T_Units] WHERE
+      ([T_Units].[UnitID] = #UnitID,dbType=VarChar#)
+    </select>
+
+    <select id="Exists1" parameterClass="T_Units"  resultClass="System.Boolean">
+      SELECT COUNT(1)
+      FROM [T_Units] WHERE
+      ([T_Units].[unittype] = #unittype,dbType=VarChar#)
+      and ([T_Units].[ProjectNO] = #ProjectNO,dbType=VarChar#)
+    </select>
+    
+    <select id="FindByProjectNO" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Units] WHERE ([T_Units].[ProjectNO] = #value#)
+    </select>
+    <select id="FindByunittype" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Units] WHERE ([T_Units].[unittype] = #value#)
+    </select>
+    <select id="FindBydwmc" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Units] WHERE ([T_Units].[dwmc] = #value#)
+    </select>
+    <select id="FindByfzr" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Units] WHERE ([T_Units].[fzr] = #value#)
+    </select>
+    <select id="FindByfzrzs" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Units] WHERE ([T_Units].[fzrzs] = #value#)
+    </select>
+    <select id="FindByxmjl" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Units] WHERE ([T_Units].[xmjl] = #value#)
+    </select>
+    <select id="FindByzzdj" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Units] WHERE ([T_Units].[zzdj] = #value#)
+    </select>
+    <select id="FindByzzzh" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Units] WHERE ([T_Units].[zzzh] = #value#)
+    </select>
+    <select id="FindByaddr" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Units] WHERE ([T_Units].[addr] = #value#)
+    </select>
+    <select id="FindBytel" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Units] WHERE ([T_Units].[tel] = #value#)
+    </select>
+    <select id="FindByfax" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Units] WHERE ([T_Units].[fax] = #value#)
+    </select>
+    <select id="FindByzrzbsm" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Units] WHERE ([T_Units].[zrzbsm] = #value#)
+    </select>
+    <select id="FindByzrzlb" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Units] WHERE ([T_Units].[zrzlb] = #value#)
+    </select>
+    <select id="FindByzrzmc" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Units] WHERE ([T_Units].[zrzmc] = #value#)
+    </select>
+    <select id="FindByzrzzzfw" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Units] WHERE ([T_Units].[zrzzzfw] = #value#)
+    </select>
+    <select id="FindByremark" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Units] WHERE ([T_Units].[remark] = #value#)
+    </select>
+
+    <insert id="Insert" parameterClass="T_Units">
+      INSERT INTO [T_Units] (
+      [UnitID]
+      , [ProjectNO]
+      , [unittype]
+      , [dwmc]
+      , [fzr]
+      , [fzrzs]
+      , [xmjl]
+      , [zzdj]
+      , [zzzh]
+      , [addr]
+      , [tel]
+      , [fax]
+      , [zrzbsm]
+      , [zrzlb]
+      , [zrzmc]
+      , [zrzzzfw]
+      , [remark]
+      , [xmzyzljcy]
+      , [zlfzr]
+      , [jccsfzr]
+      , [syxfzr]
+      , [xcjl]
+      , [tsfzr]
+      ) VALUES (
+      #UnitID,dbType=VarChar#
+      , #ProjectNO,dbType=VarChar#
+      , #unittype,dbType=VarChar#
+      , #dwmc,dbType=VarChar#
+      , #fzr,dbType=VarChar#
+      , #fzrzs,dbType=VarChar#
+      , #xmjl,dbType=VarChar#
+      , #zzdj,dbType=VarChar#
+      , #zzzh,dbType=VarChar#
+      , #addr,dbType=VarChar#
+      , #tel,dbType=VarChar#
+      , #fax,dbType=VarChar#
+      , #zrzbsm,dbType=VarChar#
+      , #zrzlb,dbType=VarChar#
+      , #zrzmc,dbType=VarChar#
+      , #zrzzzfw,dbType=VarChar#
+      , #remark,dbType=VarChar#
+      , #xmzyzljcy#
+      , #zlfzr#
+      , #jccsfzr#
+      , #syxfzr#
+      , #xcjl#
+      , #tsfzr#
+      )
+    </insert>
+
+    <update id="Update" parameterClass="T_Units">
+      UPDATE [T_Units] SET
+      [ProjectNO] = #ProjectNO,dbType=VarChar#
+      , [unittype] = #unittype,dbType=VarChar#
+      , [dwmc] = #dwmc,dbType=VarChar#
+      , [fzr] = #fzr,dbType=VarChar#
+      , [fzrzs] = #fzrzs,dbType=VarChar#
+      , [xmjl] = #xmjl,dbType=VarChar#
+      , [zzdj] = #zzdj,dbType=VarChar#
+      , [zzzh] = #zzzh,dbType=VarChar#
+      , [addr] = #addr,dbType=VarChar#
+      , [tel] = #tel,dbType=VarChar#
+      , [fax] = #fax,dbType=VarChar#
+      , [zrzbsm] = #zrzbsm,dbType=VarChar#
+      , [zrzlb] = #zrzlb,dbType=VarChar#
+      , [zrzmc] = #zrzmc,dbType=VarChar#
+      , [zrzzzfw] = #zrzzzfw,dbType=VarChar#
+      , [remark] = #remark,dbType=VarChar#
+      , [xmzyzljcy]= #xmzyzljcy#
+      , [zlfzr]= #zlfzr#
+      , [jccsfzr]= #jccsfzr#
+      , [syxfzr]= #syxfzr#
+      , [xcjl]=#xcjl#
+      , [tsfzr]= #tsfzr#
+      WHERE
+      UnitID=#UnitID#
+
+    </update>
+
+    <update id="Updates" parameterClass="T_Units">
+      UPDATE [T_Units] SET
+      [dwmc] = #dwmc,dbType=VarChar#
+      WHERE
+      ([unittype] = #unittype,dbType=VarChar#)
+      AND  ([ProjectNO] = #ProjectNO,dbType=VarChar#)
+    </update>
+
+    <delete id="Delete" parameterClass="T_Units">
+      DELETE FROM [T_Units]
+      WHERE
+      ([UnitID] = #UnitID,dbType=VarChar#)
+    </delete>
+
+    <delete id="DeleteUnitByProjectNO" parameterClass="System.String">
+      DELETE FROM [T_Units]
+      WHERE
+      ([ProjectNO] = #value#)
+    </delete>
+  </statements>
+</sqlMap>

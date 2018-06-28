@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--原文文件XML-->
+<root>
+  <columns>
+    <property column="CreateUser" mappColumn="CREATED_BY"  description="创建人" display="1" type="1" default="" />
+    <property column="CREATED_DT" mappColumn="CREATED_DT"  description="创建时间" display="1" type="1" default="" />
+    <property column="FILENAME1" mappColumn="FILENAME"  description="文件名" display="1" type="0" default="" />
+    <property column="FILEPATH1" mappColumn="FILEPATH"  description="文件路径" display="1" type="0" default="" />
+    <property column="orderindex1" mappColumn="ORDER_RANK"  description="排序等级" display="1" type="1" default="0" />
+    <property column="title" mappColumn="FILEDISCRIPTION"  description="描述" display="1" type="1" default="" />
+    <property column="FileSize1" mappColumn="FileSize"  description="文件大小" display="1" type="0" default="0" />
+  </columns>
+  <selects>
+    <select id="queryByProjectNo">
+      select *,Format(CREATEDate,'yyyy-mm-dd') AS CREATED_DT 
+      from t_yw_cellandefile
+    </select>
+  </selects>
+</root>

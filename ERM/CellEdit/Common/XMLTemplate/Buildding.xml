@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <!-- 
+      column:房屋建筑
+      mappColumn:输出的字段别名 
+      description:字段描述   
+      display:是否输出显示,1为显示,0为不输出显示 
+      type:是否为数据库取值,默认为0,自定义为1
+  -->
+  <columns>
+    <property column="stru" mappColumn="consTypeCode"  description="结构类型" display="1" type="0"/>
+    <property column="price2" mappColumn="projectCost"  description="工程造价" display="1" type="0"/>
+    <property column="high" mappColumn="height"  description="高度" display="1" type="0"/>
+    <property column="landUseArea" mappColumn="landUseArea"  description="总占地面积-房屋" display="1" type="1"/>
+    <property column="handoverOrgName" mappColumn="handoverOrgName"  description="总建筑面积-房屋" display="1" type="1"/>
+    <property column="ds" mappColumn="buildingNums"  description="栋数" display="1" type="1"/>
+    <property column="floors1" mappColumn="overNums"  description="地上层数" display="1" type="0"/>
+    <property column="floors2" mappColumn="underNums"  description="地下层数" display="1" type="0"/>
+    <property column="finishArea" mappColumn="finishArea"  description="竣工面积" display="1" type="1"/>
+    <property column="holenums" mappColumn="holenums"  description="孔数" display="1" type="1"/>
+    <property column="startX" mappColumn="startX"  description="起点" display="1" type="1"/>
+    <property column="endX" mappColumn="endX"  description="止点" display="1" type="1"/>
+    <property column="length" mappColumn="length"  description="长度" display="1" type="1"/>
+    <property column="width" mappColumn="width"  description="宽度" display="1" type="1"/>
+    <property column="span" mappColumn="span"  description="跨径" display="1" type="1"/>
+    <property column="loadCode" mappColumn="loadCode"  description="荷载级别" display="1" type="1"/>
+    <property column="headroom" mappColumn="headroom"  description="净空" display="1" type="1"/>
+    <property column="pipeDiameter" mappColumn="pipeDiameter"  description="直径" display="1" type="1"/>
+    <property column="pipeMaterial" mappColumn="pipeMaterial"  description="管材" display="1" type="1"/>
+    <property column="basisTypeCode" mappColumn="basisTypeCode"  description="地基处理" display="1" type="1"/>
+    <property column="dxsmj" mappColumn="underArea"  description="地下建筑面积" display="1" type="0"/>
+    <property column="projCount" mappColumn="projCount"  description="单位工程数 " display="1" type="1"/>
+    <property column="constructionArea" mappColumn="constructionArea"  description="建筑面积" display="1" type="1"/>
+    <property column="kzsfcd" mappColumn="seismicFortificationIntensity"  description="抗震强度" display="1" type="0"/>
+    <property column="zzmj" mappColumn="residentialNums"  description="住宅建筑面积" display="1" type="0"/>
+    <property column="bgyfmj" mappColumn="officeNums"  description="办公建筑面积" display="1" type="0"/>
+    <property column="dxsmj" mappColumn="basementNums"  description="地下室面积" display="1" type="0"/>
+    <property column="cfmj" mappColumn="workshopNums"  description="厂房建筑面积" display="1" type="0"/>
+    <property column="syyfmj" mappColumn="businessNums"  description="商业建筑面积" display="1" type="0"/>
+    <property column="area2" mappColumn="defenseNums"  description="人防建筑面积" display="1" type="0"/>
+    <property column="qtyfmj" mappColumn="otherNums"  description="其他用房面积" display="1" type="0"/>
+    <property column="hjqk" mappColumn="prizeCondition"  description="获奖情况" display="1" type="0"/>
+    <property column="ztcw" mappColumn="totleparkingNums"  description="总停车位" display="1" type="0"/>
+    <property column="dstcw" mappColumn="overParking"  description="地上停车位" display="1" type="0"/>
+    <property column="dxtcw" mappColumn="underParking"  description="地下停车位" display="1" type="0"/>
+    <property column="ts1" mappColumn="singleApartmentNums"  description="单身公寓套数" display="1" type="0"/>
+    <property column="ts2" mappColumn="smallNums"  description="60-100㎡套数" display="1" type="0"/>
+    <property column="ts3" mappColumn="middleNums"  description="100-144㎡套数" display="1" type="0"/>
+    <property column="ts4" mappColumn="bigNums"  description="144㎡以上套数" display="1" type="0"/>
+    <property column="ts5" mappColumn="villaNums"  description="总别墅套数" display="1" type="0"/>
+    <property column="tstotal" mappColumn="totleNums"  description="总套数" display="1" type="0"/>
+    <property column="tbr" mappColumn="enteringUser"  description="填表人" display="1" type="0"/>
+  </columns>
+  <selects>
+    <select id="queryByProjectNo">
+      select a.*,b.* from t_projects as a,t_item as b where a.itemid=b.itemid
+    </select>
+  </selects>
+</root>

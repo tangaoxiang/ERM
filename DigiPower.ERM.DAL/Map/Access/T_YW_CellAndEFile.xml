@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="T_YW_CellAndEFile"
+	xmlns="http://ibatis.apache.org/mapping"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <alias>
+    <typeAlias alias="T_YW_CellAndEFile" type="ERM.MDL.T_YW_CellAndEFile,ERM.MDL" />
+  </alias>
+  <resultMaps>
+    <resultMap id="FullResultMap" class="T_YW_CellAndEFile">
+      <result property="ID" column="ID" dbType="VarChar"/>
+      <result property="FileID" column="FileID" dbType="VarChar"/>
+      <result property="ProjectNO" column="ProjectNO" dbType="VarChar"/>
+      <result property="CreateUser" column="CreateUser" dbType="VarChar"/>
+      <result property="CreateDate" column="CreateDate" dbType="VarChar"/>
+      <result property="FileFormat" column="FileFormat" dbType="VarChar"/>
+      <result property="FileName" column="FileName" dbType="VarChar"/>
+      <result property="FileSize" column="FileSize" dbType="VarChar"/>
+      <result property="OperationType" column="OperationType" dbType="VarChar"/>
+      <result property="CellID" column="CellID" dbType="VarChar"/>   
+    </resultMap>
+  </resultMaps>
+
+  <statements>
+
+    <select id="GetCount" resultClass="System.Int32">
+      SELECT count(*) FROM [T_YW_CellAndEFile]
+    </select>
+
+    <select id="FindByCellID" parameterClass="T_YW_CellAndEFile" resultMap="FullResultMap">
+      SELECT *
+      FROM [T_YW_CellAndEFile]  WHERE
+      ([CellID] = #CellID#)  And ([ProjectNO] = #ProjectNO#)
+    </select>
+
+    <select id="FindByID" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_YW_CellAndEFile] WHERE ([T_YW_CellAndEFile].[ID] = #ID#)
+    </select>
+
+    <insert id="Insert" parameterClass="T_YW_CellAndEFile">
+      INSERT INTO [T_YW_CellAndEFile] (
+      [ID]
+      , [FileID]
+      , [ProjectNO]
+      , [CreateUser]
+      , [CreateDate]
+      , [FileFormat]
+      , [FileName]
+      , [FileSize]
+      , [OperationType]
+      , [CellID]
+      ) VALUES (
+      #ID#
+      ,#FileID#
+      ,#ProjectNO#
+      ,#CreateUser#
+      ,#CreateDate#
+      ,#FileFormat#
+      ,#FileName#
+      ,#FileSize#
+      ,#OperationType#
+      ,#CellID#
+      )
+    </insert>
+
+    <update id="Update" parameterClass="T_YW_CellAndEFile">
+      UPDATE [T_YW_CellAndEFile] SET
+      [FileID] = #FileID#
+      , [ProjectNO] = #ProjectNO#
+      , [CreateUser] = #CreateUser#
+      , [CreateDate] = #CreateDate#
+      , [FileFormat] = #FileFormat#
+      , [FileName] = #FileName#
+      , [FileSize] = #FileSize#
+      , [OperationType] = #OperationType#
+      , [CellID] = #CellID#
+      WHERE
+      ([ID] = #ID#)
+    </update>
+
+    <delete id="Delete" parameterClass="T_YW_CellAndEFile">
+      DELETE FROM [T_YW_CellAndEFile]
+      WHERE
+      ([CellID] = #CellID#)  And ([ProjectNO] = #ProjectNO#)
+    </delete>
+    <delete id="DeleteByProjectNo" parameterClass="String">
+      Delete From T_YW_CellAndEFile
+      <dynamic prepend="WHERE">
+        <isParameterPresent>
+          ProjectNo=#value#
+        </isParameterPresent>
+      </dynamic>
+    </delete>
+  </statements>
+</sqlMap>

@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<sqlMap namespace="T_Traffic_Detail" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <alias>
+    <typeAlias alias="T_Traffic_Detail" type="ERM.MDL.T_Traffic_Detail,ERM.MDL" />
+  </alias>
+  <resultMaps>
+    <resultMap id="FullResultMap" class="T_Traffic_Detail">
+      <result property="ID" column="ID" />
+      <result property="TrafficID" column="TrafficID" />
+      <result property="Types" column="Types" />
+      <result property="ZCD" column="ZCD" />
+      <result property="GJ" column="GJ" />
+      <result property="CZ" column="CZ" />
+      <result property="ZHXS" column="ZHXS" />
+      <result property="JMCC" column="JMCC" />
+      <result property="JCXS" column="JCXS" />
+    </resultMap>
+  </resultMaps>
+
+  <statements>
+    <select id="Find_ByTrafficID" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Traffic_Detail] WHERE ([T_Traffic_Detail].[TrafficID] = #value#)
+    </select>
+
+    <insert id="InsertT_Traffic_Detail" parameterClass="T_Traffic_Detail">
+      Insert Into T_Traffic_Detail (
+      ID,
+      TrafficID,
+      Types,
+      ZCD,
+      GJ,
+      CZ,
+      ZHXS,
+      JMCC,
+      JCXS
+      )Values(
+      #ID#,
+      #TrafficID#,
+      #Types#,
+      #ZCD#,
+      #GJ#,
+      #CZ#,
+      #ZHXS#,
+      #JMCC#,
+      #JCXS#)
+     
+    </insert>
+
+    <update id="UpdateT_Traffic_Detail" parameterClass="T_Traffic_Detail">
+      Update T_Traffic_Detail Set
+      Types=#Types#,
+      ZCD=#ZCD#,
+      GJ=#GJ#,
+      CZ=#CZ#,
+      ZHXS=#ZHXS#,
+      JMCC=#JMCC#,
+      JCXS=#JCXS#			<dynamic prepend="WHERE">
+        <isParameterPresent>
+          ID=#ID#
+        </isParameterPresent>
+      </dynamic>
+    </update>
+
+   <delete id="DeleteT_Traffic_Detail" parameterClass="String">
+      Delete From T_Traffic_Detail
+      <dynamic prepend="WHERE">
+        <isParameterPresent>
+          ID=#ID#
+        </isParameterPresent>
+      </dynamic>
+    </delete>
+    <delete id="DeleteTrafficDetailByTrafficID" parameterClass="String">
+      Delete From T_Traffic_Detail
+      <dynamic prepend="WHERE">
+        <isParameterPresent>
+          TrafficID=#TrafficID#
+        </isParameterPresent>
+      </dynamic>
+    </delete>
+  </statements>
+</sqlMap>

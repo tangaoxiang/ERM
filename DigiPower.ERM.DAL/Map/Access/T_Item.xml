@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="T_Item"
+	xmlns="http://ibatis.apache.org/mapping"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <alias>
+    <typeAlias alias="T_Item" type="ERM.MDL.T_Item,ERM.MDL" />
+  </alias>
+
+  <resultMaps>
+    <resultMap id="FullResultMap" class="T_Item">
+      <result property="ItemID" column="ItemID" dbType="VarChar"/>
+      <result property="ConStructionProjectName" column="ConStructionProjectName" dbType="VarChar"/>
+      <result property="Respective" column="Respective" dbType="VarChar"/>
+      <result property="ConstructionProjectAdd" column="ConstructionProjectAdd" dbType="VarChar"/>
+      <result property="ProjectType" column="ProjectType" dbType="VarChar"/>
+      <result property="UseSoiAreaSum" column="UseSoiAreaSum" dbType="VarChar"/>
+      <result property="ConstructionAreaSum" column="ConstructionAreaSum" dbType="VarChar"/>
+      <result property="ConstructionScale" column="ConstructionScale" dbType="VarChar"/>
+      <result property="ProjectCost" column="ProjectCost" dbType="VarChar"/>
+      <result property="ProjectSettlement" column="ProjectSettlement" dbType="VarChar"/>
+      <result property="StartDate" column="StartDate" dbType="VarChar"/>
+      <result property="FinishDate" column="FinishDate" dbType="VarChar"/>
+      <result property="UseSoiType" column="UseSoiType" dbType="VarChar"/>
+      <result property="CollectionType" column="CollectionType" dbType="VarChar"/>
+      <result property="OriginalSoiType" column="OriginalSoiType" dbType="VarChar"/>
+      <result property="UseSoiArea" column="UseSoiArea" dbType="VarChar"/>
+      <result property="Approvedate" column="Approvedate" dbType="VarChar"/>
+      <result property="CreateUnit" column="CreateUnit" dbType="VarChar"/>
+      <result property="ItemFzr" column="ItemFzr" dbType="VarChar"/>
+      <result property="AllCost" column="AllCost" dbType="VarChar"/>
+      <result property="VolumeFar" column="VolumeFar" dbType="VarChar"/>
+      <result property="GreenFar" column="GreenFar" dbType="VarChar"/>
+      <result property="BuildingDensity" column="BuildingDensity" dbType="VarChar"/>
+      <result property="ds" column="ds" dbType="VarChar"/>
+      <result property="pzdw" column="pzdw" dbType="VarChar"/>
+      <result property="pzh" column="pzh" dbType="VarChar"/>
+      <result property="zcd" column="zcd" dbType="VarChar"/>
+      <result property="TlsyCode" column="TlsyCode" dbType="VarChar"/>
+      <result property="YdghxkCode" column="YdghxkCode" dbType="VarChar"/>
+      <result property="Tlcrnx" column="Tlcrnx" dbType="VarChar"/>
+      <result property="XmCode" column="XmCode" dbType="VarChar"/>
+    </resultMap>
+  </resultMaps>
+
+  <statements>
+
+    <select id="GetCount" resultClass="System.Int32">
+      SELECT count(*) FROM [T_Item]
+    </select>
+
+    <select id="GetAll" resultMap="FullResultMap">
+      SELECT *
+      FROM [T_Item]
+    </select>
+
+    <select id="GetList" parameterClass="String" resultClass="System.Data.DataSet">
+      SELECT *
+      FROM [T_Item] WHERE (#value#)
+    </select>
+
+    <select id="Exists" parameterClass="T_Item"  resultClass="System.Boolean">
+      SELECT COUNT(1)
+      FROM [T_Item] WHERE
+      ([T_Item].[ItemID] = #ItemID,dbType=VarChar#)
+    </select>
+
+    <select id="Find" parameterClass="T_Item" resultMap="FullResultMap">
+      SELECT * FROM [T_Item] WHERE
+      ([T_Item].[ItemID] = #ItemID,dbType=VarChar#)
+    </select>
+    <select id="FindByConStructionProjectName" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Item] WHERE ([T_Item].[ConStructionProjectName] = #value#)
+    </select>
+    <select id="FindByRespective" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Item] WHERE ([T_Item].[Respective] = #value#)
+    </select>
+    <select id="FindByConstructionProjectAdd" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Item] WHERE ([T_Item].[ConstructionProjectAdd] = #value#)
+    </select>
+    <select id="FindByProjectType" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Item] WHERE ([T_Item].[ProjectType] = #value#)
+    </select>
+    <select id="FindByUseSoiAreaSum" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Item] WHERE ([T_Item].[UseSoiAreaSum] = #value#)
+    </select>
+    <select id="FindByConstructionAreaSum" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Item] WHERE ([T_Item].[ConstructionAreaSum] = #value#)
+    </select>
+    <select id="FindByConstructionScale" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Item] WHERE ([T_Item].[ConstructionScale] = #value#)
+    </select>
+    <select id="FindByProjectCost" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Item] WHERE ([T_Item].[ProjectCost] = #value#)
+    </select>
+    <select id="FindByProjectSettlement" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Item] WHERE ([T_Item].[ProjectSettlement] = #value#)
+    </select>
+    <select id="FindByStartDate" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Item] WHERE ([T_Item].[StartDate] = #value#)
+    </select>
+    <select id="FindByFinishDate" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Item] WHERE ([T_Item].[FinishDate] = #value#)
+    </select>
+    <select id="FindByUseSoiType" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Item] WHERE ([T_Item].[UseSoiType] = #value#)
+    </select>
+    <select id="FindByCollectionType" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Item] WHERE ([T_Item].[CollectionType] = #value#)
+    </select>
+    <select id="FindByOriginalSoiType" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Item] WHERE ([T_Item].[OriginalSoiType] = #value#)
+    </select>
+    <select id="FindByUseSoiArea" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Item] WHERE ([T_Item].[UseSoiArea] = #value#)
+    </select>
+    <select id="FindByApprovedate" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Item] WHERE ([T_Item].[Approvedate] = #value#)
+    </select>
+    <select id="FindByCreateUnit" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Item] WHERE ([T_Item].[CreateUnit] = #value#)
+    </select>
+    <select id="FindByItemFzr" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Item] WHERE ([T_Item].[ItemFzr] = #value#)
+    </select>
+    <select id="FindByAllCost" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Item] WHERE ([T_Item].[AllCost] = #value#)
+    </select>
+    <select id="FindByVolumeFar" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Item] WHERE ([T_Item].[VolumeFar] = #value#)
+    </select>
+    <select id="FindByGreenFar" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Item] WHERE ([T_Item].[GreenFar] = #value#)
+    </select>
+    <select id="FindByBuildingDensity" parameterClass="String" resultMap="FullResultMap">
+      SELECT * FROM [T_Item] WHERE ([T_Item].[BuildingDensity] = #value#)
+    </select>
+
+    <insert id="Insert" parameterClass="T_Item">
+      INSERT INTO [T_Item] (
+      [ItemID]
+      , [ConStructionProjectName]
+      , [Respective]
+      , [ConstructionProjectAdd]
+      , [ProjectType]
+      , [UseSoiAreaSum]
+      , [ConstructionAreaSum]
+      , [ConstructionScale]
+      , [ProjectCost]
+      , [ProjectSettlement]
+      , [StartDate]
+      , [FinishDate]
+      , [UseSoiType]
+      , [CollectionType]
+      , [OriginalSoiType]
+      , [UseSoiArea]
+      , [Approvedate]
+      , [CreateUnit]
+      , [ItemFzr]
+      , [AllCost]
+      , [VolumeFar]
+      , [GreenFar]
+      , [BuildingDensity]
+      , [ds]
+      , [pzdw]
+      , [pzh]
+      ,[zcd]
+      ,[TlsyCode]
+      ,[YdghxkCode]
+      ,[Tlcrnx]
+      ,[XmCode]
+      ) VALUES (
+      #ItemID,dbType=VarChar#
+      , #ConStructionProjectName,dbType=VarChar#
+      , #Respective,dbType=VarChar#
+      , #ConstructionProjectAdd,dbType=VarChar#
+      , #ProjectType,dbType=VarChar#
+      , #UseSoiAreaSum,dbType=VarChar#
+      , #ConstructionAreaSum,dbType=VarChar#
+      , #ConstructionScale,dbType=VarChar#
+      , #ProjectCost,dbType=VarChar#
+      , #ProjectSettlement,dbType=VarChar#
+      , #StartDate,dbType=VarChar#
+      , #FinishDate,dbType=VarChar#
+      , #UseSoiType,dbType=VarChar#
+      , #CollectionType,dbType=VarChar#
+      , #OriginalSoiType,dbType=VarChar#
+      , #UseSoiArea,dbType=VarChar#
+      , #Approvedate,dbType=VarChar#
+      , #CreateUnit,dbType=VarChar#
+      , #ItemFzr,dbType=VarChar#
+      , #AllCost,dbType=VarChar#
+      , #VolumeFar,dbType=VarChar#
+      , #GreenFar,dbType=VarChar#
+      , #BuildingDensity,dbType=VarChar#
+      , #ds#
+      , #pzdw#
+      , #pzh#
+      , #zcd#
+      , #TlsyCode#
+      , #YdghxkCode#
+      , #Tlcrnx#
+      , #XmCode#
+      )
+    </insert>
+
+    <update id="Update" parameterClass="T_Item">
+      UPDATE [T_Item] SET
+      [ConStructionProjectName] = #ConStructionProjectName,dbType=VarChar#
+      , [Respective] = #Respective,dbType=VarChar#
+      , [ConstructionProjectAdd] = #ConstructionProjectAdd,dbType=VarChar#
+      , [ProjectType] = #ProjectType,dbType=VarChar#
+      , [UseSoiAreaSum] = #UseSoiAreaSum,dbType=VarChar#
+      , [ConstructionAreaSum] = #ConstructionAreaSum,dbType=VarChar#
+      , [ConstructionScale] = #ConstructionScale,dbType=VarChar#
+      , [ProjectCost] = #ProjectCost,dbType=VarChar#
+      , [ProjectSettlement] = #ProjectSettlement,dbType=VarChar#
+      , [StartDate] = #StartDate,dbType=VarChar#
+      , [FinishDate] = #FinishDate,dbType=VarChar#
+      , [UseSoiType] = #UseSoiType,dbType=VarChar#
+      , [CollectionType] = #CollectionType,dbType=VarChar#
+      , [OriginalSoiType] = #OriginalSoiType,dbType=VarChar#
+      , [UseSoiArea] = #UseSoiArea,dbType=VarChar#
+      , [Approvedate] = #Approvedate,dbType=VarChar#
+      , [CreateUnit] = #CreateUnit,dbType=VarChar#
+      , [ItemFzr] = #ItemFzr,dbType=VarChar#
+      , [AllCost] = #AllCost,dbType=VarChar#
+      , [VolumeFar] = #VolumeFar,dbType=VarChar#
+      , [GreenFar] = #GreenFar,dbType=VarChar#
+      , [BuildingDensity] = #BuildingDensity,dbType=VarChar#
+      , [ds] = #ds#
+      , [pzdw] = #pzdw#
+      , [pzh] = #pzh#
+      ,[zcd]=#zcd#
+      , [TlsyCode]=#TlsyCode#
+      , [YdghxkCode]=#YdghxkCode#
+      , [Tlcrnx]=#Tlcrnx#
+      , [XmCode]=#XmCode#
+      WHERE
+      ([ItemID] = #ItemID,dbType=VarChar#)
+    </update>
+
+    <delete id="Delete" parameterClass="T_Item">
+      DELETE FROM [T_Item]
+      WHERE
+      ([ItemID] = #ItemID,dbType=VarChar#)
+    </delete>
+  </statements>
+</sqlMap>
