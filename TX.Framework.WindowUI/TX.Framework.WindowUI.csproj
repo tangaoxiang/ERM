@@ -303,9 +303,7 @@
     <Compile Include="Controls\Docking\DockPanel.AutoHideWindow.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\Docking\DockPanel.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Controls\Docking\DockPanel.cs" />
     <Compile Include="Controls\Docking\DockPanel.DockDragHandler.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -447,9 +445,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\TemplateListView\TemplateColumnHeaderCollection.cs" />
-    <Compile Include="Controls\TemplateListView\TemplateListView.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Controls\TemplateListView\TemplateListView.cs" />
     <Compile Include="Controls\ThumbnailView\ThumbnailView.cs">
       <SubType>Component</SubType>
     </Compile>
